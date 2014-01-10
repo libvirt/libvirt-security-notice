@@ -1,0 +1,91 @@
+    Libvirt Security Notice Schema
+    ==============================
+
+The top level element of a libvirt security notice has
+a name of "security-notice" and is in a XML namespace
+of http://security.libvirt.org/xmlns/security-notice/1.0
+
+Basic metadata
+--------------
+
+The "id" element content is a pair of 4 digit numbers
+uniquely identifying the security issue. By convention
+the first 4 digit number is the year in which it was
+reported and the second number is an integer value that
+is unique within the year, monotonically incrementing
+from 1. eg the 137th issue reported in 2013 would have
+an id of "2013-0137"
+
+The "summary" element is a short, single line description
+of the flaw, ideally 80 characters or less to make it
+suitable for use in email subject lines or git commit
+messages.
+
+The "credits" element provides information on persons
+involved with the flaw. It permits the child elements
+"reporter" or "patcher" each of which can be repeated
+zero or more times. Both elements contain two further
+child elements "email" and "name" with the former
+providing the email address and the latter providing
+the full name. At least one of "email" and "name" must
+be provided.
+
+The "lifecycle" element provides date on key milestones
+in handling of the issue. It contains between one and
+three child elements, "reported", "published" and
+"fixed". The "reported" element says the date on which
+the libvirt security received notification of the issue.
+The "published" element says the date on which the issue
+was revealed to the public. The "fixed" element says the
+date on which the issue was patched in the primary code
+branch (typically GIT master).
+
+The "reference" element provides details of related
+resources. It will have one or more child elements which
+can be either "advisory" or "bug". An "advisory" element
+includes a "type" and "id" attribute where "type" is
+currently allowed to be "CVE" and "id" is the identifier
+of the report. A "bug" elements incudes "tracker" and
+"id" attribute where "tracker" is allowed to be "redhat",
+"debian" or a short name for another vendors' bug tracker.
+
+Descriptive data
+----------------
+
+There are three free form text elements providing descriptive
+data about the issue. The data will usually be inside a CDATA
+block.
+
+The "description" element content is an expanded version of
+the "summary" element content, describing what the flaw is.
+
+The "impact" element content describes the implications of
+the security issue. ie what can a malicious user do with the
+flaw.
+
+The "workaround" element content describes any steps that an
+administrator can take to eliminate or at least mitigate the
+impact of the flaw.
+
+
+Product data
+------------
+
+The "product" element provides information about the codebase
+of the affected products. The "name" attribute is the name of
+a libvirt product, typically based on the tar.gz archive name
+with the suffice stripped. This contains a child "repository"
+element which is a URL to the master GIT repository. There is
+then one or more "branch" elements which details the state of
+affected branches.
+
+The first child of the "branch" element is a "name" giving the
+branch name, eg "master", "v1.0.1-maint", etc. There are then
+zero or more "tag" or "change" child elements with a "state"
+attribute of "vulnerable" or "fixed". The "tag" element content
+details the name of the GIT tag(s) on that branch are vulnerable
+and which tags are fixed. The "change" element content details the
+GIT hash of the change(s) which both introduce and fix the flaw.
+The same vulnerable change hash may appear under multiple "branch"
+elements since branches will share large portions of their history.
+The fix hash will however usually be different.
