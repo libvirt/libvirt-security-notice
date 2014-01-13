@@ -1,0 +1,223 @@
+<security-notice xmlns="http://security.libvirt.org/xmlns/security-notice/1.0">
+  <id>2010-0004</id>
+
+  <summary>Improperly mapped virtual network source privileged ports</summary>
+
+  <description>
+<![CDATA[When a virtual network is setup to use NAT based forwarding,
+outgoing connections will have their source port mapped to a NAT
+selected port. By default iptables will attempt to map privileged ports
+to privileged ports and libvirt does not make any attempt to override
+this default logic. ]]>
+  </description>
+
+  <impact>
+<![CDATA[If an network service is configured to allow access by a
+virtualization host, by checking if the source port is less than
+1024, then it is possible for a guest connected to a NAT based
+virtual network to gain access to network services only intended
+to be used by the host. For example, an NFS filesystem exported to
+the virtualization host relying on IP based security with the "secure"
+option will be inadvertantly accessible to guests.]]>
+  </impact>
+
+  <workaround>
+<![CDATA[Configure network services to use a strong authentication
+mechanism instead of relying on source port number validation. Place
+the guest on a completely separate IP address subnet from the host
+network.]]>
+  </workaround>
+
+  <credits>
+    <reporter>
+      <name>Jeremy Nickurak</name>
+      <email>redhat-bugs@trk.nickurak.ca</email>
+    </reporter>
+    <patcher>
+      <name></name>
+      <email></email>
+    </patcher>
+  </credits>
+
+  <lifecycle>
+    <reported>20100609</reported>
+    <published>20100712</published>
+    <fixed>20100610</fixed>
+  </lifecycle>
+
+  <reference>
+    <advisory type="CVE" id="2010-2242"/>
+    <bug tracker="ubuntu" id="591943"/>
+  </reference>
+
+  <product name="libvirt">
+    <repository>git://libvirt.org/git/libvirt.git</repository>
+    <branch>
+      <name>master</name>
+      <change state="vulnerable">3ea88b568d7f5550ac399f310d2a4488bc31618d</change>
+      <change state="fixed">c567853089a2764c964002dd752e09e318524a38</change>
+    </branch>
+    <branch>
+      <name>v0.2.0-maint</name>
+      <tag state="vulnerable">v0.2.0</tag>
+      <change state="vulnerable">3ea88b568d7f5550ac399f310d2a4488bc31618d</change>
+    </branch>
+    <branch>
+      <name>v0.2.1-maint</name>
+      <tag state="vulnerable">v0.2.1</tag>
+      <change state="vulnerable">3ea88b568d7f5550ac399f310d2a4488bc31618d</change>
+    </branch>
+    <branch>
+      <name>v0.2.2-maint</name>
+      <tag state="vulnerable">v0.2.2</tag>
+      <change state="vulnerable">3ea88b568d7f5550ac399f310d2a4488bc31618d</change>
+    </branch>
+    <branch>
+      <name>v0.2.3-maint</name>
+      <tag state="vulnerable">v0.2.3</tag>
+      <change state="vulnerable">3ea88b568d7f5550ac399f310d2a4488bc31618d</change>
+    </branch>
+    <branch>
+      <name>v0.3.0-maint</name>
+      <tag state="vulnerable">v0.3.0</tag>
+      <change state="vulnerable">3ea88b568d7f5550ac399f310d2a4488bc31618d</change>
+    </branch>
+    <branch>
+      <name>v0.3.1-maint</name>
+      <tag state="vulnerable">v0.3.1</tag>
+      <change state="vulnerable">3ea88b568d7f5550ac399f310d2a4488bc31618d</change>
+    </branch>
+    <branch>
+      <name>v0.3.2-maint</name>
+      <tag state="vulnerable">v0.3.2</tag>
+      <change state="vulnerable">3ea88b568d7f5550ac399f310d2a4488bc31618d</change>
+    </branch>
+    <branch>
+      <name>v0.3.3-maint</name>
+      <tag state="vulnerable">v0.3.3</tag>
+      <change state="vulnerable">3ea88b568d7f5550ac399f310d2a4488bc31618d</change>
+    </branch>
+    <branch>
+      <name>v0.4.1-maint</name>
+      <tag state="vulnerable">v0.4.1</tag>
+      <change state="vulnerable">3ea88b568d7f5550ac399f310d2a4488bc31618d</change>
+    </branch>
+    <branch>
+      <name>v0.4.2-maint</name>
+      <tag state="vulnerable">v0.4.2</tag>
+      <change state="vulnerable">3ea88b568d7f5550ac399f310d2a4488bc31618d</change>
+    </branch>
+    <branch>
+      <name>v0.4.4-maint</name>
+      <tag state="vulnerable">v0.4.4</tag>
+      <change state="vulnerable">3ea88b568d7f5550ac399f310d2a4488bc31618d</change>
+    </branch>
+    <branch>
+      <name>v0.4.6-maint</name>
+      <tag state="vulnerable">v0.4.6</tag>
+      <change state="vulnerable">3ea88b568d7f5550ac399f310d2a4488bc31618d</change>
+    </branch>
+    <branch>
+      <name>v0.5.0-maint</name>
+      <tag state="vulnerable">v0.5.0</tag>
+      <change state="vulnerable">3ea88b568d7f5550ac399f310d2a4488bc31618d</change>
+    </branch>
+    <branch>
+      <name>v0.5.1-maint</name>
+      <tag state="vulnerable">v0.5.1</tag>
+      <change state="vulnerable">3ea88b568d7f5550ac399f310d2a4488bc31618d</change>
+    </branch>
+    <branch>
+      <name>v0.6.0-maint</name>
+      <tag state="vulnerable">v0.6.0</tag>
+      <change state="vulnerable">3ea88b568d7f5550ac399f310d2a4488bc31618d</change>
+    </branch>
+    <branch>
+      <name>v0.6.1-maint</name>
+      <tag state="vulnerable">v0.6.1</tag>
+      <change state="vulnerable">3ea88b568d7f5550ac399f310d2a4488bc31618d</change>
+    </branch>
+    <branch>
+      <name>v0.6.2-maint</name>
+      <tag state="vulnerable">v0.6.2</tag>
+      <change state="vulnerable">3ea88b568d7f5550ac399f310d2a4488bc31618d</change>
+    </branch>
+    <branch>
+      <name>v0.6.3-maint</name>
+      <tag state="vulnerable">v0.6.3</tag>
+      <change state="vulnerable">3ea88b568d7f5550ac399f310d2a4488bc31618d</change>
+    </branch>
+    <branch>
+      <name>v0.6.4-maint</name>
+      <tag state="vulnerable">v0.6.4</tag>
+      <change state="vulnerable">3ea88b568d7f5550ac399f310d2a4488bc31618d</change>
+    </branch>
+    <branch>
+      <name>v0.6.5-maint</name>
+      <tag state="vulnerable">v0.6.5</tag>
+      <change state="vulnerable">3ea88b568d7f5550ac399f310d2a4488bc31618d</change>
+    </branch>
+    <branch>
+      <name>v0.7.0-maint</name>
+      <tag state="vulnerable">v0.7.0</tag>
+      <change state="vulnerable">3ea88b568d7f5550ac399f310d2a4488bc31618d</change>
+    </branch>
+    <branch>
+      <name>v0.7.1-maint</name>
+      <tag state="vulnerable">v0.7.1</tag>
+      <change state="vulnerable">3ea88b568d7f5550ac399f310d2a4488bc31618d</change>
+    </branch>
+    <branch>
+      <name>v0.7.2-maint</name>
+      <tag state="vulnerable">v0.7.2</tag>
+      <change state="vulnerable">3ea88b568d7f5550ac399f310d2a4488bc31618d</change>
+    </branch>
+    <branch>
+      <name>v0.7.3-maint</name>
+      <tag state="vulnerable">v0.7.3</tag>
+      <change state="vulnerable">3ea88b568d7f5550ac399f310d2a4488bc31618d</change>
+    </branch>
+    <branch>
+      <name>v0.7.4-maint</name>
+      <tag state="vulnerable">v0.7.4</tag>
+      <change state="vulnerable">3ea88b568d7f5550ac399f310d2a4488bc31618d</change>
+    </branch>
+    <branch>
+      <name>v0.7.5-maint</name>
+      <tag state="vulnerable">v0.7.5</tag>
+      <change state="vulnerable">3ea88b568d7f5550ac399f310d2a4488bc31618d</change>
+    </branch>
+    <branch>
+      <name>v0.7.6-maint</name>
+      <tag state="vulnerable">v0.7.6</tag>
+      <change state="vulnerable">3ea88b568d7f5550ac399f310d2a4488bc31618d</change>
+    </branch>
+    <branch>
+      <name>v0.7.7-maint</name>
+      <tag state="vulnerable">v0.7.7</tag>
+      <change state="vulnerable">3ea88b568d7f5550ac399f310d2a4488bc31618d</change>
+    </branch>
+    <branch>
+      <name>v0.8.0-maint</name>
+      <tag state="vulnerable">v0.8.0</tag>
+      <change state="vulnerable">3ea88b568d7f5550ac399f310d2a4488bc31618d</change>
+    </branch>
+    <branch>
+      <name>v0.8.1-maint</name>
+      <tag state="vulnerable">v0.8.1</tag>
+      <change state="vulnerable">3ea88b568d7f5550ac399f310d2a4488bc31618d</change>
+    </branch>
+    <branch>
+      <name>v0.8.2-maint</name>
+      <tag state="vulnerable">v0.8.2</tag>
+      <change state="vulnerable">3ea88b568d7f5550ac399f310d2a4488bc31618d</change>
+    </branch>
+    <branch>
+      <name>v0.8.3-maint</name>
+      <tag state="vulnerable">v0.8.3</tag>
+      <change state="vulnerable">3ea88b568d7f5550ac399f310d2a4488bc31618d</change>
+      <change state="fixed">c567853089a2764c964002dd752e09e318524a38</change>
+    </branch>
+  </product>
+
+</security-notice>
