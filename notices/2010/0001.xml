@@ -1,0 +1,119 @@
+<security-notice xmlns="http://security.libvirt.org/xmlns/security-notice/1.0">
+  <id>2010-0001</id>
+
+  <summary>Ignoring main disk format when looking up disk backing stores</summary>
+
+  <description>
+<![CDATA[Prior to starting a guest, or when hotplugging or unplugging a device
+the libvirt SELinux, DAC and CGroups security drivers need to determine full
+file chain associated with a disk image. This is done by traversing backing
+file formats referenced in the disk headers. The code did not, however, honour
+the disk format recorded in disk XML configuration, when reading disk images
+so a raw file could be mis-identifed as another type of file.]]>
+  </description>
+
+  <impact>
+<![CDATA[The SELinux, DAC and CGroups code was not honouring disk formats
+so could be tricked into giving the VM access to files that were otherwise
+not permitted by its configuration. This can be done by taking what was
+expected to be a raw disks file and writing a qcow2 header into it.]]>
+  </impact>
+
+  <workaround>
+<![CDATA[Do not use any raw disk images.]]>
+  </workaround>
+
+  <credits>
+    <reporter>
+      <name>Daniel Berrange</name>
+      <email>berrange@redhat.com</email>
+    </reporter>
+    <patcher>
+      <name>Daniel Berrange</name>
+      <email>berrange@redhat.com</email>
+    </patcher>
+  </credits>
+
+  <lifecycle>
+    <reported>20100615</reported>
+    <published>20100712</published>
+    <fixed>20100719</fixed>
+  </lifecycle>
+
+  <reference>
+    <advisory type="CVE" id="2010-2237"/>
+  </reference>
+
+  <product name="libvirt">
+    <repository>git://libvirt.org/git/libvirt.git</repository>
+    <branch>
+      <name>master</name>
+      <!-- SELinux driver -->
+      <change state="vulnerable">fe627697a3830cd2db0efcc201d8caa9e171263d</change>
+      <!-- DAC driver -->
+      <change state="vulnerable">15f5eaa09895d68b849a0b0ec458acdafe75d080</change>
+      <!-- CGroups driver -->
+      <change state="vulnerable">117d04fb1d388df700cc37c4d2a68189fab280c0</change>
+      <change state="fixed">68719c4bddb85fbcc931a5b7d99ac7c8a0af09b0</change>
+    </branch>
+    <branch>
+      <name>v0.7.2-maint</name>
+      <tag state="vulnerable">v0.7.2</tag>
+      <change state="vulnerable">fe627697a3830cd2db0efcc201d8caa9e171263d</change>
+    </branch>
+    <branch>
+      <name>v0.7.3-maint</name>
+      <tag state="vulnerable">v0.7.3</tag>
+      <change state="vulnerable">fe627697a3830cd2db0efcc201d8caa9e171263d</change>
+    </branch>
+    <branch>
+      <name>v0.7.4-maint</name>
+      <tag state="vulnerable">v0.7.4</tag>
+      <change state="vulnerable">fe627697a3830cd2db0efcc201d8caa9e171263d</change>
+    </branch>
+    <branch>
+      <name>v0.7.5-maint</name>
+      <tag state="vulnerable">v0.7.5</tag>
+      <change state="vulnerable">fe627697a3830cd2db0efcc201d8caa9e171263d</change>
+    </branch>
+    <branch>
+      <name>v0.7.6-maint</name>
+      <tag state="vulnerable">v0.7.6</tag>
+      <change state="vulnerable">fe627697a3830cd2db0efcc201d8caa9e171263d</change>
+      <change state="vulnerable">15f5eaa09895d68b849a0b0ec458acdafe75d080</change>
+    </branch>
+    <branch>
+      <name>v0.7.7-maint</name>
+      <tag state="vulnerable">v0.7.7</tag>
+      <change state="vulnerable">fe627697a3830cd2db0efcc201d8caa9e171263d</change>
+      <change state="vulnerable">15f5eaa09895d68b849a0b0ec458acdafe75d080</change>
+    </branch>
+    <branch>
+      <name>v0.8.0-maint</name>
+      <tag state="vulnerable">v0.8.0</tag>
+      <change state="vulnerable">fe627697a3830cd2db0efcc201d8caa9e171263d</change>
+      <change state="vulnerable">15f5eaa09895d68b849a0b0ec458acdafe75d080</change>
+    </branch>
+    <branch>
+      <name>v0.8.1-maint</name>
+      <tag state="vulnerable">v0.8.1</tag>
+      <change state="vulnerable">fe627697a3830cd2db0efcc201d8caa9e171263d</change>
+      <change state="vulnerable">15f5eaa09895d68b849a0b0ec458acdafe75d080</change>
+    </branch>
+    <branch>
+      <name>v0.8.2</name>
+      <tag state="vulnerable">v0.8.2</tag>
+      <change state="vulnerable">fe627697a3830cd2db0efcc201d8caa9e171263d</change>
+      <change state="vulnerable">15f5eaa09895d68b849a0b0ec458acdafe75d080</change>
+      <change state="vulnerable">117d04fb1d388df700cc37c4d2a68189fab280c0</change>
+    </branch>
+    <branch>
+      <name>v0.8.3-maint</name>
+      <change state="vulnerable">fe627697a3830cd2db0efcc201d8caa9e171263d</change>
+      <change state="vulnerable">15f5eaa09895d68b849a0b0ec458acdafe75d080</change>
+      <tag state="fixed">v0.8.3</tag>
+      <change state="fixed">68719c4bddb85fbcc931a5b7d99ac7c8a0af09b0</change>
+    </branch>
+  </product>
+
+</security-notice>
