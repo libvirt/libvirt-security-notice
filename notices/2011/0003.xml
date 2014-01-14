@@ -1,0 +1,74 @@
+<security-notice xmlns="http://security.libvirt.org/xmlns/security-notice/1.0">
+  <id>2011-0003</id>
+
+  <summary>Security manager does not disable disk probing</summary>
+
+  <description>
+<![CDATA[The flag controlling whether the security manager disabled
+disk probing was being overwritten due to miscalculation in the size
+of a structure. This meant that the security driver may mistakenly
+probe disk formats when setting up guest labelling and thus allow
+access to inappropriate host files.]]>
+  </description>
+
+  <impact>
+<![CDATA[A malicious guest disk image could trick the security
+drivre into providing access to inappropriate host files]]>
+  </impact>
+
+  <workaround>
+<![CDATA[Do not use raw disk images]]>
+  </workaround>
+
+  <credits>
+    <reporter>
+      <name>Eric Blake</name>
+      <email>eblake@redhat.com</email>
+    </reporter>
+    <patcher>
+      <name>Eric Blake</name>
+      <email>eblake@redhat.com</email>
+    </patcher>
+  </credits>
+
+  <lifecycle>
+    <reported>20110526</reported>
+    <published>20110531</published>
+    <fixed>20110531</fixed>
+  </lifecycle>
+
+  <reference>
+    <advisory type="CVE" id="2011-2178"/>
+  </reference>
+
+  <product name="libvirt">
+    <repository>git://libvirt.org/git/libvirt.git</repository>
+    <branch>
+      <name>master</name>
+      <change state="vulnerable">d6623003c6551be07d42a72ce976ab8b0986ec15</change>
+      <change state="fixed">b598ac555c8fe67ffc39ac8ef25fe7e6b28ae3f2</change>
+    </branch>
+    <branch>
+      <name>v0.8.8-maint</name>
+      <tag state="vulnerable">v0.8.8</tag>
+      <change state="vulnerable">d6623003c6551be07d42a72ce976ab8b0986ec15</change>
+    </branch>
+    <branch>
+      <name>v0.9.0-maint</name>
+      <tag state="vulnerable">v0.9.0</tag>
+      <change state="vulnerable">d6623003c6551be07d42a72ce976ab8b0986ec15</change>
+    </branch>
+    <branch>
+      <name>v0.9.1-maint</name>
+      <tag state="vulnerable">v0.9.1</tag>
+      <change state="vulnerable">d6623003c6551be07d42a72ce976ab8b0986ec15</change>
+    </branch>
+    <branch>
+      <name>v0.9.2-maint</name>
+      <tag state="fixed">v0.9.2</tag>
+      <change state="vulnerable">d6623003c6551be07d42a72ce976ab8b0986ec15</change>
+      <change state="fixed">b598ac555c8fe67ffc39ac8ef25fe7e6b28ae3f2</change>
+    </branch>
+  </product>
+
+</security-notice>
