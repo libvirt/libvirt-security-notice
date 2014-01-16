@@ -1,0 +1,65 @@
+<security-notice xmlns="http://security.libvirt.org/xmlns/security-notice/1.0">
+  <id>2013-0009</id>
+
+  <summary>Missing bounds checking on parameter count in migration API</summary>
+
+  <description>
+<![CDATA[The virDomainMigrate*Params RPC calls did not check how
+many parameters were supplied by the user.]]>
+  </description>
+
+  <impact>
+<![CDATA[A malicious user with the ability to start migration can
+cause libvirtd to allocate arbitrary amounts of memory by specifying
+too many parameters.]]>
+  </impact>
+
+  <workaround>
+<![CDATA[Prevent untrusted users from using the migration APIs by
+setting a suitable access control policy]]>
+  </workaround>
+
+  <credits>
+    <reporter>
+      <name>Daniel Berrange</name>
+      <email>berrange@redhat.com</email>
+    </reporter>
+    <patcher>
+      <name>Daniel Berrange</name>
+      <email>berrange@redhat.com</email>
+    </patcher>
+  </credits>
+
+  <lifecycle>
+    <reported>20130829</reported>
+    <published>20130829</published>
+    <fixed>20130829</fixed>
+  </lifecycle>
+
+  <reference>
+    <advisory type="CVE" id="2013-4292"/>
+  </reference>
+
+  <product name="libvirt">
+    <repository>git://libvirt.org/git/libvirt.git</repository>
+    <branch>
+      <name>master</name>
+      <tag state="vulnerable">v1.1.0</tag>
+      <tag state="vulnerable">v1.1.1</tag>
+      <change state="vulnerable">c0762b6518c32c1d6b17b7a222301fbfd90ba582</change>
+      <tag state="fixed">v1.1.2</tag>
+      <change state="fixed">fd6f6a48619eb221afeb1c5965537534cd54e01d</change>
+    </branch>
+    <branch>
+      <name>v1.1.0-maint</name>
+      <change state="vulnerable">c0762b6518c32c1d6b17b7a222301fbfd90ba582</change>
+      <change state="fixed">c30273ffba1579560548a16da063b95a8c9a1dc9</change>
+    </branch>
+    <branch>
+      <name>v1.1.1-maint</name>
+      <change state="vulnerable">c0762b6518c32c1d6b17b7a222301fbfd90ba582</change>
+      <change state="fixed">dfae2d6208926c6adb12a440b5e4640c1ac049d0</change>
+    </branch>
+  </product>
+
+</security-notice>
