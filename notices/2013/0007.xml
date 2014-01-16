@@ -1,0 +1,58 @@
+<security-notice xmlns="http://security.libvirt.org/xmlns/security-notice/1.0">
+  <id>2013-0007</id>
+
+  <summary>Crash listing inactive domains in Xen driver</summary>
+
+  <description>
+<![CDATA[The legacy Xen driver code for listing inactive domains
+would stasrt populating an array at index -1. This causes memory
+corruption leading to a crash of libvirtd]]>
+  </description>
+
+  <impact>
+<![CDATA[An unprivileged user can crash libvirtd by requesting a
+list of inactive domains on a Xen host]]>
+  </impact>
+
+  <workaround>
+<![CDATA[Prevent untrusted users from accessing libvirtd]]>
+  </workaround>
+
+  <credits>
+    <reporter>
+      <name>Jim Fehlig</name>
+      <email>jfehlig@suse.com</email>
+    </reporter>
+    <patcher>
+      <name>Jim Fehlig</name>
+      <email>jfehlig@suse.com</email>
+    </patcher>
+  </credits>
+
+  <lifecycle>
+    <reported>20130805</reported>
+    <published>20130805</published>
+    <fixed>20130805</fixed>
+  </lifecycle>
+
+  <reference>
+    <advisory type="CVE" id="2013-4239"/>
+  </reference>
+
+  <product name="libvirt">
+    <repository>git://libvirt.org/git/libvirt.git</repository>
+    <branch>
+      <name>master</name>
+      <tag state="vulnerable">v1.1.1</tag>
+      <change state="vulnerable">632180d14f4a4934436ee4c9ebd8f6b8feed671f</change>
+      <change state="fixed">0e671a1646df543eab683b38f6644f70d12fbee1</change>
+    </branch>
+    <branch>
+      <name>v1.1.1-maint</name>
+      <tag state="vulnerable"></tag>
+      <change state="vulnerable">632180d14f4a4934436ee4c9ebd8f6b8feed671f</change>
+      <change state="fixed">673ff0d7ea937b104c67161843949e83b8080c3b</change>
+    </branch>
+  </product>
+
+</security-notice>
