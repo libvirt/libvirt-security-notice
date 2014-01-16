@@ -1,0 +1,121 @@
+<security-notice xmlns="http://security.libvirt.org/xmlns/security-notice/1.0">
+  <id>2013-0017</id>
+
+  <summary>libvirtd daemon crash when reading memory tunables for LXC guest in shutoff status</summary>
+
+  <description>
+<![CDATA[The lxcDomainGetMemoryParameters method in the LXC driver did not check
+whether the guest being accessed was running or not. When shutoff there will be
+no virCgroupPtr instance associated with the guest. Reading memory tunables
+involves calling methods with the virCgroupPtr object as a parameter. This will
+lead to a crash accessing a NULL pointer.]]>
+  </description>
+
+  <impact>
+<![CDATA[A user who has permission to invoke the virDomainGetMemoryParameters
+API against the LXC driver will be able to crash the libvirtd daemon. Access to
+this API is granted to any user who connects to the read-only libvirtd UNIX
+domain socket. If ACLs are active, access is granted to any user with the
+'read' permission on the 'domain' object, which is granted by default to all
+users. As a result an unprivileged user will be able to inflict a denial of
+service attack on other users of the libvirtd daemon with higher privilege.]]>
+  </impact>
+
+  <workaround>
+<![CDATA[The impact can be mitigated by blocking access to the read-only
+libvirtd UNIX domain socket, with policykit or the 'auth_unix_ro' parameter
+in '/etc/libvirt/libvirtd.conf'. If ACLs are active, the 'read' permission
+should be removed from any untrusted users. This will not prevent the crash,
+but will stop unprivileged users from inflicting the denial of service
+on higher privileged users.]]>
+  </workaround>
+
+  <credits>
+    <reporter>
+      <name>Martin Kletzander</name>
+      <email>mkletzan@redhat.com</email>
+    </reporter>
+    <patcher>
+      <name>Martin Kletzander</name>
+      <email>mkletzan@redhat.com</email>
+    </patcher>
+  </credits>
+
+  <lifecycle>
+    <reported>20131209</reported>
+    <published>20131220</published>
+    <fixed>20131220</fixed>
+  </lifecycle>
+
+  <reference>
+    <advisory type="CVE" id="2013-6436"/>
+  </reference>
+
+  <product name="libvirt">
+    <repository>git://libvirt.org/git/libvirt.git</repository>
+    <branch>
+      <name>master</name>
+      <tag state="vulnerable">v1.0.5</tag>
+      <tag state="vulnerable">v1.0.6</tag>
+      <tag state="vulnerable">v1.1.0</tag>
+      <tag state="vulnerable">v1.1.1</tag>
+      <tag state="vulnerable">v1.1.2</tag>
+      <tag state="vulnerable">v1.1.3</tag>
+      <tag state="vulnerable">v1.1.4</tag>
+      <tag state="vulnerable">v1.2.0</tag>
+      <change state="vulnerable">cfed9ad4fb28e268e1467a0071c2fbc0c0873969</change>
+      <change state="fixed">f8c1cb90213508c4f32549023b0572ed774e48aa</change>
+    </branch>
+    <branch>
+      <name>v1.0.5-maint</name>
+      <tag state="vulnerable">v1.0.5.1</tag>
+      <tag state="vulnerable">v1.0.5.2</tag>
+      <tag state="vulnerable">v1.0.5.3</tag>
+      <tag state="vulnerable">v1.0.5.4</tag>
+      <tag state="vulnerable">v1.0.5.5</tag>
+      <tag state="vulnerable">v1.0.5.6</tag>
+      <tag state="vulnerable">v1.0.5.7</tag>
+      <tag state="vulnerable">v1.0.5.8</tag>
+      <change state="vulnerable">cfed9ad4fb28e268e1467a0071c2fbc0c0873969</change>
+      <change state="fixed">218bd2e8716bcb4c90acf6ecaf879d606b46606b</change>
+    </branch>
+    <branch>
+      <name>v1.0.6-maint</name>
+      <change state="vulnerable">cfed9ad4fb28e268e1467a0071c2fbc0c0873969</change>
+      <change state="fixed">80d682fd90bb7e97d8670be4cba1fe153438d7a0</change>
+    </branch>
+    <branch>
+      <name>v1.1.0-maint</name>
+      <change state="vulnerable">cfed9ad4fb28e268e1467a0071c2fbc0c0873969</change>
+      <change state="fixed">30a589bc4731488ca3428515ed57ce5446a83bbd</change>
+    </branch>
+    <branch>
+      <name>v1.1.1-maint</name>
+      <change state="vulnerable">cfed9ad4fb28e268e1467a0071c2fbc0c0873969</change>
+      <change state="fixed">9a68d1354233f4cfca686655f8021e9477977e6e</change>
+    </branch>
+    <branch>
+      <name>v1.1.2-maint</name>
+      <change state="vulnerable">cfed9ad4fb28e268e1467a0071c2fbc0c0873969</change>
+      <change state="fixed">79384018480f11ec6f2c2196039e67a9196d3e3a</change>
+    </branch>
+    <branch>
+      <name>v1.1.3-maint</name>
+      <tag state="vulnerable">v1.1.3.1</tag>
+      <tag state="vulnerable">v1.1.3.2</tag>
+      <change state="vulnerable">cfed9ad4fb28e268e1467a0071c2fbc0c0873969</change>
+      <change state="fixed">66247dc5fffe5b9447f4db377c5adf02e6db97c4</change>
+    </branch>
+    <branch>
+      <name>v1.1.4-maint</name>
+      <change state="vulnerable">cfed9ad4fb28e268e1467a0071c2fbc0c0873969</change>
+      <change state="fixed">09956c7db764a0958034de6fac58aaaaf8e878bf</change>
+    </branch>
+    <branch>
+      <name>v1.2.0-maint</name>
+      <change state="vulnerable">cfed9ad4fb28e268e1467a0071c2fbc0c0873969</change>
+      <change state="fixed">705f388bceb4fce21b7c5ebc6310cb467c362239</change>
+    </branch>
+  </product>
+
+</security-notice>
