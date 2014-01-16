@@ -1,0 +1,60 @@
+<security-notice xmlns="http://security.libvirt.org/xmlns/security-notice/1.0">
+  <id>2013-0006</id>
+
+  <summary>Crash of libvirtd without guest agent active</summary>
+
+  <description>
+<![CDATA[If the qemu guest agent service is not present in a guest
+then the libvirtd daemon will crash on a NULL pointer when trying
+to run guest agent related commands.]]>
+  </description>
+
+  <impact>
+<![CDATA[A user with the permission to invoke APIs which talk to
+the guest agent will be able to crash the libvirtd daemon leading
+to a denial of service.]]>
+  </impact>
+
+  <workaround>
+<![CDATA[Prevent untrusted users from executing APIs which talk
+to the guest agent by removing their ability to connect to libvirtd
+or deny the permission bits in the access control policy.]]>
+  </workaround>
+
+  <credits>
+    <reporter>
+      <name>Alex Jia</name>
+      <email>ajia@redhat.com</email>
+    </reporter>
+    <patcher>
+      <name>Alex Jia</name>
+      <email>ajia@redhat.com</email>
+    </patcher>
+  </credits>
+
+  <lifecycle>
+    <reported>20130716</reported>
+    <published>20130716</published>
+    <fixed>20130716</fixed>
+  </lifecycle>
+
+  <reference>
+    <advisory type="CVE" id="2013-4154"/>
+  </reference>
+
+  <product name="libvirt">
+    <repository>git://libvirt.org/git/libvirt.git</repository>
+    <branch>
+      <name>master</name>
+      <tag state="vulnerable">v1.1.0</tag>
+      <change state="vulnerable">d47eff88fe50e43a36671f6d8d0eeda52835d5e0</change>
+      <change state="fixed">96518d4316b711c72205117f8d5c967d5127bbb6</change>
+    </branch>
+    <branch>
+      <name>v1.1.0-maint</name>
+      <change state="vulnerable">d47eff88fe50e43a36671f6d8d0eeda52835d5e0</change>
+      <change state="fixed">a0f8c42b936c44c7e328ce774a8952dcc2f6afc6</change>
+    </branch>
+  </product>
+
+</security-notice>
