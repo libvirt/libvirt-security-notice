@@ -1,0 +1,99 @@
+<security-notice xmlns="http://security.libvirt.org/xmlns/security-notice/1.0">
+  <id>2012-0002</id>
+
+  <summary>Fix crash in libvirt clearing API parameters</summary>
+
+  <description>
+<![CDATA[The libvirtd daemon code which dispatches APIs with
+variable parameters, may end up walking off the end of an array
+which is only one element long when a client passes an nparams
+value of 0. If there is a byte with value 7 in an unfortunate
+place in the heap, this may cause an attempt to free non-allocated
+memory resulting in a crash]]>
+  </description>
+
+  <impact>
+<![CDATA[A malicious client can cause access beyond the end of an
+array and potentially trigger heap corruption by free'ing
+non-allocated memory.]]>
+  </impact>
+
+  <workaround>
+<![CDATA[None possible]]>
+  </workaround>
+
+  <credits>
+    <reporter>
+      <name>Jiri Denemark</name>
+      <email>jdenemar@redhat.com</email>
+    </reporter>
+    <patcher>
+      <name>Jiri Denemark</name>
+      <email>jdenemar@redhat.com</email>
+    </patcher>
+  </credits>
+
+  <lifecycle>
+    <reported>20120730</reported>
+    <published>20120730</published>
+    <fixed>20120730</fixed>
+  </lifecycle>
+
+  <reference>
+    <advisory type="CVE" id="2012-3445"/>
+  </reference>
+
+  <product name="libvirt">
+    <repository>git://libvirt.org/git/libvirt.git</repository>
+    <branch>
+      <name>master</name>
+      <change state="vulnerable">40624d32fb54920e4aa434fbb2b8999d17e02931</change>
+      <change state="fixed">6039a2cb49c8af4c68460d2faf365a7e1c686c7b</change>
+    </branch>
+    <branch>
+      <name>v0.9.8-maint</name>
+      <tag state="vulnerable">v0.9.8</tag>
+      <change state="vulnerable">40624d32fb54920e4aa434fbb2b8999d17e02931</change>
+    </branch>
+    <branch>
+      <name>v0.9.9-maint</name>
+      <tag state="vulnerable">v0.9.9</tag>
+      <change state="vulnerable">40624d32fb54920e4aa434fbb2b8999d17e02931</change>
+    </branch>
+    <branch>
+      <name>v0.9.10-maint</name>
+      <tag state="vulnerable">v0.9.10</tag>
+      <change state="vulnerable">40624d32fb54920e4aa434fbb2b8999d17e02931</change>
+    </branch>
+    <branch>
+      <name>v0.9.11-maint</name>
+      <tag state="vulnerable">v0.9.11</tag>
+      <tag state="vulnerable">v0.9.11.1</tag>
+      <tag state="vulnerable">v0.9.11.2</tag>
+      <tag state="vulnerable">v0.9.11.3</tag>
+      <tag state="vulnerable">v0.9.11.4</tag>
+      <change state="vulnerable">40624d32fb54920e4aa434fbb2b8999d17e02931</change>
+      <tag state="fixed">v0.9.11.5</tag>
+      <change state="fixed">45d6729f98e9842b139b809078d43f1f7a8c779b</change>
+   </branch>
+    <branch>
+      <name>v0.9.12-maint</name>
+      <tag state="vulnerable">v0.9.12</tag>
+      <change state="vulnerable">40624d32fb54920e4aa434fbb2b8999d17e02931</change>
+      <tag state="fixed">v0.9.12.1</tag>
+      <change state="fixed">11568ec854413629ca28c4d64dbcda29337ae3e9</change>
+    </branch>
+    <branch>
+      <name>v0.9.13-maint</name>
+      <tag state="vulnerable">v0.9.13</tag>
+      <change state="vulnerable">40624d32fb54920e4aa434fbb2b8999d17e02931</change>
+    </branch>
+    <branch>
+      <name>v0.10.0-maint</name>
+      <tag state="fixed">v0.10.0</tag>
+      <change state="vulnerable">40624d32fb54920e4aa434fbb2b8999d17e02931</change>
+      <change state="fixed">6039a2cb49c8af4c68460d2faf365a7e1c686c7b</change>
+    </branch>
+  </product>
+
+</security-notice>
