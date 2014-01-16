@@ -1,0 +1,94 @@
+<security-notice xmlns="http://security.libvirt.org/xmlns/security-notice/1.0">
+  <id>2013-0001</id>
+
+  <summary>Fix crash on error paths of message dispatching</summary>
+
+  <description>
+<![CDATA[When reading and dispatching of a message failed the
+message was freed but was not removed from the message queue.
+When the conneciton was later clsed this would result in an
+attempt to free uninitialized memory]]>
+  </description>
+
+  <impact>
+<![CDATA[A malicious user could send an RPC message which
+intentionally results in an error and thus cause libvirtd
+to crash]]>
+  </impact>
+
+  <workaround>
+<![CDATA[Remove access to libvirtd from untrusted user accounts]]>
+  </workaround>
+
+  <credits>
+    <reporter>
+      <name>Peter Krempa</name>
+      <email>pkrempa@redhat.com</email>
+    </reporter>
+    <patcher>
+      <name>Peter Krempa</name>
+      <email>pkrempa@redhat.com</email>
+    </patcher>
+  </credits>
+
+  <lifecycle>
+    <reported>20130104</reported>
+    <published>20130128</published>
+    <fixed>20130128</fixed>
+  </lifecycle>
+
+  <reference>
+    <advisory type="CVE" id="2013-0170"/>
+  </reference>
+
+  <product name="libvirt">
+    <repository>git://libvirt.org/git/libvirt.git</repository>
+    <branch>
+      <name>master</name>
+      <tag state="vulnerable">v0.9.7</tag>
+      <tag state="vulnerable">v0.9.8</tag>
+      <tag state="vulnerable">v0.9.9</tag>
+      <tag state="vulnerable">v0.9.10</tag>
+      <tag state="vulnerable">v0.9.11</tag>
+      <tag state="vulnerable">v0.9.12</tag>
+      <tag state="vulnerable">v0.9.13</tag>
+      <tag state="vulnerable">v0.10.0</tag>
+      <tag state="vulnerable">v0.10.1</tag>
+      <tag state="vulnerable">v0.10.2</tag>
+      <tag state="vulnerable">v1.0.0</tag>
+      <tag state="vulnerable">v1.0.1</tag>
+      <change state="vulnerable">b2c62316477989f8d728af49bdac8248ab5f5463</change>
+      <tag state="fixed">v1.0.2</tag>
+      <change state="fixed">46532e3e8ed5f5a736a02f67d6c805492f9ca720</change>
+    </branch>
+    <branch>
+      <name>v0.9.11-maint</name>
+      <tag state="vulnerable">v0.9.11.1</tag>
+      <tag state="vulnerable">v0.9.11.2</tag>
+      <tag state="vulnerable">v0.9.11.3</tag>
+      <tag state="vulnerable">v0.9.11.4</tag>
+      <tag state="vulnerable">v0.9.11.5</tag>
+      <tag state="vulnerable">v0.9.11.6</tag>
+      <tag state="vulnerable">v0.9.11.7</tag>
+      <tag state="vulnerable">v0.9.11.8</tag>
+      <change state="vulnerable">b2c62316477989f8d728af49bdac8248ab5f5463</change>
+      <tag state="fixed">v0.9.11.9</tag>
+      <change state="fixed">d0e1501518e0390c0b3326e2c5bd1fb7e1566414</change>
+    </branch>
+    <branch>
+      <name>v0.9.12-maint</name>
+      <change state="vulnerable">b2c62316477989f8d728af49bdac8248ab5f5463</change>
+      <tag state="fixed">v0.9.12.1</tag>
+      <change state="fixed">ba92d4a9ca6dba7b59cef01d02da24955d1334cd</change>
+    </branch>
+    <branch>
+      <name>v0.10.2-maint</name>
+      <tag state="vulnerable">v0.10.2.1</tag>
+      <tag state="vulnerable">v0.10.2.2</tag>
+      <change state="vulnerable">b2c62316477989f8d728af49bdac8248ab5f5463</change>
+      <tag state="fixed">v0.10.2.3</tag>
+      <change state="fixed">f104a2a6b36aa6f4842c0a64354055657c0df8e2</change>
+    </branch>
+  </product>
+
+</security-notice>
