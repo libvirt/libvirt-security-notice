@@ -56,149 +56,32 @@ rule to prevent them access without first authenticating as root.]]>
     <repository>git://libvirt.org/git/libvirt.git</repository>
     <branch>
       <name>master</name>
+      <tag state="vulnerable">v0.6.1</tag>
+      <tag state="vulnerable">v0.6.2</tag>
+      <tag state="vulnerable">v0.6.3</tag>
+      <tag state="vulnerable">v0.6.4</tag>
+      <tag state="vulnerable">v0.6.5</tag>
+      <tag state="vulnerable">v0.7.0</tag>
+      <tag state="vulnerable">v0.7.1</tag>
+      <tag state="vulnerable">v0.7.2</tag>
+      <tag state="vulnerable">v0.7.3</tag>
+      <tag state="vulnerable">v0.7.4</tag>
+      <tag state="vulnerable">v0.7.5</tag>
+      <tag state="vulnerable">v0.7.6</tag>
+      <tag state="vulnerable">v0.7.7</tag>
+      <tag state="vulnerable">v0.8.0</tag>
+      <tag state="vulnerable">v0.8.1</tag>
+      <tag state="vulnerable">v0.8.2</tag>
+      <tag state="vulnerable">v0.8.3</tag>
+      <tag state="vulnerable">v0.8.4</tag>
+      <tag state="vulnerable">v0.8.5</tag>
+      <tag state="vulnerable">v0.8.6</tag>
+      <tag state="vulnerable">v0.8.8</tag>
       <!-- virNodeDeviceDettach, virNodeDeviceReAttach, virNodeDeviceReset -->
       <change state="vulnerable">737af2ea04aa1eb954635bd90d0dbcffdd7ff734</change>
       <!-- virConnectDomainXMLToNative -->
       <change state="vulnerable">4d5383fd36c64a83520c9a6e09c946c4ba86cc29</change>
       <!-- virDomainRevertToSnapshot, virDomainSnapshotDelete -->
-      <change state="vulnerable">2f992d4be4c6157feec4f88ac586f2c50a8fd466</change>
-      <change state="fixed">71753cb7f7a16ff800381c0b5ee4e99eea92fed3</change>
-    </branch>
-    <branch>
-      <name>v0.6.1-maint</name>
-      <tag state="vulnerable">v0.6.1</tag>
-      <change state="vulnerable">737af2ea04aa1eb954635bd90d0dbcffdd7ff734</change>
-    </branch>
-    <branch>
-      <name>v0.6.2-maint</name>
-      <tag state="vulnerable">v0.6.2</tag>
-      <change state="vulnerable">737af2ea04aa1eb954635bd90d0dbcffdd7ff734</change>
-    </branch>
-    <branch>
-      <name>v0.6.3-maint</name>
-      <tag state="vulnerable">v0.6.3</tag>
-      <change state="vulnerable">737af2ea04aa1eb954635bd90d0dbcffdd7ff734</change>
-    </branch>
-    <branch>
-      <name>v0.6.4-maint</name>
-      <tag state="vulnerable">v0.6.4</tag>
-      <change state="vulnerable">737af2ea04aa1eb954635bd90d0dbcffdd7ff734</change>
-      <change state="vulnerable">4d5383fd36c64a83520c9a6e09c946c4ba86cc29</change>
-    </branch>
-    <branch>
-      <name>v0.6.5-maint</name>
-      <tag state="vulnerable">v0.6.5</tag>
-      <change state="vulnerable">737af2ea04aa1eb954635bd90d0dbcffdd7ff734</change>
-      <change state="vulnerable">4d5383fd36c64a83520c9a6e09c946c4ba86cc29</change>
-    </branch>
-    <branch>
-      <name>v0.7.0-maint</name>
-      <tag state="vulnerable">v0.7.0</tag>
-      <change state="vulnerable">737af2ea04aa1eb954635bd90d0dbcffdd7ff734</change>
-      <change state="vulnerable">4d5383fd36c64a83520c9a6e09c946c4ba86cc29</change>
-    </branch>
-    <branch>
-      <name>v0.7.1-maint</name>
-      <tag state="vulnerable">v0.7.1</tag>
-      <change state="vulnerable">737af2ea04aa1eb954635bd90d0dbcffdd7ff734</change>
-      <change state="vulnerable">4d5383fd36c64a83520c9a6e09c946c4ba86cc29</change>
-    </branch>
-    <branch>
-      <name>v0.7.2-maint</name>
-      <tag state="vulnerable">v0.7.2</tag>
-      <change state="vulnerable">737af2ea04aa1eb954635bd90d0dbcffdd7ff734</change>
-      <change state="vulnerable">4d5383fd36c64a83520c9a6e09c946c4ba86cc29</change>
-    </branch>
-    <branch>
-      <name>v0.7.3-maint</name>
-      <tag state="vulnerable">v0.7.3</tag>
-      <change state="vulnerable">737af2ea04aa1eb954635bd90d0dbcffdd7ff734</change>
-      <change state="vulnerable">4d5383fd36c64a83520c9a6e09c946c4ba86cc29</change>
-    </branch>
-    <branch>
-      <name>v0.7.4-maint</name>
-      <tag state="vulnerable">v0.7.4</tag>
-      <change state="vulnerable">737af2ea04aa1eb954635bd90d0dbcffdd7ff734</change>
-      <change state="vulnerable">4d5383fd36c64a83520c9a6e09c946c4ba86cc29</change>
-    </branch>
-    <branch>
-      <name>v0.7.5-maint</name>
-      <tag state="vulnerable">v0.7.5</tag>
-      <change state="vulnerable">737af2ea04aa1eb954635bd90d0dbcffdd7ff734</change>
-      <change state="vulnerable">4d5383fd36c64a83520c9a6e09c946c4ba86cc29</change>
-    </branch>
-    <branch>
-      <name>v0.7.6-maint</name>
-      <tag state="vulnerable">v0.7.6</tag>
-      <change state="vulnerable">737af2ea04aa1eb954635bd90d0dbcffdd7ff734</change>
-      <change state="vulnerable">4d5383fd36c64a83520c9a6e09c946c4ba86cc29</change>
-    </branch>
-    <branch>
-      <name>v0.7.7-maint</name>
-      <tag state="vulnerable">v0.7.7</tag>
-      <change state="vulnerable">737af2ea04aa1eb954635bd90d0dbcffdd7ff734</change>
-      <change state="vulnerable">4d5383fd36c64a83520c9a6e09c946c4ba86cc29</change>
-    </branch>
-    <branch>
-      <name>v0.8.0-maint</name>
-      <tag state="vulnerable">v0.8.0</tag>
-      <change state="vulnerable">737af2ea04aa1eb954635bd90d0dbcffdd7ff734</change>
-      <change state="vulnerable">4d5383fd36c64a83520c9a6e09c946c4ba86cc29</change>
-      <change state="vulnerable">2f992d4be4c6157feec4f88ac586f2c50a8fd466</change>
-    </branch>
-    <branch>
-      <name>v0.8.1-maint</name>
-      <tag state="vulnerable">v0.8.1</tag>
-      <change state="vulnerable">737af2ea04aa1eb954635bd90d0dbcffdd7ff734</change>
-      <change state="vulnerable">4d5383fd36c64a83520c9a6e09c946c4ba86cc29</change>
-      <change state="vulnerable">2f992d4be4c6157feec4f88ac586f2c50a8fd466</change>
-    </branch>
-    <branch>
-      <name>v0.8.2-maint</name>
-      <tag state="vulnerable">v0.8.2</tag>
-      <change state="vulnerable">737af2ea04aa1eb954635bd90d0dbcffdd7ff734</change>
-      <change state="vulnerable">4d5383fd36c64a83520c9a6e09c946c4ba86cc29</change>
-      <change state="vulnerable">2f992d4be4c6157feec4f88ac586f2c50a8fd466</change>
-    </branch>
-    <branch>
-      <name>v0.8.3-maint</name>
-      <tag state="vulnerable">v0.8.3</tag>
-      <change state="vulnerable">737af2ea04aa1eb954635bd90d0dbcffdd7ff734</change>
-      <change state="vulnerable">4d5383fd36c64a83520c9a6e09c946c4ba86cc29</change>
-      <change state="vulnerable">2f992d4be4c6157feec4f88ac586f2c50a8fd466</change>
-    </branch>
-    <branch>
-      <name>v0.8.4-maint</name>
-      <tag state="vulnerable">v0.8.4</tag>
-      <change state="vulnerable">737af2ea04aa1eb954635bd90d0dbcffdd7ff734</change>
-      <change state="vulnerable">4d5383fd36c64a83520c9a6e09c946c4ba86cc29</change>
-      <change state="vulnerable">2f992d4be4c6157feec4f88ac586f2c50a8fd466</change>
-    </branch>
-    <branch>
-      <name>v0.8.5-maint</name>
-      <tag state="vulnerable">v0.8.5</tag>
-      <change state="vulnerable">737af2ea04aa1eb954635bd90d0dbcffdd7ff734</change>
-      <change state="vulnerable">4d5383fd36c64a83520c9a6e09c946c4ba86cc29</change>
-      <change state="vulnerable">2f992d4be4c6157feec4f88ac586f2c50a8fd466</change>
-    </branch>
-    <branch>
-      <name>v0.8.6-maint</name>
-      <tag state="vulnerable">v0.8.6</tag>
-      <change state="vulnerable">737af2ea04aa1eb954635bd90d0dbcffdd7ff734</change>
-      <change state="vulnerable">4d5383fd36c64a83520c9a6e09c946c4ba86cc29</change>
-      <change state="vulnerable">2f992d4be4c6157feec4f88ac586f2c50a8fd466</change>
-    </branch>
-    <branch>
-      <name>v0.8.8-maint</name>
-      <tag state="vulnerable">v0.8.8</tag>
-      <change state="vulnerable">737af2ea04aa1eb954635bd90d0dbcffdd7ff734</change>
-      <change state="vulnerable">4d5383fd36c64a83520c9a6e09c946c4ba86cc29</change>
-      <change state="vulnerable">2f992d4be4c6157feec4f88ac586f2c50a8fd466</change>
-    </branch>
-    <branch>
-      <name>v0.9.0-maint</name>
-      <change state="vulnerable">737af2ea04aa1eb954635bd90d0dbcffdd7ff734</change>
-      <change state="vulnerable">4d5383fd36c64a83520c9a6e09c946c4ba86cc29</change>
       <change state="vulnerable">2f992d4be4c6157feec4f88ac586f2c50a8fd466</change>
       <tag state="fixed">v0.9.0</tag>
       <change state="fixed">71753cb7f7a16ff800381c0b5ee4e99eea92fed3</change>

@@ -49,69 +49,21 @@ expected to be a raw backing file and writing a qcow2 header into it.]]>
     <repository>git://libvirt.org/git/libvirt.git</repository>
     <branch>
       <name>master</name>
+      <tag state="vulnerable">v0.7.2</tag>
+      <tag state="vulnerable">v0.7.3</tag>
+      <tag state="vulnerable">v0.7.4</tag>
+      <tag state="vulnerable">v0.7.5</tag>
+      <tag state="vulnerable">v0.7.6</tag>
+      <tag state="vulnerable">v0.7.7</tag>
+      <tag state="vulnerable">v0.8.0</tag>
+      <tag state="vulnerable">v0.8.1</tag>
+      <tag state="vulnerable">v0.8.2</tag>
       <!-- SELinux driver -->
       <change state="vulnerable">fe627697a3830cd2db0efcc201d8caa9e171263d</change>
       <!-- DAC driver -->
       <change state="vulnerable">15f5eaa09895d68b849a0b0ec458acdafe75d080</change>
       <!-- CGroups driver -->
       <change state="vulnerable">117d04fb1d388df700cc37c4d2a68189fab280c0</change>
-      <change state="fixed">68719c4bddb85fbcc931a5b7d99ac7c8a0af09b0</change>
-    </branch>
-    <branch>
-      <name>v0.7.2-maint</name>
-      <tag state="vulnerable">v0.7.2</tag>
-      <change state="vulnerable">fe627697a3830cd2db0efcc201d8caa9e171263d</change>
-    </branch>
-    <branch>
-      <name>v0.7.3-maint</name>
-      <tag state="vulnerable">v0.7.3</tag>
-      <change state="vulnerable">fe627697a3830cd2db0efcc201d8caa9e171263d</change>
-    </branch>
-    <branch>
-      <name>v0.7.4-maint</name>
-      <tag state="vulnerable">v0.7.4</tag>
-      <change state="vulnerable">fe627697a3830cd2db0efcc201d8caa9e171263d</change>
-    </branch>
-    <branch>
-      <name>v0.7.5-maint</name>
-      <tag state="vulnerable">v0.7.5</tag>
-      <change state="vulnerable">fe627697a3830cd2db0efcc201d8caa9e171263d</change>
-    </branch>
-    <branch>
-      <name>v0.7.6-maint</name>
-      <tag state="vulnerable">v0.7.6</tag>
-      <change state="vulnerable">fe627697a3830cd2db0efcc201d8caa9e171263d</change>
-      <change state="vulnerable">15f5eaa09895d68b849a0b0ec458acdafe75d080</change>
-    </branch>
-    <branch>
-      <name>v0.7.7-maint</name>
-      <tag state="vulnerable">v0.7.7</tag>
-      <change state="vulnerable">fe627697a3830cd2db0efcc201d8caa9e171263d</change>
-      <change state="vulnerable">15f5eaa09895d68b849a0b0ec458acdafe75d080</change>
-    </branch>
-    <branch>
-      <name>v0.8.0-maint</name>
-      <tag state="vulnerable">v0.8.0</tag>
-      <change state="vulnerable">fe627697a3830cd2db0efcc201d8caa9e171263d</change>
-      <change state="vulnerable">15f5eaa09895d68b849a0b0ec458acdafe75d080</change>
-    </branch>
-    <branch>
-      <name>v0.8.1-maint</name>
-      <tag state="vulnerable">v0.8.1</tag>
-      <change state="vulnerable">fe627697a3830cd2db0efcc201d8caa9e171263d</change>
-      <change state="vulnerable">15f5eaa09895d68b849a0b0ec458acdafe75d080</change>
-    </branch>
-    <branch>
-      <name>v0.8.2</name>
-      <tag state="vulnerable">v0.8.2</tag>
-      <change state="vulnerable">fe627697a3830cd2db0efcc201d8caa9e171263d</change>
-      <change state="vulnerable">15f5eaa09895d68b849a0b0ec458acdafe75d080</change>
-      <change state="vulnerable">117d04fb1d388df700cc37c4d2a68189fab280c0</change>
-    </branch>
-    <branch>
-      <name>v0.8.3-maint</name>
-      <change state="vulnerable">fe627697a3830cd2db0efcc201d8caa9e171263d</change>
-      <change state="vulnerable">15f5eaa09895d68b849a0b0ec458acdafe75d080</change>
       <tag state="fixed">v0.8.3</tag>
       <change state="fixed">68719c4bddb85fbcc931a5b7d99ac7c8a0af09b0</change>
     </branch>

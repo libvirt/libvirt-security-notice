@@ -46,126 +46,29 @@ tricked to granting access to inappropriate files.]]>
     <repository>git://libvirt.org/git/libvirt.git</repository>
     <branch>
       <name>master</name>
-      <change state="vulnerable">e266ded2f6d81e42ecb48089bcb662eb4fc2f58e</change>
-      <change state="fixed">187da82fea598aa017bdfc82a1622f9c8d75ee74</change>
-    </branch>
-    <branch>
-      <name>v0.4.1-maint</name>
       <tag state="vulnerable">v0.4.1</tag>
-      <change state="vulnerable">e266ded2f6d81e42ecb48089bcb662eb4fc2f58e</change>
-    </branch>
-    <branch>
-      <name>v0.4.2-maint</name>
       <tag state="vulnerable">v0.4.2</tag>
-      <change state="vulnerable">e266ded2f6d81e42ecb48089bcb662eb4fc2f58e</change>
-    </branch>
-    <branch>
-      <name>v0.4.4-maint</name>
       <tag state="vulnerable">v0.4.4</tag>
-      <change state="vulnerable">e266ded2f6d81e42ecb48089bcb662eb4fc2f58e</change>
-    </branch>
-    <branch>
-      <name>v0.4.6-maint</name>
       <tag state="vulnerable">v0.4.6</tag>
-      <change state="vulnerable">e266ded2f6d81e42ecb48089bcb662eb4fc2f58e</change>
-    </branch>
-    <branch>
-      <name>v0.5.0-maint</name>
       <tag state="vulnerable">v0.5.0</tag>
-      <change state="vulnerable">e266ded2f6d81e42ecb48089bcb662eb4fc2f58e</change>
-    </branch>
-    <branch>
-      <name>v0.5.1-maint</name>
       <tag state="vulnerable">v0.5.1</tag>
-      <change state="vulnerable">e266ded2f6d81e42ecb48089bcb662eb4fc2f58e</change>
-    </branch>
-    <branch>
-      <name>v0.6.0-maint</name>
       <tag state="vulnerable">v0.6.0</tag>
-      <change state="vulnerable">e266ded2f6d81e42ecb48089bcb662eb4fc2f58e</change>
-    </branch>
-    <branch>
-      <name>v0.6.1-maint</name>
       <tag state="vulnerable">v0.6.1</tag>
-      <change state="vulnerable">e266ded2f6d81e42ecb48089bcb662eb4fc2f58e</change>
-    </branch>
-    <branch>
-      <name>v0.6.2-maint</name>
       <tag state="vulnerable">v0.6.2</tag>
-      <change state="vulnerable">e266ded2f6d81e42ecb48089bcb662eb4fc2f58e</change>
-    </branch>
-    <branch>
-      <name>v0.6.3-maint</name>
       <tag state="vulnerable">v0.6.3</tag>
-      <change state="vulnerable">e266ded2f6d81e42ecb48089bcb662eb4fc2f58e</change>
-    </branch>
-    <branch>
-      <name>v0.6.4-maint</name>
       <tag state="vulnerable">v0.6.4</tag>
-      <change state="vulnerable">e266ded2f6d81e42ecb48089bcb662eb4fc2f58e</change>
-    </branch>
-    <branch>
-      <name>v0.6.5-maint</name>
       <tag state="vulnerable">v0.6.5</tag>
-      <change state="vulnerable">e266ded2f6d81e42ecb48089bcb662eb4fc2f58e</change>
-    </branch>
-    <branch>
-      <name>v0.7.0-maint</name>
       <tag state="vulnerable">v0.7.0</tag>
-      <change state="vulnerable">e266ded2f6d81e42ecb48089bcb662eb4fc2f58e</change>
-    </branch>
-    <branch>
-      <name>v0.7.1-maint</name>
       <tag state="vulnerable">v0.7.1</tag>
-      <change state="vulnerable">e266ded2f6d81e42ecb48089bcb662eb4fc2f58e</change>
-    </branch>
-    <branch>
-      <name>v0.7.2-maint</name>
       <tag state="vulnerable">v0.7.2</tag>
-      <change state="vulnerable">e266ded2f6d81e42ecb48089bcb662eb4fc2f58e</change>
-    </branch>
-    <branch>
-      <name>v0.7.3-maint</name>
       <tag state="vulnerable">v0.7.3</tag>
-      <change state="vulnerable">e266ded2f6d81e42ecb48089bcb662eb4fc2f58e</change>
-    </branch>
-    <branch>
-      <name>v0.7.4-maint</name>
       <tag state="vulnerable">v0.7.4</tag>
-      <change state="vulnerable">e266ded2f6d81e42ecb48089bcb662eb4fc2f58e</change>
-    </branch>
-    <branch>
-      <name>v0.7.5-maint</name>
       <tag state="vulnerable">v0.7.5</tag>
-      <change state="vulnerable">e266ded2f6d81e42ecb48089bcb662eb4fc2f58e</change>
-    </branch>
-    <branch>
-      <name>v0.7.6-maint</name>
       <tag state="vulnerable">v0.7.6</tag>
-      <change state="vulnerable">e266ded2f6d81e42ecb48089bcb662eb4fc2f58e</change>
-    </branch>
-    <branch>
-      <name>v0.7.7-maint</name>
       <tag state="vulnerable">v0.7.7</tag>
-      <change state="vulnerable">e266ded2f6d81e42ecb48089bcb662eb4fc2f58e</change>
-    </branch>
-    <branch>
-      <name>v0.8.0-maint</name>
       <tag state="vulnerable">v0.8.0</tag>
-      <change state="vulnerable">e266ded2f6d81e42ecb48089bcb662eb4fc2f58e</change>
-    </branch>
-    <branch>
-      <name>v0.8.1-maint</name>
       <tag state="vulnerable">v0.8.1</tag>
-      <change state="vulnerable">e266ded2f6d81e42ecb48089bcb662eb4fc2f58e</change>
-    </branch>
-    <branch>
-      <name>v0.8.2-maint</name>
       <tag state="vulnerable">v0.8.2</tag>
-      <change state="vulnerable">e266ded2f6d81e42ecb48089bcb662eb4fc2f58e</change>
-    </branch>
-    <branch>
-      <name>v0.8.3-maint</name>
       <change state="vulnerable">e266ded2f6d81e42ecb48089bcb662eb4fc2f58e</change>
       <tag state="fixed">v0.8.3</tag>
       <change state="fixed">187da82fea598aa017bdfc82a1622f9c8d75ee74</change>

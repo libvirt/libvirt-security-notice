@@ -53,6 +53,19 @@ rule to prevent them access without first authenticating as root.]]>
     <repository>git://libvirt.org/git/libvirt.git</repository>
     <branch>
       <name>master</name>
+      <tag state="vulnerable">v0.2.1</tag>
+      <tag state="vulnerable">v0.2.2</tag>
+      <tag state="vulnerable">v0.2.3</tag>
+      <tag state="vulnerable">v0.3.0</tag>
+      <tag state="vulnerable">v0.3.1</tag>
+      <tag state="vulnerable">v0.3.2</tag>
+      <tag state="vulnerable">v0.3.3</tag>
+      <tag state="vulnerable">v0.4.1</tag>
+      <tag state="vulnerable">v0.4.2</tag>
+      <tag state="vulnerable">v0.4.4</tag>
+      <tag state="vulnerable">v0.4.6</tag>
+      <tag state="vulnerable">v0.5.0</tag>
+      <tag state="vulnerable">v0.5.1</tag>
       <!-- virDomainSetAutostart, virNetworkSetAutostart -->
       <change state="vulnerable">57a18198814f80b1397e1a14d33746034b9dbd5c</change>
       <!-- virDomainMigrate -->
@@ -64,106 +77,6 @@ rule to prevent them access without first authenticating as root.]]>
       <!-- virDomainMemoryPeek -->
       <change state="vulnerable">6bcf25017bc66ef866768c7a827dfe03c96638f0</change>
       <!-- virConnectFindStoragePoolSources -->
-      <change state="vulnerable">39c9354c5ce87e1205f41af4737f970aa4f6e5dd</change>
-      <change state="fixed">53611889ff93c442028828c70472151a7cf1bf4d</change>
-    </branch>
-    <branch>
-      <name>v0.2.1-maint</name>
-      <tag state="vulnerable">v0.2.1</tag>
-      <change state="vulnerable">57a18198814f80b1397e1a14d33746034b9dbd5c</change>
-    </branch>
-    <branch>
-      <name>v0.2.2-maint</name>
-      <tag state="vulnerable">v0.2.2</tag>
-      <change state="vulnerable">57a18198814f80b1397e1a14d33746034b9dbd5c</change>
-    </branch>
-    <branch>
-      <name>v0.2.3-maint</name>
-      <tag state="vulnerable">v0.2.3</tag>
-      <change state="vulnerable">57a18198814f80b1397e1a14d33746034b9dbd5c</change>
-    </branch>
-    <branch>
-      <name>v0.3.0-maint</name>
-      <tag state="vulnerable">v0.3.0</tag>
-      <change state="vulnerable">57a18198814f80b1397e1a14d33746034b9dbd5c</change>
-    </branch>
-    <branch>
-      <name>v0.3.1-maint</name>
-      <tag state="vulnerable">v0.3.1</tag>
-      <change state="vulnerable">57a18198814f80b1397e1a14d33746034b9dbd5c</change>
-    </branch>
-    <branch>
-      <name>v0.3.2-maint</name>
-      <tag state="vulnerable">v0.3.2</tag>
-      <change state="vulnerable">57a18198814f80b1397e1a14d33746034b9dbd5c</change>
-      <change state="vulnerable">81005437f4e860d6d65243473c593e4335193b13</change>
-    </branch>
-    <branch>
-      <name>v0.3.3-maint</name>
-      <tag state="vulnerable">v0.3.3</tag>
-      <change state="vulnerable">57a18198814f80b1397e1a14d33746034b9dbd5c</change>
-      <change state="vulnerable">81005437f4e860d6d65243473c593e4335193b13</change>
-    </branch>
-    <branch>
-      <name>v0.4.1-maint</name>
-      <tag state="vulnerable">v0.4.1</tag>
-      <change state="vulnerable">57a18198814f80b1397e1a14d33746034b9dbd5c</change>
-      <change state="vulnerable">81005437f4e860d6d65243473c593e4335193b13</change>
-      <change state="vulnerable">cb228a0e24266f43dbab208bd38965e511f714ee</change>
-    </branch>
-    <branch>
-      <name>v0.4.2-maint</name>
-      <tag state="vulnerable">v0.4.2</tag>
-      <change state="vulnerable">57a18198814f80b1397e1a14d33746034b9dbd5c</change>
-      <change state="vulnerable">81005437f4e860d6d65243473c593e4335193b13</change>
-      <change state="vulnerable">cb228a0e24266f43dbab208bd38965e511f714ee</change>
-    </branch>
-    <branch>
-      <name>v0.4.4-maint</name>
-      <tag state="vulnerable">v0.4.4</tag>
-      <change state="vulnerable">57a18198814f80b1397e1a14d33746034b9dbd5c</change>
-      <change state="vulnerable">81005437f4e860d6d65243473c593e4335193b13</change>
-      <change state="vulnerable">cb228a0e24266f43dbab208bd38965e511f714ee</change>
-      <change state="vulnerable">8354895e681e8aee9bfa0290cb98123858165b91</change>
-      <change state="vulnerable">6bcf25017bc66ef866768c7a827dfe03c96638f0</change>
-    </branch>
-    <branch>
-      <name>v0.4.6-maint</name>
-      <tag state="vulnerable">v0.4.6</tag>
-      <change state="vulnerable">57a18198814f80b1397e1a14d33746034b9dbd5c</change>
-      <change state="vulnerable">81005437f4e860d6d65243473c593e4335193b13</change>
-      <change state="vulnerable">cb228a0e24266f43dbab208bd38965e511f714ee</change>
-      <change state="vulnerable">8354895e681e8aee9bfa0290cb98123858165b91</change>
-      <change state="vulnerable">6bcf25017bc66ef866768c7a827dfe03c96638f0</change>
-      <change state="vulnerable">39c9354c5ce87e1205f41af4737f970aa4f6e5dd</change>
-    </branch>
-    <branch>
-      <name>v0.5.0-maint</name>
-      <tag state="vulnerable">v0.5.0</tag>
-      <change state="vulnerable">57a18198814f80b1397e1a14d33746034b9dbd5c</change>
-      <change state="vulnerable">81005437f4e860d6d65243473c593e4335193b13</change>
-      <change state="vulnerable">cb228a0e24266f43dbab208bd38965e511f714ee</change>
-      <change state="vulnerable">8354895e681e8aee9bfa0290cb98123858165b91</change>
-      <change state="vulnerable">6bcf25017bc66ef866768c7a827dfe03c96638f0</change>
-      <change state="vulnerable">39c9354c5ce87e1205f41af4737f970aa4f6e5dd</change>
-    </branch>
-    <branch>
-      <name>v0.5.1-maint</name>
-      <tag state="vulnerable">v0.5.1</tag>
-      <change state="vulnerable">57a18198814f80b1397e1a14d33746034b9dbd5c</change>
-      <change state="vulnerable">81005437f4e860d6d65243473c593e4335193b13</change>
-      <change state="vulnerable">cb228a0e24266f43dbab208bd38965e511f714ee</change>
-      <change state="vulnerable">8354895e681e8aee9bfa0290cb98123858165b91</change>
-      <change state="vulnerable">6bcf25017bc66ef866768c7a827dfe03c96638f0</change>
-      <change state="vulnerable">39c9354c5ce87e1205f41af4737f970aa4f6e5dd</change>
-    </branch>
-    <branch>
-      <name>v0.6.0-maint</name>
-      <change state="vulnerable">57a18198814f80b1397e1a14d33746034b9dbd5c</change>
-      <change state="vulnerable">81005437f4e860d6d65243473c593e4335193b13</change>
-      <change state="vulnerable">cb228a0e24266f43dbab208bd38965e511f714ee</change>
-      <change state="vulnerable">8354895e681e8aee9bfa0290cb98123858165b91</change>
-      <change state="vulnerable">6bcf25017bc66ef866768c7a827dfe03c96638f0</change>
       <change state="vulnerable">39c9354c5ce87e1205f41af4737f970aa4f6e5dd</change>
       <tag state="fixed">v0.6.0</tag>
       <change state="fixed">53611889ff93c442028828c70472151a7cf1bf4d</change>
