@@ -1,0 +1,111 @@
+<security-notice xmlns="http://security.libvirt.org/xmlns/security-notice/1.0">
+  <id>2012-0003</id>
+
+  <summary>Crash of libvirt when dispatching illegal RPC procedure</summary>
+
+  <description>
+<![CDATA[Sending RPC message with an event number as the RPC
+procedure number could lead to the daemon accessing a NULL
+pointer in the RPC dispatch table.]]>
+  </description>
+
+  <impact>
+<![CDATA[A malicious client could cause the libvirtd daemon
+to crash resulting in a denial of service attack.]]>
+  </impact>
+
+  <workaround>
+<![CDATA[Update the UNIX socket permissions to prevent a
+malicious user from connecting to libvirtd.]]>
+  </workaround>
+
+  <credits>
+    <reporter>
+      <name>Wenlong Huang</name>
+      <email>whuang@redhat.com</email>
+    </reporter>
+    <patcher>
+      <name>Martin Kletzander</name>
+      <email>mkletzan@redhat.com</email>
+    </patcher>
+  </credits>
+
+  <lifecycle>
+    <reported>20120913</reported>
+    <published>20120724</published>
+    <fixed>20120914</fixed>
+  </lifecycle>
+
+  <reference>
+    <advisory type="CVE" id="2012-4423"/>
+  </reference>
+
+  <product name="libvirt">
+    <repository>git://libvirt.org/git/libvirt.git</repository>
+    <branch>
+      <name>master</name>
+      <tag state="vulnerable">v0.7.0</tag>
+      <tag state="vulnerable">v0.7.1</tag>
+      <tag state="vulnerable">v0.7.2</tag>
+      <tag state="vulnerable">v0.7.3</tag>
+      <tag state="vulnerable">v0.7.4</tag>
+      <tag state="vulnerable">v0.7.5</tag>
+      <tag state="vulnerable">v0.7.6</tag>
+      <tag state="vulnerable">v0.7.7</tag>
+      <tag state="vulnerable">v0.8.0</tag>
+      <tag state="vulnerable">v0.8.1</tag>
+      <tag state="vulnerable">v0.8.2</tag>
+      <tag state="vulnerable">v0.8.3</tag>
+      <tag state="vulnerable">v0.8.4</tag>
+      <tag state="vulnerable">v0.8.5</tag>
+      <tag state="vulnerable">v0.8.6</tag>
+      <tag state="vulnerable">v0.8.7</tag>
+      <tag state="vulnerable">v0.8.8</tag>
+      <tag state="vulnerable">v0.9.0</tag>
+      <tag state="vulnerable">v0.9.1</tag>
+      <tag state="vulnerable">v0.9.2</tag>
+      <tag state="vulnerable">v0.9.3</tag>
+      <tag state="vulnerable">v0.9.4</tag>
+      <tag state="vulnerable">v0.9.5</tag>
+      <tag state="vulnerable">v0.9.6</tag>
+      <tag state="vulnerable">v0.9.7</tag>
+      <tag state="vulnerable">v0.9.8</tag>
+      <tag state="vulnerable">v0.9.9</tag>
+      <tag state="vulnerable">v0.9.10</tag>
+      <tag state="vulnerable">v0.9.11</tag>
+      <tag state="vulnerable">v0.9.12</tag>
+      <tag state="vulnerable">v0.9.13</tag>
+      <tag state="vulnerable">v0.10.0</tag>
+      <tag state="vulnerable">v0.10.1</tag>
+      <change state="vulnerable">a147ef38374f17c3d02b7db8e857ca33c5c346f9</change>
+      <tag state="fixed">v0.10.2</tag>
+      <change state="fixed">b7ff9e696063189a715802d081d55a398663c15a</change>
+    </branch>
+    <branch>
+      <name>v0.9.6-maint</name>
+      <tag state="vulnerable">v0.9.6.1</tag>
+      <tag state="vulnerable">v0.9.6.2</tag>
+      <change state="vulnerable">a147ef38374f17c3d02b7db8e857ca33c5c346f9</change>
+      <tag state="fixed">v0.9.6.3</tag>
+      <change state="fixed">c84053c2ab1c9a9b1d798285373a2572ee37aa92</change>
+    </branch>
+    <branch>
+      <name>v0.9.11-maint</name>
+      <tag state="vulnerable">v0.9.11.1</tag>
+      <tag state="vulnerable">v0.9.11.2</tag>
+      <tag state="vulnerable">v0.9.11.3</tag>
+      <tag state="vulnerable">v0.9.11.4</tag>
+      <tag state="vulnerable">v0.9.11.5</tag>
+      <change state="vulnerable">a147ef38374f17c3d02b7db8e857ca33c5c346f9</change>
+      <tag state="fixed">v0.9.11.6</tag>
+      <change state="fixed">b2c5a911979eaccfb6895d58cbcc4e3a200d9d61</change>
+    </branch>
+    <branch>
+      <name>v0.9.12-maint</name>
+      <change state="vulnerable">a147ef38374f17c3d02b7db8e857ca33c5c346f9</change>
+      <tag state="fixed">v0.9.12.1</tag>
+      <change state="fixed">addf5e1b3160cbc91cf0f56cd97d1a38a6fb91e8</change>
+    </branch>
+  </product>
+
+</security-notice>
