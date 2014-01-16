@@ -1,0 +1,58 @@
+<security-notice xmlns="http://security.libvirt.org/xmlns/security-notice/1.0">
+  <id>2013-0005</id>
+
+  <summary>Crash after querying vCPU count from guest agent</summary>
+
+  <description>
+<![CDATA[When processing the response to a vCPU count query from
+the guest agent, a JSON object would be freed twice. This could
+result in a crash of the libvirtd daemon.]]>
+  </description>
+
+  <impact>
+<![CDATA[A user with permission to query the VCPU count could
+crash the libvirtd daemon resulting in a denial of service.]]>
+  </impact>
+
+  <workaround>
+<![CDATA[Prevent untrusted users from accessing libvirtd]]>
+  </workaround>
+
+  <credits>
+    <reporter>
+      <name>Peter Krempa</name>
+      <email>pkrempa@redhat.com</email>
+    </reporter>
+    <patcher>
+      <name>Peter Krempa</name>
+      <email>pkrempa@redhat.com</email>
+    </patcher>
+  </credits>
+
+  <lifecycle>
+    <reported>20130716</reported>
+    <published>20130716</published>
+    <fixed>20130716</fixed>
+  </lifecycle>
+
+  <reference>
+    <advisory type="CVE" id="2013-4153"/>
+  </reference>
+
+  <product name="libvirt">
+    <repository>git://libvirt.org/git/libvirt.git</repository>
+    <branch>
+      <name>master</name>
+      <tag state="vulnerable">v1.1.0</tag>
+      <change state="vulnerable">3099c063e348fdc79a900f88bcfc5389dada7786</change>
+      <tag state="vulnerable">v1.1.1</tag>
+      <change state="fixed">dfc692350a04a70b4ca65667c30869b3bfdaf034</change>
+    </branch>
+    <branch>
+      <name>v1.1.0-maint</name>
+      <change state="vulnerable">3099c063e348fdc79a900f88bcfc5389dada7786</change>
+      <change state="fixed">cafcec2f5b0c9ff1dc573d798933ae453a15fa29</change>
+    </branch>
+  </product>
+
+</security-notice>
