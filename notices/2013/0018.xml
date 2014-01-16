@@ -1,0 +1,184 @@
+<security-notice xmlns="http://security.libvirt.org/xmlns/security-notice/1.0">
+  <id>2013-0018</id>
+
+  <summary>Unsafe usage of paths under /proc/$PID/root by the LXC driver</summary>
+
+  <description>
+<![CDATA[The LXC driver will open paths under /proc/$PID/root for some
+operations it performs on running guests. For the virDomainShutdown
+and virDomainReboot APIs it will use this to access the /dev/initctl
+path in the container. For the virDomainDeviceAttach / virDomainDeviceDettach
+APIs it will use this to create device nodes in the container's /dev
+filesystem. If any of the path components under control of the container
+are symlinks the container can cause the libvirtd daemon to access the
+incorrect files.]]>
+  </description>
+
+  <impact>
+<![CDATA[A container can cause the administrator to shutdown or reboot the
+host OS if /dev/initctl in the container is made to be an absolute symlink
+back to itself or /run/initctl. A container can cause the host administrator
+to mknod in an arbitrary host directory when invoking the virDomainDeviceAttach
+API by replacing '/dev' with an absolute symlink. A container can cause the
+host administrator to delete host device when invoking the virDomainDeviceDettach
+API by replacing '/dev' with an absolute symlink.]]>
+  </impact>
+
+  <workaround>
+<![CDATA[Do not use the virDomainShutdown or virDomainReboot APIs without
+also passing the VIR_DOMAIN_SHUTDOWN_SIGNAL or VIR_DOMAIN_REBOOT_SIGNAL
+flags respectively. These will cause the LXC driver to send a SIGTERM or
+SIGHUP signal respectively, to the init process instead of using /dev/initct..
+Do not use the virDomainDeviceAttach or virDomainDeviceDetach APIs at all
+unless the guest OS is trusted.]]>
+  </workaround>
+
+  <credits>
+    <reporter>
+      <name>Reco</name>
+      <email>recoverym4n@gmail.com</email>
+    </reporter>
+    <patcher>
+      <name>Reco</name>
+      <email>recoverym4n@gmail.com</email>
+    </patcher>
+  </credits>
+
+  <lifecycle>
+    <reported>20131217</reported>
+    <published>20131217</published>
+  </lifecycle>
+
+  <reference>
+    <advisory type="CVE" id="2013-6456"/>
+    <bug tracker="debian" id="732394"/>
+  </reference>
+
+  <product name="libvirt">
+    <repository>git://libvirt.org/git/libvirt.git</repository>
+    <branch>
+      <name>master</name>
+      <tag state="vulnerable">v1.0.1</tag>
+      <tag state="vulnerable">v1.0.2</tag>
+      <tag state="vulnerable">v1.0.3</tag>
+      <tag state="vulnerable">v1.0.4</tag>
+      <tag state="vulnerable">v1.0.5</tag>
+      <tag state="vulnerable">v1.0.6</tag>
+      <tag state="vulnerable">v1.0.0</tag>
+      <tag state="vulnerable">v1.1.1</tag>
+      <tag state="vulnerable">v1.1.2</tag>
+      <tag state="vulnerable">v1.1.3</tag>
+      <tag state="vulnerable">v1.1.4</tag>
+      <tag state="vulnerable">v1.2.0</tag>
+      <tag state="vulnerable">v1.2.1</tag>
+      <change state="vulnerable">cbb106f807b32f1f6af22d1e92fe0ff9ba6d73b3</change>
+      <change state="vulnerable">de858e3fa7ffcab5f80d07f8a74d94cbaf8716b9</change>
+      <change state="vulnerable">ed77abc58bc5a6837a5021f26e1a335dbfb477bf</change>
+      <change state="vulnerable">a5efb3190913b6903775ca3756f79443d4ea8a5b</change>
+      <change state="vulnerable">4ad6a013304f6fe29b0866742c902054bfbcf23f</change>
+    </branch>
+    <branch>
+      <name>v1.0.1-maint</name>
+      <change state="vulnerable">cbb106f807b32f1f6af22d1e92fe0ff9ba6d73b3</change>
+    </branch>
+    <branch>
+      <name>v1.0.2-maint</name>
+      <change state="vulnerable">cbb106f807b32f1f6af22d1e92fe0ff9ba6d73b3</change>
+      <change state="vulnerable">de858e3fa7ffcab5f80d07f8a74d94cbaf8716b9</change>
+      <change state="vulnerable">ed77abc58bc5a6837a5021f26e1a335dbfb477bf</change>
+      <change state="vulnerable">a5efb3190913b6903775ca3756f79443d4ea8a5b</change>
+      <change state="vulnerable">4ad6a013304f6fe29b0866742c902054bfbcf23f</change>
+    </branch>
+    <branch>
+      <name>v1.0.3-maint</name>
+      <change state="vulnerable">cbb106f807b32f1f6af22d1e92fe0ff9ba6d73b3</change>
+      <change state="vulnerable">de858e3fa7ffcab5f80d07f8a74d94cbaf8716b9</change>
+      <change state="vulnerable">ed77abc58bc5a6837a5021f26e1a335dbfb477bf</change>
+      <change state="vulnerable">a5efb3190913b6903775ca3756f79443d4ea8a5b</change>
+      <change state="vulnerable">4ad6a013304f6fe29b0866742c902054bfbcf23f</change>
+    </branch>
+    <branch>
+      <name>v1.0.4-maint</name>
+      <change state="vulnerable">cbb106f807b32f1f6af22d1e92fe0ff9ba6d73b3</change>
+      <change state="vulnerable">de858e3fa7ffcab5f80d07f8a74d94cbaf8716b9</change>
+      <change state="vulnerable">ed77abc58bc5a6837a5021f26e1a335dbfb477bf</change>
+      <change state="vulnerable">a5efb3190913b6903775ca3756f79443d4ea8a5b</change>
+      <change state="vulnerable">4ad6a013304f6fe29b0866742c902054bfbcf23f</change>
+    </branch>
+    <branch>
+      <name>v1.0.5-maint</name>
+      <tag state="vulnerable">v1.0.5.1</tag>
+      <tag state="vulnerable">v1.0.5.2</tag>
+      <tag state="vulnerable">v1.0.5.3</tag>
+      <tag state="vulnerable">v1.0.5.4</tag>
+      <tag state="vulnerable">v1.0.5.5</tag>
+      <tag state="vulnerable">v1.0.5.6</tag>
+      <tag state="vulnerable">v1.0.5.7</tag>
+      <tag state="vulnerable">v1.0.5.8</tag>
+      <change state="vulnerable">cbb106f807b32f1f6af22d1e92fe0ff9ba6d73b3</change>
+      <change state="vulnerable">de858e3fa7ffcab5f80d07f8a74d94cbaf8716b9</change>
+      <change state="vulnerable">ed77abc58bc5a6837a5021f26e1a335dbfb477bf</change>
+      <change state="vulnerable">a5efb3190913b6903775ca3756f79443d4ea8a5b</change>
+      <change state="vulnerable">4ad6a013304f6fe29b0866742c902054bfbcf23f</change>
+    </branch>
+    <branch>
+      <name>v1.0.6-maint</name>
+      <change state="vulnerable">cbb106f807b32f1f6af22d1e92fe0ff9ba6d73b3</change>
+      <change state="vulnerable">de858e3fa7ffcab5f80d07f8a74d94cbaf8716b9</change>
+      <change state="vulnerable">ed77abc58bc5a6837a5021f26e1a335dbfb477bf</change>
+      <change state="vulnerable">a5efb3190913b6903775ca3756f79443d4ea8a5b</change>
+      <change state="vulnerable">4ad6a013304f6fe29b0866742c902054bfbcf23f</change>
+    </branch>
+    <branch>
+      <name>v1.1.0-maint</name>
+      <change state="vulnerable">cbb106f807b32f1f6af22d1e92fe0ff9ba6d73b3</change>
+      <change state="vulnerable">de858e3fa7ffcab5f80d07f8a74d94cbaf8716b9</change>
+      <change state="vulnerable">ed77abc58bc5a6837a5021f26e1a335dbfb477bf</change>
+      <change state="vulnerable">a5efb3190913b6903775ca3756f79443d4ea8a5b</change>
+      <change state="vulnerable">4ad6a013304f6fe29b0866742c902054bfbcf23f</change>
+    </branch>
+    <branch>
+      <name>v1.1.1-maint</name>
+      <change state="vulnerable">cbb106f807b32f1f6af22d1e92fe0ff9ba6d73b3</change>
+      <change state="vulnerable">de858e3fa7ffcab5f80d07f8a74d94cbaf8716b9</change>
+      <change state="vulnerable">ed77abc58bc5a6837a5021f26e1a335dbfb477bf</change>
+      <change state="vulnerable">a5efb3190913b6903775ca3756f79443d4ea8a5b</change>
+      <change state="vulnerable">4ad6a013304f6fe29b0866742c902054bfbcf23f</change>
+    </branch>
+    <branch>
+      <name>v1.1.2-maint</name>
+      <change state="vulnerable">cbb106f807b32f1f6af22d1e92fe0ff9ba6d73b3</change>
+      <change state="vulnerable">de858e3fa7ffcab5f80d07f8a74d94cbaf8716b9</change>
+      <change state="vulnerable">ed77abc58bc5a6837a5021f26e1a335dbfb477bf</change>
+      <change state="vulnerable">a5efb3190913b6903775ca3756f79443d4ea8a5b</change>
+      <change state="vulnerable">4ad6a013304f6fe29b0866742c902054bfbcf23f</change>
+    </branch>
+    <branch>
+      <name>v1.1.3-maint</name>
+      <tag state="vulnerable">v1.1.3.1</tag>
+      <tag state="vulnerable">v1.1.3.2</tag>
+      <change state="vulnerable">cbb106f807b32f1f6af22d1e92fe0ff9ba6d73b3</change>
+      <change state="vulnerable">de858e3fa7ffcab5f80d07f8a74d94cbaf8716b9</change>
+      <change state="vulnerable">ed77abc58bc5a6837a5021f26e1a335dbfb477bf</change>
+      <change state="vulnerable">a5efb3190913b6903775ca3756f79443d4ea8a5b</change>
+      <change state="vulnerable">4ad6a013304f6fe29b0866742c902054bfbcf23f</change>
+    </branch>
+    <branch>
+      <name>v1.1.4-maint</name>
+      <change state="vulnerable">cbb106f807b32f1f6af22d1e92fe0ff9ba6d73b3</change>
+      <change state="vulnerable">de858e3fa7ffcab5f80d07f8a74d94cbaf8716b9</change>
+      <change state="vulnerable">ed77abc58bc5a6837a5021f26e1a335dbfb477bf</change>
+      <change state="vulnerable">a5efb3190913b6903775ca3756f79443d4ea8a5b</change>
+      <change state="vulnerable">4ad6a013304f6fe29b0866742c902054bfbcf23f</change>
+    </branch>
+    <branch>
+      <name>v1.2.0-maint</name>
+      <change state="vulnerable">cbb106f807b32f1f6af22d1e92fe0ff9ba6d73b3</change>
+      <change state="vulnerable">de858e3fa7ffcab5f80d07f8a74d94cbaf8716b9</change>
+      <change state="vulnerable">ed77abc58bc5a6837a5021f26e1a335dbfb477bf</change>
+      <change state="vulnerable">a5efb3190913b6903775ca3756f79443d4ea8a5b</change>
+      <change state="vulnerable">4ad6a013304f6fe29b0866742c902054bfbcf23f</change>
+    </branch>
+  </product>
+
+</security-notice>
