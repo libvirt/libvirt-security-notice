@@ -1,0 +1,78 @@
+<security-notice xmlns="http://security.libvirt.org/xmlns/security-notice/1.0">
+  <id>2013-0015</id>
+
+  <summary>Incorrect permissions on XML conversion APIs</summary>
+
+  <description>
+<![CDATA[The virConnectDomainXMLToNative API was mistakenly given
+the 'read' permission instead of the 'write' permission. The latter
+is required since the conversion process will trigger execution of
+user provided binaries whose path is listed in the XML.]]>
+  </description>
+
+  <impact>
+<![CDATA[An unprivileged user with the 'connect:read' permission
+could cause the libvirtd daemon to execute arbitrary binaries as root]]>
+  </impact>
+
+  <workaround>
+<![CDATA[Remove the 'connect:read' permission from untrusted users]]>
+  </workaround>
+
+  <credits>
+    <reporter>
+      <name>Daniel P. Berrange</name>
+      <email>berrange@redhat.com</email>
+    </reporter>
+    <patcher>
+      <name>Daniel P. Berrange</name>
+      <email>berrange@redhat.com</email>
+    </patcher>
+  </credits>
+
+  <lifecycle>
+    <reported>20131002</reported>
+    <published>20131021</published>
+    <fixed>20131021</fixed>
+  </lifecycle>
+
+  <reference>
+    <advisory type="CVE" id="2013-4401"/>
+  </reference>
+
+  <product name="libvirt">
+    <repository>git://libvirt.org/git/libvirt.git</repository>
+    <branch>
+      <name>master</name>
+      <tag state="vulnerable">v1.1.0</tag>
+      <tag state="vulnerable">v1.1.1</tag>
+      <tag state="vulnerable">v1.1.2</tag>
+      <tag state="vulnerable">v1.1.3</tag>
+      <change state="vulnerable">e341435e5090677c67a0d3d4ca0393102054841f</change>
+      <tag state="fixed">1.1.4</tag>
+      <change state="fixed">57687fd6bf7f6e1b3662c52f3f26c06ab19dc96c</change>
+    </branch>
+    <branch>
+      <name>v1.1.0-maint</name>
+      <change state="vulnerable">e341435e5090677c67a0d3d4ca0393102054841f</change>
+      <change state="fixed">a0e5e40501a6ab608f85af878f6af9d52e5db0c7</change>
+    </branch>
+    <branch>
+      <name>v1.1.1-maint</name>
+      <change state="vulnerable">e341435e5090677c67a0d3d4ca0393102054841f</change>
+      <change state="fixed">a02673d503326ff713460f5f407151f32a2aea8c</change>
+    </branch>
+    <branch>
+      <name>v1.1.2-maint</name>
+      <change state="vulnerable">e341435e5090677c67a0d3d4ca0393102054841f</change>
+      <change state="fixed">90171893ce0d78dd5b93137c6a395b06756f9a08</change>
+    </branch>
+    <branch>
+      <name>v1.1.3-maint</name>
+      <change state="vulnerable">e341435e5090677c67a0d3d4ca0393102054841f</change>
+      <tag state="fixed">v1.1.3.1</tag>
+      <change state="fixed">1adbe4faa952d8aaba58faa7d9b8bd7164aafbe6</change>
+    </branch>
+  </product>
+
+</security-notice>
