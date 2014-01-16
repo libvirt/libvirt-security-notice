@@ -1,0 +1,79 @@
+<security-notice xmlns="http://security.libvirt.org/xmlns/security-notice/1.0">
+  <id>2013-0011</id>
+
+  <summary>Invalid free when setting up NBD devices</summary>
+
+  <description>
+<![CDATA[When setup of an NBD device for a container fails
+the libvirtd daemon could end up free'ing an uninitialized
+variable. If unlucky this would result in memory corruption
+or a crash]]>
+  </description>
+
+  <impact>
+<![CDATA[A user with the permission to start LXC guests
+could cause the libvirtd daemon to crash leading to a
+denial of service]]>
+  </impact>
+
+  <workaround>
+<![CDATA[Do not configure LXC guests with the NBD backed disks
+or remove the permission for untrusted users to start LXC guests]]>
+  </workaround>
+
+  <credits>
+    <reporter>
+      <name>Michal Privoznik</name>
+      <email>mprivozn@redhat.com</email>
+    </reporter>
+    <patcher>
+      <name>Michal Privoznik</name>
+      <email>mprivozn@redhat.com</email>
+    </patcher>
+  </credits>
+
+  <lifecycle>
+    <reported>20130903</reported>
+    <published>20130903</published>
+    <fixed>20130903</fixed>
+  </lifecycle>
+
+  <reference>
+    <advisory type="CVE" id="2013-4297"/>
+  </reference>
+
+  <product name="libvirt">
+    <repository>git://libvirt.org/git/libvirt.git</repository>
+    <branch>
+      <name>master</name>
+      <tag state="vulnerable">v1.0.6</tag>
+      <tag state="vulnerable">v1.1.0</tag>
+      <tag state="vulnerable">v1.1.1</tag>
+      <tag state="vulnerable">v1.1.2</tag>
+      <change state="vulnerable">8aabd597b379db5ae1655e36dff4f10d5622830a</change>
+      <tag state="fixed">v1.1.3</tag>
+      <change state="fixed">2dba0323ff0cec31bdcea9dd3b2428af297401f2</change>
+    </branch>
+    <branch>
+      <name>v1.0.6-maint</name>
+      <change state="vulnerable">8aabd597b379db5ae1655e36dff4f10d5622830a</change>
+      <change state="fixed">b5eab6a98430c742c5ad2a6d6eef5fc81d304d60</change>
+    </branch>
+    <branch>
+      <name>v1.1.0-maint</name>
+      <change state="vulnerable">8aabd597b379db5ae1655e36dff4f10d5622830a</change>
+      <change state="fixed">b312b19149ab70c59ceb898a22adbef4c000e394</change>
+    </branch>
+    <branch>
+      <name>v1.1.1-maint</name>
+      <change state="vulnerable">8aabd597b379db5ae1655e36dff4f10d5622830a</change>
+      <change state="fixed">28ca8b386cfad3884712582197eeef6db9ed8b9a</change>
+    </branch>
+    <branch>
+      <name>v1.1.2-maint</name>
+      <change state="vulnerable">8aabd597b379db5ae1655e36dff4f10d5622830a</change>
+      <change state="fixed">af8952e924921189180ee9f7dcbe6086071525f7</change>
+    </branch>
+  </product>
+
+</security-notice>
