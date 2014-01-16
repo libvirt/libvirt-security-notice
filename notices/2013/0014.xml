@@ -1,0 +1,72 @@
+<security-notice xmlns="http://security.libvirt.org/xmlns/security-notice/1.0">
+  <id>2013-0014</id>
+
+  <summary>virt-login-shell fails to secure setuid environment</summary>
+
+  <description>
+<![CDATA[The virt-login-shell binary is a setuid program to connect to
+LXC containers. It fails to sanitize its environment in a number of
+places allowing it to be used to elevate privileges of the invoking
+user by overwriting files]]>
+  </description>
+
+  <impact>
+<![CDATA[An unprivileged user can overwrite arbitrary files on the
+host leading to an elevation of privileges.]]>
+  </impact>
+
+  <workaround>
+<![CDATA[Remove the setuid bit from the virt-login-shell binary]]>
+  </workaround>
+
+  <credits>
+    <reporter>
+      <name>Sebastian Krahmer</name>
+      <email>krahmer@suse.de</email>
+    </reporter>
+    <patcher>
+      <name>Daniel Berrange</name>
+      <email>berrange@redhat.com</email>
+    </patcher>
+  </credits>
+
+  <lifecycle>
+    <reported>20131002</reported>
+    <published>20131021</published>
+    <fixed>20131021</fixed>
+  </lifecycle>
+
+  <reference>
+    <advisory type="CVE" id="2013-4400"/>
+  </reference>
+
+  <product name="libvirt">
+    <repository>git://libvirt.org/git/libvirt.git</repository>
+    <branch>
+      <name>master</name>
+      <tag state="vulnerable">v1.1.2</tag>
+      <tag state="vulnerable">v1.1.3</tag>
+      <change state="vulnerable">54d69f540c9928da98f10202b3f21b7abb00bac1</change>
+      <tag state="fixed">v1.1.4</tag>
+      <change state="fixed">8c3586ea755c40d5e01b22cb7b5c1e668cdec994</change>
+      <change state="fixed">b7fcc799ad5d8f3e55b89b94e599903e3c092467</change>
+      <change state="fixed">3e2f27e13b94f7302ad948bcacb5e02c859a25fc</change>
+    </branch>
+    <branch>
+      <name>v1.1.2-maint</name>
+      <change state="vulnerable">54d69f540c9928da98f10202b3f21b7abb00bac1</change>
+      <change state="fixed">bd047ba666122fd57f6cb39ac5795449d5ff26d2</change>
+      <change state="fixed">9ab478edaddd00708adc9ff99d5a48e3accecfe5</change>
+      <change state="fixed">31a3086d735b6291795941972b5d6da335cc6aab</change>
+    </branch>
+    <branch>
+      <name>v1.1.3-maint</name>
+      <change state="vulnerable">54d69f540c9928da98f10202b3f21b7abb00bac1</change>
+      <tag state="fixed">v1.1.3.1</tag>
+      <change state="fixed">d8accf54e310b90bd8794edd2d6d1f7d74bb421d</change>
+      <change state="fixed">6fc87e07a22587b9f38845ce1a0d6db1c7483fe9</change>
+      <change state="fixed">062ad8b2beac2316a3b1e304668ea852e70ea506</change>
+    </branch>
+  </product>
+
+</security-notice>
