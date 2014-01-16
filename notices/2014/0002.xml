@@ -1,0 +1,91 @@
+<security-notice xmlns="http://security.libvirt.org/xmlns/security-notice/1.0">
+  <id>2014-0002</id>
+
+  <summary>Missing access control check on events</summary>
+
+  <description>
+<![CDATA[The asynchronous events were not filtered based on
+any permission check prior to being dispatched to the client.
+This could lead to the client learning about the existance
+of domains that they are not authorized to see]]>
+  </description>
+
+  <impact>
+<![CDATA[A client can use events to learn of domains that
+they are not authorized to see.]]>
+  </impact>
+
+  <workaround>
+<![CDATA[Prevent untrusted clients from connecting to libvirtd]]>
+  </workaround>
+
+  <credits>
+    <reporter>
+      <name>Eric Blake</name>
+      <email>eblake@redhat.com</email>
+    </reporter>
+    <patcher>
+      <name>Eric Blake</name>
+      <email>eblake@redhat.com</email>
+    </patcher>
+  </credits>
+
+  <lifecycle>
+    <reported>20140103</reported>
+    <published>20140108</published>
+    <fixed>20140108</fixed>
+  </lifecycle>
+
+  <reference>
+    <advisory type="CVE" id="2014-0028"/>
+  </reference>
+
+  <product name="libvirt">
+    <repository>git://libvirt.org/git/libvirt.git</repository>
+    <branch>
+      <name>master</name>
+      <tag state="vulnerable">v1.1.0</tag>
+      <tag state="vulnerable">v1.1.1</tag>
+      <tag state="vulnerable">v1.1.2</tag>
+      <tag state="vulnerable">v1.1.3</tag>
+      <tag state="vulnerable">v1.1.4</tag>
+      <tag state="vulnerable">v1.2.0</tag>
+      <change state="vulnerable">ed3bac713c3cfc055ef551cbfe92a061084382c3</change>
+      <tag state="fixed">v1.2.1</tag>
+      <change state="fixed">f9f56340539d609cdc2e9d4ab812b9f146c3f100</change>
+    </branch>
+    <branch>
+      <name>v1.1.0-maint</name>
+      <change state="vulnerable">ed3bac713c3cfc055ef551cbfe92a061084382c3</change>
+      <change state="fixed">cdf29d950c247d06aaa69778238d7cc164c05291</change>
+    </branch>
+    <branch>
+      <name>v1.1.1-maint</name>
+      <change state="vulnerable">ed3bac713c3cfc055ef551cbfe92a061084382c3</change>
+      <change state="fixed">1d0e4fbf9572ad34045a4f9d87601297a5244c38</change>
+    </branch>
+    <branch>
+      <name>v1.1.2-maint</name>
+      <change state="vulnerable">ed3bac713c3cfc055ef551cbfe92a061084382c3</change>
+      <change state="fixed">fb5a3190c6409897744a244c6e0d5e2d52d34b39</change>
+    </branch>
+    <branch>
+      <name>v1.1.3-maint</name>
+      <tag state="vulnerable">v1.1.3.1</tag>
+      <tag state="vulnerable">v1.1.3.2</tag>
+      <change state="vulnerable">ed3bac713c3cfc055ef551cbfe92a061084382c3</change>
+      <change state="fixed">51afa9a255d7a073373ad4533eff58bd819890e8</change>
+    </branch>
+    <branch>
+      <name>v1.1.4-maint</name>
+      <change state="vulnerable">ed3bac713c3cfc055ef551cbfe92a061084382c3</change>
+      <change state="fixed">7ccc13599652722d6aa000b61270c0786d610b9e</change>
+    </branch>
+    <branch>
+      <name>v1.2.0-maint</name>
+      <change state="vulnerable">ed3bac713c3cfc055ef551cbfe92a061084382c3</change>
+      <change state="fixed">eb7ec2312ba968c745031c7432b4fd007cd52d3a</change>
+    </branch>
+  </product>
+
+</security-notice>
