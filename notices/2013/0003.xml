@@ -1,0 +1,90 @@
+<security-notice xmlns="http://security.libvirt.org/xmlns/security-notice/1.0">
+  <id>2013-0003</id>
+
+  <summary>Crash of libvirtd when listing host interfaces</summary>
+
+  <description>
+<![CDATA[When requesting a list of host network interfaces that
+is filtered to only inactive interfaces, there is a double free
+of data.]]>
+  </description>
+
+  <impact>
+<![CDATA[A readonly user can cause memory corruption and a crash
+of the libvirtd daemon by asking for a list of inactive network
+interfaces.]]>
+  </impact>
+
+  <workaround>
+<![CDATA[Prevent untrusted users from accessing libvirtd]]>
+  </workaround>
+
+  <credits>
+    <reporter>
+      <name>Daniel Berrange</name>
+      <email>berrange@redhat.com</email>
+    </reporter>
+    <patcher>
+      <name>Daniel Berrange</name>
+      <email>berrange@redhat.com</email>
+    </patcher>
+  </credits>
+
+  <lifecycle>
+    <reported>20130627</reported>
+    <published>20130701</published>
+    <fixed>20130701</fixed>
+  </lifecycle>
+
+  <reference>
+    <advisory type="CVE" id="2013-2218"/>
+  </reference>
+
+  <product name="libvirt">
+    <repository>git://libvirt.org/git/libvirt.git</repository>
+    <branch>
+      <name>master</name>
+      <tag state="vulnerable">v0.10.2</tag>
+      <tag state="vulnerable">v1.0.0</tag>
+      <tag state="vulnerable">v1.0.1</tag>
+      <tag state="vulnerable">v1.0.2</tag>
+      <tag state="vulnerable">v1.0.3</tag>
+      <tag state="vulnerable">v1.0.4</tag>
+      <tag state="vulnerable">v1.0.5</tag>
+      <tag state="vulnerable">v1.0.6</tag>
+      <change state="vulnerable">a3cf061c824aac0c4cb06ac91ac0bff612bf0e86</change>
+      <tag state="fixed">v1.1.0</tag>
+      <change state="fixed">244e0b8cf15ca2ef48d82058e728656e6c4bad11</change>
+    </branch>
+    <branch>
+      <name>v0.10.2-maint</name>
+      <tag state="vulnerable">v0.10.2.1</tag>
+      <tag state="vulnerable">v0.10.2.2</tag>
+      <tag state="vulnerable">v0.10.2.3</tag>
+      <tag state="vulnerable">v0.10.2.4</tag>
+      <tag state="vulnerable">v0.10.2.5</tag>
+      <tag state="vulnerable">v0.10.2.6</tag>
+      <tag state="vulnerable">v0.10.2.7</tag>
+      <tag state="vulnerable">v0.10.2.8</tag>
+      <change state="vulnerable">a3cf061c824aac0c4cb06ac91ac0bff612bf0e86</change>
+    </branch>
+    <branch>
+      <name>v1.0.5-maint</name>
+      <tag state="vulnerable">v1.0.5.1</tag>
+      <tag state="vulnerable">v1.0.5.2</tag>
+      <tag state="vulnerable">v1.0.5.3</tag>
+      <tag state="vulnerable">v1.0.5.4</tag>
+      <tag state="vulnerable">v1.0.5.5</tag>
+      <tag state="vulnerable">v1.0.5.6</tag>
+      <tag state="vulnerable">v1.0.5.7</tag>
+      <tag state="vulnerable">v1.0.5.8</tag>
+      <change state="vulnerable">a3cf061c824aac0c4cb06ac91ac0bff612bf0e86</change>
+    </branch>
+    <branch>
+      <name>v1.0.6-maint</name>
+      <change state="vulnerable">a3cf061c824aac0c4cb06ac91ac0bff612bf0e86</change>
+      <change state="fixed">67a2f4c6d8ce28b0efacbdf009eccc6c186ee6af</change>
+    </branch>
+  </product>
+
+</security-notice>

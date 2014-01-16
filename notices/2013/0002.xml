@@ -1,0 +1,91 @@
+<security-notice xmlns="http://security.libvirt.org/xmlns/security-notice/1.0">
+  <id>2013-0002</id>
+
+  <summary>Leak of file descriptors when listing storage volumes</summary>
+
+  <description>
+<![CDATA[When listing storage volumes an object was not freed, which caused
+a libvirt connection to be kept open inside libvirtd. This caused a leak of
+file descriptors which would eventually exhaust the allowed range.]]>
+  </description>
+
+  <impact>
+<![CDATA[A client with a read only connection to libvirtd can cause
+exhaustion of all file descriptors in libvirtd resulting in a denial of
+service]]>
+  </impact>
+
+  <workaround>
+<![CDATA[Prevent untrusted users from accessing libvirtd]]>
+  </workaround>
+
+  <credits>
+    <reporter>
+      <name>Ján Tomko</name>
+      <email>jtomko@redhat.com</email>
+    </reporter>
+    <patcher>
+      <name>Ján Tomko</name>
+      <email>jtomko@redhat.com</email>
+    </patcher>
+  </credits>
+
+  <lifecycle>
+    <reported>20130412</reported>
+    <published>20130516</published>
+    <fixed>20130516</fixed>
+  </lifecycle>
+
+  <reference>
+    <advisory type="CVE" id="2013-1962"/>
+  </reference>
+
+  <product name="libvirt">
+    <repository>git://libvirt.org/git/libvirt.git</repository>
+    <branch>
+      <name>master</name>
+      <tag state="vulnerable">v0.10.2</tag>
+      <tag state="vulnerable">v1.0.0</tag>
+      <tag state="vulnerable">v1.0.1</tag>
+      <tag state="vulnerable">v1.0.2</tag>
+      <tag state="vulnerable">v1.0.3</tag>
+      <tag state="vulnerable">v1.0.4</tag>
+      <tag state="vulnerable">v1.0.5</tag>
+      <change state="vulnerable">a8bac1c0f3b9ff8dd3982a7086d45466055ea0d1</change>
+      <tag state="fixed">v1.0.6</tag>
+      <change state="fixed">ca697e90d5bd6a6dfb94bfb6d4438bdf9a44b739</change>
+    </branch>
+    <branch>
+      <name>v0.10.2-maint</name>
+      <tag state="vulnerable">v0.10.2.1</tag>
+      <tag state="vulnerable">v0.10.2.2</tag>
+      <tag state="vulnerable">v0.10.2.3</tag>
+      <tag state="vulnerable">v0.10.2.4</tag>
+      <change state="vulnerable">a8bac1c0f3b9ff8dd3982a7086d45466055ea0d1</change>
+      <tag state="fixed">v0.10.2.5</tag>
+      <change state="fixed">0f2eda0da9efd25b280c23a5a0d0fdf46f0c3c67</change>
+    </branch>
+    <branch>
+      <name>v1.0.2-maint</name>
+      <change state="vulnerable">a8bac1c0f3b9ff8dd3982a7086d45466055ea0d1</change>
+      <change state="fixed">89c74908954ede64756faaf6f3e6ebc0d425c6f9</change>
+    </branch>
+    <branch>
+      <name>v1.0.3-maint</name>
+      <change state="vulnerable">a8bac1c0f3b9ff8dd3982a7086d45466055ea0d1</change>
+      <change state="fixed">7d5e3f026603d7e6d78254e972332fdd6b234863</change>
+    </branch>
+    <branch>
+      <name>v1.0.4-maint</name>
+      <change state="vulnerable">a8bac1c0f3b9ff8dd3982a7086d45466055ea0d1</change>
+      <change state="fixed">24317824e01013209157a58f6130eecb873a3fba</change>
+    </branch>
+    <branch>
+      <name>v1.0.5-maint</name>
+      <change state="vulnerable">a8bac1c0f3b9ff8dd3982a7086d45466055ea0d1</change>
+      <tag state="fixed">v1.0.5.1</tag>
+      <change state="fixed">71e7f1392bbc42699b79adcbe8bb34d32cb8e442</change>
+    </branch>
+  </product>
+
+</security-notice>
