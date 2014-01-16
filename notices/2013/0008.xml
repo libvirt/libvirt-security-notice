@@ -1,0 +1,68 @@
+<security-notice xmlns="http://security.libvirt.org/xmlns/security-notice/1.0">
+  <id>2013-0008</id>
+
+  <summary>Libvirt security driver does nto clear supplementary groups</summary>
+
+  <description>
+<![CDATA[When parsing the process security label for the DAC driver
+the list of supplementary groups was not initialized. This would lead
+to the QEMU process inheriting supplementary groups from the libvirtd
+daemon.]]>
+  </description>
+
+  <impact>
+<![CDATA[The QEMU processes inherit supplementary groups libvirtd which
+may lead to it being granted access to in appropriate resources]]>
+  </impact>
+
+  <workaround>
+<![CDATA[Ensure a MAC driver such as SELinux or AppArmour is used to
+confine the QEMU processes, so that a compromised QEMU cannot take
+advantage of the inherited supplementary groups.]]>
+  </workaround>
+
+  <credits>
+    <reporter>
+      <name>Eric Blake</name>
+      <email>eblake@redhat.com</email>
+    </reporter>
+    <patcher>
+      <name>Eric Blake</name>
+      <email>eblake@redhat.com</email>
+    </patcher>
+  </credits>
+
+  <lifecycle>
+    <reported>20130805</reported>
+    <published>20130805</published>
+    <fixed>20130829</fixed>
+  </lifecycle>
+
+  <reference>
+    <advisory type="CVE" id="2013-4291"/>
+  </reference>
+
+  <product name="libvirt">
+    <repository>git://libvirt.org/git/libvirt.git</repository>
+    <branch>
+      <name>master</name>
+      <tag state="vulnerable">v1.1.1</tag>
+      <change state="vulnerable">29fe5d745fbe207ec2415441d4807ae76be05974</change>
+      <tag state="fixed">v1.1.2</tag>
+      <change state="fixed">745aa55fbf3e076c4288d5ec3239f5a5d43508a6</change>
+    </branch>
+    <branch>
+      <name>v0.10.2-maint</name>
+      <tag state="vulnerable">v0.10.2.7</tag>
+      <change state="vulnerable">c061ff5e4acb7ce92b59775f986d1b18b86ce43c</change>
+      <tag state="fixed">v0.10.2.8</tag>
+      <change state="fixed">53b882aad57ed9bbe4188128e9db2f1aecd3fb48</change>
+    </branch>
+    <branch>
+      <name>v1.1.1-maint</name>
+      <change state="vulnerable">29fe5d745fbe207ec2415441d4807ae76be05974</change>
+      <change state="fixed">d23cf2c91b32a715aae9beeaac04fc36924e0f56</change>
+    </branch>
+  </product>
+
+</security-notice>
