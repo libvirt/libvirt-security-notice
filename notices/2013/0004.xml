@@ -1,0 +1,57 @@
+<security-notice xmlns="http://security.libvirt.org/xmlns/security-notice/1.0">
+  <id>2013-0004</id>
+
+  <summary>Crash in libvirtd registering events</summary>
+
+  <description>
+<![CDATA[When callbacks are registered for multiple different events,
+the libvirtd daemon could crash]]>
+  </description>
+
+  <impact>
+<![CDATA[A readonly user can cause the libvirtd daemon to crash
+resulting in a denial of service.]]>
+  </impact>
+
+  <workaround>
+<![CDATA[Prevent untrusted users from accessing libvirtd]]>
+  </workaround>
+
+  <credits>
+    <reporter>
+      <name>Ján Tomko</name>
+      <email>jtomko@redhat.com</email>
+    </reporter>
+    <patcher>
+      <name>Ján Tomko</name>
+      <email>jtomko@redhat.com</email>
+    </patcher>
+  </credits>
+
+  <lifecycle>
+    <reported>20130702</reported>
+    <published>20130710</published>
+    <fixed>20130710</fixed>
+  </lifecycle>
+
+  <reference>
+    <advisory type="CVE" id="2013-2230"/>
+  </reference>
+
+  <product name="libvirt">
+    <repository>git://libvirt.org/git/libvirt.git</repository>
+    <branch>
+      <name>master</name>
+      <tag state="vulnerable">v1.1.0</tag>
+      <change state="vulnerable">abf75aea247ef6e432e5a51bcdb21972e50a4cd1</change>
+      <tag state="fixed">v1.1.1</tag>
+      <change state="fixed">f38c8185f97720ecae7ef2291fbaa5d6b0209e17</change>
+    </branch>
+    <branch>
+      <name>v1.1.0-maint</name>
+      <change state="vulnerable">abf75aea247ef6e432e5a51bcdb21972e50a4cd1</change>
+      <change state="fixed">0b0b662059c8c87354d8417216baec1af3abc07c</change>
+    </branch>
+  </product>
+
+</security-notice>
