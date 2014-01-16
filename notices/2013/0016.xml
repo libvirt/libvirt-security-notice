@@ -1,0 +1,111 @@
+<security-notice xmlns="http://security.libvirt.org/xmlns/security-notice/1.0">
+  <id>2013-0016</id>
+
+  <summary>Out of bounds access in bitmap array</summary>
+
+  <description>
+<![CDATA[When parsing bitmap strings the bounds of the array
+were not checked when determining if the bit was set. This
+in turn resulted in the parser later crashing]]>
+  </description>
+
+  <impact>
+<![CDATA[A malicious user can cause libvirtd to crash by
+feeding it data with malformed bitmap strings]]>
+  </impact>
+
+  <workaround>
+<![CDATA[Prevent untrusted users from accessing the libvirtd
+daemon]]>
+  </workaround>
+
+  <credits>
+    <reporter>
+      <name>Peter Krempa</name>
+      <email>pkrempa@redhat.com</email>
+    </reporter>
+    <patcher>
+      <name>Peter Krempa</name>
+      <email>pkrempa@redhat.com</email>
+    </patcher>
+  </credits>
+
+  <lifecycle>
+    <reported>20130816</reported>
+    <published>20130816</published>
+    <fixed>20130816</fixed>
+  </lifecycle>
+
+  <reference>
+    <advisory type="CVE" id="2013-5651"/>
+  </reference>
+
+  <product name="libvirt">
+    <repository>git://libvirt.org/git/libvirt.git</repository>
+    <branch>
+      <name>master</name>
+      <tag state="vulnerable">v0.10.2</tag>
+      <tag state="vulnerable">v1.0.0</tag>
+      <tag state="vulnerable">v1.0.1</tag>
+      <tag state="vulnerable">v1.0.2</tag>
+      <tag state="vulnerable">v1.0.3</tag>
+      <tag state="vulnerable">v1.0.4</tag>
+      <tag state="vulnerable">v1.0.5</tag>
+      <tag state="vulnerable">v1.0.6</tag>
+      <tag state="vulnerable">v1.1.0</tag>
+      <tag state="vulnerable">v1.1.1</tag>
+      <change state="vulnerable">0fc89098a68f0f6962de8be4fc03ddd960ffbf08</change>
+      <tag state="fixed">v1.1.2</tag>
+      <change state="fixed">47b9127e883677a0d60d767030a147450e919a25</change>
+    </branch>
+    <branch>
+      <name>v0.10.2-maint</name>
+      <tag state="vulnerable">v0.10.2.1</tag>
+      <tag state="vulnerable">v0.10.2.2</tag>
+      <tag state="vulnerable">v0.10.2.3</tag>
+      <tag state="vulnerable">v0.10.2.4</tag>
+      <tag state="vulnerable">v0.10.2.5</tag>
+      <tag state="vulnerable">v0.10.2.6</tag>
+      <tag state="vulnerable">v0.10.2.7</tag>
+      <change state="vulnerable">0fc89098a68f0f6962de8be4fc03ddd960ffbf08</change>
+      <change state="fixed">v0.10.2.8</change>
+      <change state="fixed">ecad40d8b84864bee4495d1447902a6206a39a4d</change>
+    </branch>
+    <branch>
+      <name>v1.0.4-maint</name>
+      <tag state="vulnerable"></tag>
+      <change state="vulnerable">0fc89098a68f0f6962de8be4fc03ddd960ffbf08</change>
+      <change state="fixed">b68a721d45085115d9d1ffd5329aff1fdaf1845a</change>
+    </branch>
+    <branch>
+      <name>v1.0.5-maint</name>
+      <tag state="vulnerable">v1.0.5.1</tag>
+      <tag state="vulnerable">v1.0.5.2</tag>
+      <tag state="vulnerable">v1.0.5.3</tag>
+      <tag state="vulnerable">v1.0.5.4</tag>
+      <tag state="vulnerable">v1.0.5.5</tag>
+      <change state="vulnerable">0fc89098a68f0f6962de8be4fc03ddd960ffbf08</change>
+      <tag state="fixed">v1.0.5.6</tag>
+      <change state="fixed">1ffdaced5b041db919ebd3a346c2d1abb8abe074</change>
+    </branch>
+    <branch>
+      <name>v1.0.6-maint</name>
+      <tag state="vulnerable"></tag>
+      <change state="vulnerable">0fc89098a68f0f6962de8be4fc03ddd960ffbf08</change>
+      <change state="fixed">c56f17e5435858f30471eb3da3a19a3ccd9d5a3b</change>
+    </branch>
+    <branch>
+      <name>v1.1.0-maint</name>
+      <tag state="vulnerable"></tag>
+      <change state="vulnerable">0fc89098a68f0f6962de8be4fc03ddd960ffbf08</change>
+      <change state="fixed">7d7e29bb939e3caabe8ddfef42bb44c0011436f3</change>
+    </branch>
+    <branch>
+      <name>v1.1.1-maint</name>
+      <tag state="vulnerable"></tag>
+      <change state="vulnerable">0fc89098a68f0f6962de8be4fc03ddd960ffbf08</change>
+      <change state="fixed">02340c7f67c381395aeede4586bd3b1ff3f5d291</change>
+    </branch>
+  </product>
+
+</security-notice>
