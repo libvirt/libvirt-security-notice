@@ -1,0 +1,26 @@
+        Libvirt Security Notices
+        ========================
+
+This repository records all Libvirt Security Notices that are
+issued.
+
+Notices must only added to this repository once any embargo is
+lifted, since the GIT repository is fully public
+
+Notices are written in XML in a file "notices/$YEAR/$NUM.xml"
+eg notices/2014/0001.xml. Assign numbers incrementally as
+new issues are reported.
+
+When a new notice is published for the first time, send the
+text rendering of the notice to the libvirt-announce@redhat.com
+mailing list.
+
+When backporting security fixes to -maint branches, update the
+notice with details of the backported changeset hash.
+
+When doing a formal maint release, update the notices included
+with the release tag name.
+
+The website is regenerated automatically from the contents of
+this GIT repository on an hourly basis. Type 'make' to do a
+local build of the website, with content ending up in build/
