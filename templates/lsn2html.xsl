@@ -115,7 +115,7 @@
 	    <th></th>
 	  </xsl:if>
 	  <td>
-	    <a href="mailto:${lsn:email}"><xsl:value-of select="lsn:name"/></a>
+	    <a href="mailto:{lsn:email}"><xsl:value-of select="lsn:name"/></a>
 	  </td>
 	</tr>
       </xsl:for-each>
