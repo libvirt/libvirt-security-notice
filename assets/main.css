@@ -1,0 +1,60 @@
+* {
+  border: 0px;
+  padding: 0px;
+  margin: 0px;
+}
+
+body {
+  background: url(libvirt-header-bg.png) repeat-x;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  padding-left: 10px;
+  padding-bottom: 0.5em;
+  padding-top: 0.5em;
+  color: #3c857c;
+}
+
+p {
+  padding-left: 10px;
+  width: 60em;
+}
+
+h1 {
+  padding-top: 110px;
+  background: url(libvirt-header-logo.png) no-repeat;
+}
+
+a {
+  color: #566866;
+}
+
+ul li {
+  margin-left: 2em;
+  padding-bottom: 0.5em;
+}
+
+table {
+  border: 1px solid #ccc;
+  margin-left: 2em;
+  width: 50em;
+  margin-bottom: 1em;
+}
+
+table th {
+  text-align: right;
+  font-weight: bold;
+  width: 10em;
+}
+table td {
+  text-align: left;
+}
+
+p.alt {
+  text-align: right;
+  font-size: smaller;
+}
+
+table td, table th {
+  padding: 4px;
+}

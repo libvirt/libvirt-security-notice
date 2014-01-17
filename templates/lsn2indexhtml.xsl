@@ -6,12 +6,13 @@
   exclude-result-prefixes="xsl lsn"
   version="1.0">
 
-  <xsl:output method="xml"/>
+  <xsl:output method="xml" indent="yes"/>
 
   <xsl:template match="/lsnl:security-notice-list">
     <html>
       <head>
 	<title>Libvirt Security Notice Index</title>
+	<link rel="stylesheet" type="text/css" href="main.css" />
       </head>
       <body>
 	<h1>Libvirt Security Notice Index</h1>

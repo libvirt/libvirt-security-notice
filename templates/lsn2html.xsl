@@ -5,17 +5,30 @@
   exclude-result-prefixes="xsl lsn"
   version="1.0">
 
-  <xsl:output method="xml"/>
+  <xsl:output method="xml" indent="yes"/>
+
+  <xsl:template name="selfhref">
+    <xsl:param name="id"/>
+    <xsl:param name="ext"/>
+
+    <xsl:variable name="dir" select="substring-before($id, '-')"/>
+    <xsl:variable name="file" select="substring-after($id, '-')"/>
+
+    <xsl:value-of select="concat('../', $dir, '/', $file, '.', $ext)"/>
+  </xsl:template>
 
   <xsl:template match="/lsn:security-notice">
     <html>
       <head>
 	<title>Libvirt Security Notice: LSN-<xsl:value-of select="lsn:id"/></title>
+	<link rel="stylesheet" type="text/css" href="../main.css" />
       </head>
       <body>
 	<h1>Libvirt Security Notice: LSN-<xsl:value-of select="lsn:id"/></h1>
 
-	<h2><xsl:value-of select="lsn:summary"/></h2>
+	<h2>
+	  <xsl:value-of select="lsn:summary"/>
+	</h2>
 
 	<xsl:apply-templates select="lsn:lifecycle"/>
 	<xsl:apply-templates select="lsn:credits"/>
@@ -25,8 +38,38 @@
 	<xsl:apply-templates select="lsn:impact"/>
 	<xsl:apply-templates select="lsn:workaround"/>
 	<xsl:apply-templates select="lsn:product"/>
+
+	<hr/>
+
+	<xsl:call-template name="selflink"/>
+
       </body>
     </html>
+  </xsl:template>
+
+  <xsl:template name="selflink">
+    <p class="alt">
+      Alternative formats:
+      <a>
+	<xsl:attribute name="href">
+	  <xsl:call-template name="selfhref">
+	    <xsl:with-param name="id" select="lsn:id"/>
+	    <xsl:with-param name="ext" select="'xml'"/>
+	  </xsl:call-template>
+	</xsl:attribute>
+	<xsl:text>[xml]</xsl:text>
+      </a>
+      <xsl:text> </xsl:text>
+      <a>
+	<xsl:attribute name="href">
+	  <xsl:call-template name="selfhref">
+	    <xsl:with-param name="id" select="lsn:id"/>
+	    <xsl:with-param name="ext" select="'txt'"/>
+	  </xsl:call-template>
+	</xsl:attribute>
+	<xsl:text>[text]</xsl:text>
+      </a>
+    </p>
   </xsl:template>
 
   <xsl:template match="lsn:lifecycle">
@@ -52,10 +95,10 @@
     <table>
       <xsl:for-each select="lsn:reporter">
 	<tr>
-	  <xsl:if test="position() = 0">
+	  <xsl:if test="position() = 1">
 	    <th>Reported by:</th>
 	  </xsl:if>
-	  <xsl:if test="position() > 0">
+	  <xsl:if test="position() > 1">
 	    <th></th>
 	  </xsl:if>
 	  <td>
@@ -65,10 +108,10 @@
       </xsl:for-each>
       <xsl:for-each select="lsn:patcher">
 	<tr>
-	  <xsl:if test="position() = 0">
+	  <xsl:if test="position() = 1">
 	    <th>Patched by:</th>
 	  </xsl:if>
-	  <xsl:if test="position() > 0">
+	  <xsl:if test="position() > 1">
 	    <th></th>
 	  </xsl:if>
 	  <td>
