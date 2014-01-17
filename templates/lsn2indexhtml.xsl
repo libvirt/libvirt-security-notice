@@ -22,6 +22,10 @@
 	    <xsl:sort select="@name" order="descending" />
 	  </xsl:apply-templates>
 	</ul>
+
+	<p class="alt">
+	  Alternative formats: <a href="index.xml">[xml]</a>
+	</p>
       </body>
     </html>
   </xsl:template>
@@ -36,7 +40,7 @@
   </xsl:template>
 
   <xsl:template match="lsnl:security-notice">
-    <xsl:variable name="notice" select="document(concat('../', @name))"/>
+    <xsl:variable name="notice" select="document(concat('../notices/', @name))"/>
     <xsl:variable name="id" select="$notice/lsn:security-notice/lsn:id"/>
     <xsl:variable name="summary" select="$notice/lsn:security-notice/lsn:summary"/>
     <xsl:variable name="href">
