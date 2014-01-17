@@ -225,8 +225,9 @@
     <xsl:text>        Name: </xsl:text>
     <xsl:value-of select="@name"/>
     <xsl:value-of select="$nl"/>
-    <xsl:text>  Repository: </xsl:text>
-    <xsl:value-of select="lsn:repository"/>
+    <xsl:text>  Repository: git://libvirt.org/git/</xsl:text><xsl:value-of select="lsn:repository"/>
+    <xsl:value-of select="$nl"/>
+    <xsl:text>              http://libvirt.org/git/?p=</xsl:text><xsl:value-of select="lsn:repository"/>
     <xsl:value-of select="$nl"/>
     <xsl:value-of select="$nl"/>
 

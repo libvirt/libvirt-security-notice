@@ -45,7 +45,7 @@ expected to be a raw disks file and writing a qcow2 header into it.]]>
   </reference>
 
   <product name="libvirt">
-    <repository>git://libvirt.org/git/libvirt.git</repository>
+    <repository>libvirt.git</repository>
     <branch>
       <name>master</name>
       <tag state="vulnerable">v0.7.2</tag>

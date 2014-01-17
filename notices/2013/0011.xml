@@ -43,7 +43,7 @@ or remove the permission for untrusted users to start LXC guests]]>
   </reference>
 
   <product name="libvirt">
-    <repository>git://libvirt.org/git/libvirt.git</repository>
+    <repository>libvirt.git</repository>
     <branch>
       <name>master</name>
       <tag state="vulnerable">v1.0.6</tag>

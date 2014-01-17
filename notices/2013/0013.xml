@@ -43,7 +43,7 @@ event APIs using ACLs]]>
   </reference>
 
   <product name="libvirt">
-    <repository>git://libvirt.org/git/libvirt.git</repository>
+    <repository>libvirt.git</repository>
     <branch>
       <name>master</name>
       <tag state="vulnerable">v1.1.0</tag>

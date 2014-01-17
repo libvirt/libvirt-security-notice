@@ -44,7 +44,7 @@ daemon itself may crash.]]>
   </reference>
 
   <product name="libvirt">
-    <repository>git://libvirt.org/git/libvirt.git</repository>
+    <repository>libvirt.git</repository>
     <branch>
       <name>master</name>
       <tag state="vulnerable">v0.6.0</tag>

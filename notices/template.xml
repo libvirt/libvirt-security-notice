@@ -37,7 +37,7 @@
   </reference>
 
   <product name="libvirt">
-    <repository>git://libvirt.org/git/libvirt.git</repository>
+    <repository>libvirt.git</repository>
     <branch>
       <name>master</name>
       <change state="vulnerable"></change>

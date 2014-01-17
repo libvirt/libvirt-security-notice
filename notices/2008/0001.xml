@@ -50,7 +50,7 @@ rule to prevent them access without first authenticating as root.]]>
   </reference>
 
   <product name="libvirt">
-    <repository>git://libvirt.org/git/libvirt.git</repository>
+    <repository>libvirt.git</repository>
     <branch>
       <name>master</name>
       <tag state="vulnerable">v0.2.1</tag>
