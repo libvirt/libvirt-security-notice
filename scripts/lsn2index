@@ -1,0 +1,12 @@
+#!/bin/sh
+
+set -e
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+echo '<security-notice-list xmlns="http://security.libvirt.org/xmlns/security-notice-list/1.0">'
+for n in $@
+do
+  echo "  <security-notice name='$n'/>"
+done
+echo '</security-notice-list>'

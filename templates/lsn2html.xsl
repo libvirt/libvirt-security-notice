@@ -1,0 +1,208 @@
+<xsl:stylesheet
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+  xmlns:lsn="http://security.libvirt.org/xmlns/security-notice/1.0"
+  exclude-result-prefixes="xsl lsn"
+  version="1.0">
+
+  <xsl:output method="xml"/>
+
+  <xsl:template match="/lsn:security-notice">
+    <html>
+      <head>
+	<title>Libvirt Security Notice: LSN-<xsl:value-of select="lsn:id"/></title>
+      </head>
+      <body>
+	<h1>Libvirt Security Notice: LSN-<xsl:value-of select="lsn:id"/></h1>
+
+	<h2><xsl:value-of select="lsn:summary"/></h2>
+
+	<xsl:apply-templates select="lsn:lifecycle"/>
+	<xsl:apply-templates select="lsn:credits"/>
+
+	<xsl:apply-templates select="lsn:reference"/>
+	<xsl:apply-templates select="lsn:description"/>
+	<xsl:apply-templates select="lsn:impact"/>
+	<xsl:apply-templates select="lsn:workaround"/>
+	<xsl:apply-templates select="lsn:product"/>
+      </body>
+    </html>
+  </xsl:template>
+
+  <xsl:template match="lsn:lifecycle">
+    <h3>Lifecycle</h3>
+    <table>
+      <tr>
+	<th>Reported on:</th>
+	<td><xsl:value-of select="lsn:reported"/></td>
+      </tr>
+      <tr>
+	<th>Published on:</th>
+	<td><xsl:value-of select="lsn:published"/></td>
+      </tr>
+      <tr>
+	<th>Fixed on:</th>
+	<td><xsl:value-of select="lsn:fixed"/></td>
+      </tr>
+    </table>
+  </xsl:template>
+
+  <xsl:template match="lsn:credits">
+    <h3>Credits</h3>
+    <table>
+      <xsl:for-each select="lsn:reporter">
+	<tr>
+	  <xsl:if test="position() = 0">
+	    <th>Reported by:</th>
+	  </xsl:if>
+	  <xsl:if test="position() > 0">
+	    <th></th>
+	  </xsl:if>
+	  <td>
+	    <a href="mailto:{lsn:email}"><xsl:value-of select="lsn:name"/></a>
+	  </td>
+	</tr>
+      </xsl:for-each>
+      <xsl:for-each select="lsn:patcher">
+	<tr>
+	  <xsl:if test="position() = 0">
+	    <th>Patched by:</th>
+	  </xsl:if>
+	  <xsl:if test="position() > 0">
+	    <th></th>
+	  </xsl:if>
+	  <td>
+	    <a href="mailto:${lsn:email}"><xsl:value-of select="lsn:name"/></a>
+	  </td>
+	</tr>
+      </xsl:for-each>
+    </table>
+  </xsl:template>
+
+  <xsl:template match="lsn:advisory">
+    <xsl:value-of select="@type"/>
+    <xsl:text>-</xsl:text>
+    <xsl:value-of select="@id"/>
+  </xsl:template>
+
+  <xsl:template match="lsn:bug">
+    <xsl:value-of select="@tracker"/>
+    <xsl:text> bug #</xsl:text>
+    <xsl:value-of select="@id"/>
+  </xsl:template>
+
+  <xsl:template match="lsn:reference">
+    <h3>See also</h3>
+    <ul>
+    <xsl:for-each select="lsn:advisory|lsn:bug">
+      <li><xsl:apply-templates select="."/></li>
+    </xsl:for-each>
+    </ul>
+  </xsl:template>
+
+  <xsl:template match="lsn:description">
+    <h3>Description</h3>
+    <p>
+      <xsl:value-of select="."/>
+    </p>
+  </xsl:template>
+
+  <xsl:template match="lsn:impact">
+    <h3>Impact</h3>
+    <p>
+      <xsl:value-of select="."/>
+    </p>
+  </xsl:template>
+
+  <xsl:template match="lsn:workaround">
+    <h3>Workaround</h3>
+    <p>
+      <xsl:value-of select="."/>
+    </p>
+  </xsl:template>
+
+  <xsl:template name="gitbranch">
+    <xsl:param name="repository"/>
+    <xsl:param name="branch"/>
+
+    <a href="http://libvirt.org/git/?p={$repository};a=shortlog;h=refs/heads/{$branch}"><xsl:value-of select="$branch"/></a>
+  </xsl:template>
+
+  <xsl:template name="gittag">
+    <xsl:param name="repository"/>
+    <xsl:param name="tag"/>
+
+    <a href="http://libvirt.org/git/?p={$repository};a=tag;h={$tag}"><xsl:value-of select="$tag"/></a>
+  </xsl:template>
+
+  <xsl:template name="gitchange">
+    <xsl:param name="repository"/>
+    <xsl:param name="change"/>
+
+    <a href="http://libvirt.org/git/?p={$repository};a=commit;h={$change}"><xsl:value-of select="$change"/></a>
+  </xsl:template>
+
+  <xsl:template match="lsn:product">
+    <h3>Affected product: <xsl:value-of select="@name"/></h3>
+
+    <xsl:variable name="repository" select="lsn:repository"/>
+
+    <xsl:for-each select="lsn:branch">
+      <table>
+	<tr>
+	  <th>Branch</th>
+	  <td>
+	    <xsl:call-template name="gitbranch">
+	      <xsl:with-param name="repository" select="$repository"/>
+	      <xsl:with-param name="branch" select="lsn:name"/>
+	    </xsl:call-template>
+	  </td>
+	</tr>
+	<xsl:for-each select="lsn:tag[@state='vulnerable']">
+	  <tr>
+	    <th>Broken in:</th>
+	    <td>
+	      <xsl:call-template name="gittag">
+		<xsl:with-param name="repository" select="$repository"/>
+		<xsl:with-param name="tag" select="."/>
+	      </xsl:call-template>
+	    </td>
+	  </tr>
+	</xsl:for-each>
+	<xsl:for-each select="lsn:tag[@state='fixed']">
+	  <tr>
+	    <th>Fixed in:</th>
+	    <td>
+	      <xsl:call-template name="gittag">
+		<xsl:with-param name="repository" select="$repository"/>
+		<xsl:with-param name="tag" select="."/>
+	      </xsl:call-template>
+	    </td>
+	  </tr>
+	</xsl:for-each>
+	<xsl:for-each select="lsn:change[@state='vulnerable']">
+	  <tr>
+	    <th>Broken by:</th>
+	    <td>
+	      <xsl:call-template name="gitchange">
+		<xsl:with-param name="repository" select="$repository"/>
+		<xsl:with-param name="change" select="."/>
+	      </xsl:call-template>
+	    </td>
+	  </tr>
+	</xsl:for-each>
+	<xsl:for-each select="lsn:change[@state='fixed']">
+	  <tr>
+	    <th>Fixed by:</th>
+	    <td>
+	      <xsl:call-template name="gitchange">
+		<xsl:with-param name="repository" select="$repository"/>
+		<xsl:with-param name="change" select="."/>
+	      </xsl:call-template>
+	    </td>
+	  </tr>
+	</xsl:for-each>
+      </table>
+    </xsl:for-each>
+  </xsl:template>
+</xsl:stylesheet>
