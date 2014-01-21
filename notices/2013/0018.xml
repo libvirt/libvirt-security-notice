@@ -42,6 +42,10 @@ unless the guest OS is trusted.]]>
       <name>Reco</name>
       <email>recoverym4n@gmail.com</email>
     </patcher>
+    <patcher>
+      <name>Eric Blake</name>
+      <email>eblake@redhat.com</email>
+    </patcher>
   </credits>
 
   <lifecycle>
@@ -115,6 +119,7 @@ unless the guest OS is trusted.]]>
       <tag state="vulnerable">v1.0.5.6</tag>
       <tag state="vulnerable">v1.0.5.7</tag>
       <tag state="vulnerable">v1.0.5.8</tag>
+      <tag state="vulnerable">v1.0.5.9</tag>
       <change state="vulnerable">cbb106f807b32f1f6af22d1e92fe0ff9ba6d73b3</change>
       <change state="vulnerable">de858e3fa7ffcab5f80d07f8a74d94cbaf8716b9</change>
       <change state="vulnerable">ed77abc58bc5a6837a5021f26e1a335dbfb477bf</change>
@@ -157,6 +162,7 @@ unless the guest OS is trusted.]]>
       <name>v1.1.3-maint</name>
       <tag state="vulnerable">v1.1.3.1</tag>
       <tag state="vulnerable">v1.1.3.2</tag>
+      <tag state="vulnerable">v1.1.3.3</tag>
       <change state="vulnerable">cbb106f807b32f1f6af22d1e92fe0ff9ba6d73b3</change>
       <change state="vulnerable">de858e3fa7ffcab5f80d07f8a74d94cbaf8716b9</change>
       <change state="vulnerable">ed77abc58bc5a6837a5021f26e1a335dbfb477bf</change>
@@ -173,6 +179,14 @@ unless the guest OS is trusted.]]>
     </branch>
     <branch>
       <name>v1.2.0-maint</name>
+      <change state="vulnerable">cbb106f807b32f1f6af22d1e92fe0ff9ba6d73b3</change>
+      <change state="vulnerable">de858e3fa7ffcab5f80d07f8a74d94cbaf8716b9</change>
+      <change state="vulnerable">ed77abc58bc5a6837a5021f26e1a335dbfb477bf</change>
+      <change state="vulnerable">a5efb3190913b6903775ca3756f79443d4ea8a5b</change>
+      <change state="vulnerable">4ad6a013304f6fe29b0866742c902054bfbcf23f</change>
+    </branch>
+    <branch>
+      <name>v1.2.1-maint</name>
       <change state="vulnerable">cbb106f807b32f1f6af22d1e92fe0ff9ba6d73b3</change>
       <change state="vulnerable">de858e3fa7ffcab5f80d07f8a74d94cbaf8716b9</change>
       <change state="vulnerable">ed77abc58bc5a6837a5021f26e1a335dbfb477bf</change>
