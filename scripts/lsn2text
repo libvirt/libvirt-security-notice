@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #
 # Copyright (C) 2013-2014 Red Hat, Inc.
 #
@@ -20,4 +20,4 @@ set -e
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-xsltproc $DIR/../templates/lsn2text.xsl $1
+xsltproc "$DIR/../templates/lsn2text.xsl" "$1"
