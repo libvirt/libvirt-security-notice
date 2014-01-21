@@ -64,6 +64,7 @@ on higher privileged users.]]>
       <tag state="vulnerable">v1.1.4</tag>
       <tag state="vulnerable">v1.2.0</tag>
       <change state="vulnerable">cfed9ad4fb28e268e1467a0071c2fbc0c0873969</change>
+      <tag state="fixed">v1.2.1</tag>
       <change state="fixed">f8c1cb90213508c4f32549023b0572ed774e48aa</change>
     </branch>
     <branch>
@@ -77,6 +78,7 @@ on higher privileged users.]]>
       <tag state="vulnerable">v1.0.5.7</tag>
       <tag state="vulnerable">v1.0.5.8</tag>
       <change state="vulnerable">cfed9ad4fb28e268e1467a0071c2fbc0c0873969</change>
+      <tag state="fixed">v1.0.5.9</tag>
       <change state="fixed">218bd2e8716bcb4c90acf6ecaf879d606b46606b</change>
     </branch>
     <branch>
@@ -104,6 +106,7 @@ on higher privileged users.]]>
       <tag state="vulnerable">v1.1.3.1</tag>
       <tag state="vulnerable">v1.1.3.2</tag>
       <change state="vulnerable">cfed9ad4fb28e268e1467a0071c2fbc0c0873969</change>
+      <tag state="fixed">v1.1.3.3</tag>
       <change state="fixed">66247dc5fffe5b9447f4db377c5adf02e6db97c4</change>
     </branch>
     <branch>

@@ -6,13 +6,15 @@
   <description>
 <![CDATA[The asynchronous events were not filtered based on
 any permission check prior to being dispatched to the client.
-This could lead to the client learning about the existance
-of domains that they are not authorized to see]]>
+This could lead to the client learning about the existence
+of domains that they are not authorized to see.]]>
   </description>
 
   <impact>
 <![CDATA[A client can use events to learn of domains that
-they are not authorized to see.]]>
+they are not authorized to see.  Additionally, the client
+can use that object to attempt other actions on the domain,
+such as starting or stopping it.]]>
   </impact>
 
   <workaround>
@@ -74,6 +76,7 @@ they are not authorized to see.]]>
       <tag state="vulnerable">v1.1.3.1</tag>
       <tag state="vulnerable">v1.1.3.2</tag>
       <change state="vulnerable">ed3bac713c3cfc055ef551cbfe92a061084382c3</change>
+      <tag state="fixed">v1.1.3.3</tag>
       <change state="fixed">51afa9a255d7a073373ad4533eff58bd819890e8</change>
     </branch>
     <branch>
