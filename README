@@ -5,11 +5,12 @@ This repository records all Libvirt Security Notices that are
 issued.
 
 Notices must only added to this repository once any embargo is
-lifted, since the GIT repository is fully public
+lifted, since the GIT repository is fully public.
 
 Notices are written in XML in a file "notices/$YEAR/$NUM.xml"
 eg notices/2014/0001.xml. Assign numbers incrementally as
-new issues are reported.
+new issues are reported.  More details on the XML format can
+be found in "docs/schema.txt".
 
 When a new notice is published for the first time, send the
 text rendering of the notice to the libvirt-announce@redhat.com

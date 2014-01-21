@@ -2,7 +2,7 @@
     ==============================
 
 The top level element of a libvirt security notice has
-a name of "security-notice" and is in a XML namespace
+a name of "security-notice" and is in an XML namespace
 of http://security.libvirt.org/xmlns/security-notice/1.0
 
 Basic metadata
@@ -45,8 +45,8 @@ resources. It will have one or more child elements which
 can be either "advisory" or "bug". An "advisory" element
 includes a "type" and "id" attribute where "type" is
 currently allowed to be "CVE" and "id" is the identifier
-of the report. A "bug" elements incudes "tracker" and
-"id" attribute where "tracker" is allowed to be "redhat",
+of the report. A "bug" element includes "tracker" and
+"id" attributes where "tracker" is allowed to be "redhat",
 "debian" or a short name for another vendors' bug tracker.
 
 Descriptive data
@@ -74,7 +74,7 @@ Product data
 The "product" element provides information about the codebase
 of the affected products. The "name" attribute is the name of
 a libvirt product, typically based on the tar.gz archive name
-with the suffice stripped. This contains a child "repository"
+with the suffix stripped. This contains a child "repository"
 element which is a URL to the master GIT repository. There is
 then one or more "branch" elements which details the state of
 affected branches.
