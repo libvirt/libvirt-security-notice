@@ -1,0 +1,97 @@
+<security-notice xmlns="http://security.libvirt.org/xmlns/security-notice/1.0">
+  <id>2013-0019</id>
+
+  <summary>libvirtd crash when reading numa tunables for libxl guest in shutoff status</summary>
+
+  <description>
+<![CDATA[The libxlDomainGetNumaParameters method in the libxl driver
+did not check whether the guest being accessed was running or
+not. When shutoff, the code attempts to clean up an uninitialized
+bitmap, causing malloc corruption most commonly observed as a crash.]]>
+  </description>
+
+  <impact>
+<![CDATA[A user who has permission to invoke the virDomainGetNumaParameters
+API against the libxl driver will be able to crash the libvirtd
+daemon. Access to this API is granted to any user who connects to the
+read-only libvirtd UNIX domain socket. If ACLs are active, access is
+granted to any user with the 'read' permission on the 'domain' object,
+which is granted by default to all users. As a result an unprivileged
+user will be able to inflict a denial of service attack on other users
+of the libvirtd daemon with higher privilege.]]>
+  </impact>
+
+  <workaround>
+<![CDATA[The impact can be mitigated by blocking access to the read-only
+libvirtd UNIX domain socket, with policykit or the 'auth_unix_ro' parameter
+in '/etc/libvirt/libvirtd.conf'. If ACLs are active, the 'read' permission
+should be removed from any untrusted users. This will not prevent the crash,
+but will stop unprivileged users from inflicting the denial of service
+on higher privileged users.]]>
+  </workaround>
+
+  <credits>
+    <reporter>
+      <name>Dario Faggioli</name>
+      <email>dario.faggioli@citrix.com</email>
+    </reporter>
+    <patcher>
+      <name>Dario Faggioli</name>
+      <email>dario.faggioli@citrix.com</email>
+    </patcher>
+  </credits>
+
+  <lifecycle>
+    <reported>20131220</reported>
+    <published>20131220</published>
+    <fixed>20131220</fixed>
+  </lifecycle>
+
+  <reference>
+    <advisory type="CVE" id="2013-6457"/>
+  </reference>
+
+  <product name="libvirt">
+    <repository>libvirt.git</repository>
+    <branch>
+      <name>master</name>
+      <tag state="vulnerable">v1.1.1</tag>
+      <tag state="vulnerable">v1.1.2</tag>
+      <tag state="vulnerable">v1.1.3</tag>
+      <tag state="vulnerable">v1.1.4</tag>
+      <tag state="vulnerable">v1.2.0</tag>
+      <change state="vulnerable">261c4f5fb93c5e23b8002f2760d4a7937cdb7f63</change>
+      <tag state="fixed">v1.2.1</tag>
+      <change state="fixed">f9ee91d35510ccbc6fc42cef8864b291b2d220f4</change>
+    </branch>
+    <branch>
+      <name>v1.1.1-maint</name>
+      <change state="vulnerable">261c4f5fb93c5e23b8002f2760d4a7937cdb7f63</change>
+      <change state="fixed">d5f89a6dd725baf8bca1f1e28f5b858bf0053a99</change>
+    </branch>
+    <branch>
+      <name>v1.1.2-maint</name>
+      <change state="vulnerable">261c4f5fb93c5e23b8002f2760d4a7937cdb7f63</change>
+      <change state="fixed">52c40003805f1702f103095dc5c3d00cf38e7a82</change>
+    </branch>
+    <branch>
+      <name>v1.1.3-maint</name>
+      <tag state="vulnerable">v1.1.3.1</tag>
+      <tag state="vulnerable">v1.1.3.2</tag>
+      <change state="vulnerable">261c4f5fb93c5e23b8002f2760d4a7937cdb7f63</change>
+      <tag state="fixed">v1.1.3.3</tag>
+      <change state="fixed">5904ba60159ce67826f301e78103191600a07600</change>
+    </branch>
+    <branch>
+      <name>v1.1.4-maint</name>
+      <change state="vulnerable">261c4f5fb93c5e23b8002f2760d4a7937cdb7f63</change>
+      <change state="fixed">626eb91f964a032af56b448e63fde9f74e592290</change>
+    </branch>
+    <branch>
+      <name>v1.2.0-maint</name>
+      <change state="vulnerable">261c4f5fb93c5e23b8002f2760d4a7937cdb7f63</change>
+      <change state="fixed">36378d1a41464517d7c31d8854fcfd8f69221409</change>
+    </branch>
+  </product>
+
+</security-notice>
