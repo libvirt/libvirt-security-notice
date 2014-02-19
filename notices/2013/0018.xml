@@ -28,7 +28,7 @@ API by replacing '/dev' with an absolute symlink.]]>
 <![CDATA[Do not use the virDomainShutdown or virDomainReboot APIs without
 also passing the VIR_DOMAIN_SHUTDOWN_SIGNAL or VIR_DOMAIN_REBOOT_SIGNAL
 flags respectively. These will cause the LXC driver to send a SIGTERM or
-SIGHUP signal respectively, to the init process instead of using /dev/initct..
+SIGHUP signal respectively, to the init process instead of using /dev/initctl.
 Do not use the virDomainDeviceAttach or virDomainDeviceDetach APIs at all
 unless the guest OS is trusted.]]>
   </workaround>
@@ -85,16 +85,15 @@ unless the guest OS is trusted.]]>
       <change state="vulnerable">ed77abc58bc5a6837a5021f26e1a335dbfb477bf</change>
       <change state="vulnerable">a5efb3190913b6903775ca3756f79443d4ea8a5b</change>
       <change state="vulnerable">4ad6a013304f6fe29b0866742c902054bfbcf23f</change>
+      <!--
+      <tag state="fixed">v1.2.2</tag>
+      -->
       <change state="fixed">aebbcdd33c8c18891f0bdbbf8924599a28152c9c</change>
       <change state="fixed">4dd3a7d5bc44980135a1b11810ba9aeab42a4a59</change>
       <change state="fixed">7fba01c15c1f886b4235825692b4c13e88dd9f7b</change>
       <change state="fixed">1754c7f0ab1407dcf7c89636a35711dd9b1febe1</change>
       <change state="fixed">1cadeafcaa422844a27ef622e2a7041d0235bcb3</change>
       <change state="fixed">5fc590ad9f4071350a8df4d567ba88baacc8334d</change>
-    </branch>
-    <branch>
-      <name>v1.0.1-maint</name>
-      <change state="vulnerable">cbb106f807b32f1f6af22d1e92fe0ff9ba6d73b3</change>
     </branch>
     <branch>
       <name>v1.0.2-maint</name>
