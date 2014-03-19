@@ -1,0 +1,81 @@
+<security-notice xmlns="http://security.libvirt.org/xmlns/security-notice/1.0">
+  <id>2013-0021</id>
+
+  <summary>libvirtd crash during seamless SPICE migration</summary>
+
+  <description>
+<![CDATA[When migrating a guest with a live SPICE connection, the
+source libvirtd did not properly track that the migration job was
+still waiting for status from the handshakes involved in seamless
+migration.]]>
+  </description>
+
+  <impact>
+<![CDATA[If another client was querying domain status at the same time
+as the ongoing seamless SPICE migration, the incorrect job status
+could lead to memory corruption and a crash of libvirtd on the source
+side of the migration.  As queries can be performed by an unprivileged
+user, this can be used to inflict a denial of service attack on other
+users of the libvirtd daemon with higher privilege.]]>
+  </impact>
+
+  <workaround>
+<![CDATA[The impact can be mitigated by blocking access to the read-only
+libvirtd UNIX domain socket, with policykit or the 'auth_unix_ro' parameter
+in '/etc/libvirt/libvirtd.conf'. If ACLs are active, the 'read' permission
+should be removed from any untrusted users. This will not prevent the crash,
+but will stop unprivileged users from inflicting the denial of service
+on higher privileged users.  Additionally, avoiding SPICE seamless
+migration is sufficient to avoid the problem.]]>
+  </workaround>
+
+  <credits>
+    <reporter>
+      <name>Marian Krcmarik</name>
+      <email>mkrcmari@redhat.com</email>
+    </reporter>
+    <patcher>
+      <name>Martin Kletzander</name>
+      <email>mkletzan@redhat.com</email>
+    </patcher>
+  </credits>
+
+  <lifecycle>
+    <reported>20130919</reported>
+    <published>20130919</published>
+    <fixed>20130920</fixed>
+  </lifecycle>
+
+  <reference>
+    <advisory type="CVE" id="2013-7336"/>
+  </reference>
+
+  <product name="libvirt">
+    <repository>libvirt.git</repository>
+    <branch>
+      <name>master</name>
+      <change state="vulnerable">9da7b11bcd3e9732dd881a9e6158a0c98bafd9fe</change>
+      <tag state="vulnerable">v1.1.0</tag>
+      <tag state="vulnerable">v1.1.1</tag>
+      <tag state="vulnerable">v1.1.2</tag>
+      <tag state="fixed">v1.1.3</tag>
+      <change state="fixed">484cc3217b73b865f00bf42a9c12187b37200699</change>
+    </branch>
+    <branch>
+      <name>v1.1.0-maint</name>
+      <change state="vulnerable">9da7b11bcd3e9732dd881a9e6158a0c98bafd9fe</change>
+      <change state="fixed">476d0e38af11f3ff50d85e3f7aecad4cd8208c76</change>
+    </branch>
+    <branch>
+      <name>v1.1.1-maint</name>
+      <change state="vulnerable">9da7b11bcd3e9732dd881a9e6158a0c98bafd9fe</change>
+      <change state="fixed">fea2550974137918c2bc9e01f3eb00421585450c</change>
+    </branch>
+    <branch>
+      <name>v1.1.2-maint</name>
+      <change state="vulnerable">9da7b11bcd3e9732dd881a9e6158a0c98bafd9fe</change>
+      <change state="fixed">b6ea7abcf72d7d0aaf90e17aa8e8e88db8f778ea</change>
+    </branch>
+  </product>
+
+</security-notice>
