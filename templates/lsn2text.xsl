@@ -126,13 +126,13 @@
   <xsl:template match="lsn:credits">
     <xsl:text>   Reported by: </xsl:text>
     <xsl:for-each select="lsn:reporter">
+      <xsl:if test="position() > 1">
+	<xsl:text>                </xsl:text>
+      </xsl:if>
       <xsl:value-of select="lsn:name"/>
       <xsl:text> &lt;</xsl:text>
       <xsl:value-of select="lsn:email"/>
       <xsl:text>&gt;</xsl:text>
-      <xsl:if test="position() > 0">
-	<xsl:text>                    </xsl:text>
-      </xsl:if>
       <xsl:if test="position() != last()">
 	<xsl:value-of select="$nl"/>
       </xsl:if>
@@ -140,15 +140,15 @@
     <xsl:value-of select="$nl"/>
     <xsl:text>    Patched by: </xsl:text>
     <xsl:for-each select="lsn:patcher">
+      <xsl:if test="position() > 1">
+	<xsl:text>                </xsl:text>
+      </xsl:if>
       <xsl:value-of select="lsn:name"/>
       <xsl:text> &lt;</xsl:text>
       <xsl:value-of select="lsn:email"/>
       <xsl:text>&gt;</xsl:text>
       <xsl:if test="position() != last()">
 	<xsl:value-of select="concat(',',$nl)"/>
-      </xsl:if>
-      <xsl:if test="position() > 0">
-	<xsl:text>                </xsl:text>
       </xsl:if>
     </xsl:for-each>
     <xsl:value-of select="$nl"/>
