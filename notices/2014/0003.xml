@@ -170,6 +170,42 @@ be revoked]]>
       <change state="fixed">022b34cee73f86b01724b5279cf626df9cca245f</change>
     </branch>
     <branch>
+      <name>v0.10.2-maint</name>
+      <change state="vulnerable">77e8b6c62c48b6346bbdb2df3e0d925852c6bf3e</change>
+      <change state="vulnerable">387941fb626d9362835aa216b4a871e18268f649</change>
+      <change state="vulnerable">0b7d2ae653f583825f6d83bfb0744673648a9833</change>
+      <tag state="vulnerable">v0.10.2.1</tag>
+      <tag state="vulnerable">v0.10.2.2</tag>
+      <tag state="vulnerable">v0.10.2.3</tag>
+      <tag state="vulnerable">v0.10.2.4</tag>
+      <tag state="vulnerable">v0.10.2.5</tag>
+      <tag state="vulnerable">v0.10.2.6</tag>
+      <tag state="vulnerable">v0.10.2.7</tag>
+      <tag state="vulnerable">v0.10.2.8</tag>
+      <change state="fixed">16d55b311ad5c3c2e61494b848b1c6ee36897476</change>
+    </branch>
+    <branch>
+      <name>v1.0.2-maint</name>
+      <change state="vulnerable">77e8b6c62c48b6346bbdb2df3e0d925852c6bf3e</change>
+      <change state="vulnerable">387941fb626d9362835aa216b4a871e18268f649</change>
+      <change state="vulnerable">0b7d2ae653f583825f6d83bfb0744673648a9833</change>
+      <change state="fixed">66de726e2175333bc9e0153f9ffc5f2025b199de</change>
+    </branch>
+    <branch>
+      <name>v1.0.3-maint</name>
+      <change state="vulnerable">77e8b6c62c48b6346bbdb2df3e0d925852c6bf3e</change>
+      <change state="vulnerable">387941fb626d9362835aa216b4a871e18268f649</change>
+      <change state="vulnerable">0b7d2ae653f583825f6d83bfb0744673648a9833</change>
+      <change state="fixed">16fc426a27d88bbdc96c307c7ef0cce25e8ae717</change>
+    </branch>
+    <branch>
+      <name>v1.0.4-maint</name>
+      <change state="vulnerable">77e8b6c62c48b6346bbdb2df3e0d925852c6bf3e</change>
+      <change state="vulnerable">387941fb626d9362835aa216b4a871e18268f649</change>
+      <change state="vulnerable">0b7d2ae653f583825f6d83bfb0744673648a9833</change>
+      <change state="fixed">040df62ae7fcbbead96c2f2191651daf35686986</change>
+    </branch>
+    <branch>
       <name>v1.0.5-maint</name>
       <change state="vulnerable">77e8b6c62c48b6346bbdb2df3e0d925852c6bf3e</change>
       <change state="vulnerable">387941fb626d9362835aa216b4a871e18268f649</change>
@@ -190,7 +226,7 @@ be revoked]]>
       <change state="vulnerable">77e8b6c62c48b6346bbdb2df3e0d925852c6bf3e</change>
       <change state="vulnerable">387941fb626d9362835aa216b4a871e18268f649</change>
       <change state="vulnerable">0b7d2ae653f583825f6d83bfb0744673648a9833</change>
-      <change state="fixed"></change>
+      <change state="fixed">89538f57f4c2401d7c555299f15de17c539981c2</change>
     </branch>
     <branch>
       <name>v1.1.0-maint</name>
