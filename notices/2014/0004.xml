@@ -36,7 +36,7 @@ although such a crash is no longer a security problem.]]>
       <email>lhuang@redhat.com</email>
     </reporter>
     <patcher>
-      <name>Peter krempa</name>
+      <name>Peter Krempa</name>
       <email>pkrempa@redhat.com</email>
     </patcher>
   </credits>
