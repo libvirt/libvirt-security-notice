@@ -14,7 +14,7 @@ the persistent definition dereferencing an out-of-bounds pointer.]]>
 
   <impact>
 <![CDATA[A read-only client can cause a denial of service attack
-against a priviliged client if the out-of-bounds dereference causes
+against a privileged client if the out-of-bounds dereference causes
 libvirtd to crash, or possibly gain read access to sensitive
 information residing in the heap.]]>
   </impact>
