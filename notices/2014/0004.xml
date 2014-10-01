@@ -84,6 +84,7 @@ although such a crash is no longer a security problem.]]>
       <tag state="vulnerable">v1.2.8</tag>
       <change state="vulnerable">eca96694a7f992be633d48d5ca03cedc9bbc3c9aa</change>
       <change state="fixed">3e745e8f775dfe6f64f18b5c2fe4791b35d3546b</change>
+      <tag state="fixed">v1.2.9</tag>
     </branch>
     <branch>
       <name>v0.9.11-maint</name>
