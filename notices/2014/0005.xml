@@ -1,0 +1,209 @@
+<security-notice xmlns="http://security.libvirt.org/xmlns/security-notice/1.0">
+  <id>2014-0005</id>
+
+  <summary>virConnectListAllDomains can deadlock</summary>
+
+  <description>
+<![CDATA[The common implementation of virConnectListAllDomains used an
+early return statement instead of jumping to a cleanup label when the
+API was used with a NULL list parameter to merely obtain a count of
+domains that match the filters.  Because it missed the cleanup label,
+this left the list of domains locked and prevented all further APIs
+from accessing the list.]]>
+  </description>
+
+  <impact>
+<![CDATA[A read-only client can cause a denial of service attack
+against a privileged client by passing a NULL parameter to force the
+deadlock condition.]]>
+  </impact>
+
+  <workaround>
+<![CDATA[As long as all callers pass a non-NULL argument to
+virConnectListAllDomains to collect an actual list rather than just a
+count, the deadlock will not occur (this mode of operation is the only
+mode used by virsh and in the python bindings, which is why the bug
+has existed undetected for so long). Denying access to the readonly
+libvirt socket will avoid the potential for a denial of service
+attack, but will not prevent the deadlock if a privileged client
+passes a NULL argument, although such a hang is no longer a security
+problem.]]>
+  </workaround>
+
+  <credits>
+    <reporter>
+      <name>Pavel Hrdina</name>
+      <email>phrdina@redhat.com</email>
+    </reporter>
+    <patcher>
+      <name>Pavel Hrdina</name>
+      <email>phrdina@redhat.com</email>
+    </patcher>
+  </credits>
+
+  <lifecycle>
+    <reported>20140922</reported>
+    <published>20141001</published>
+    <fixed>20141001</fixed>
+  </lifecycle>
+
+  <reference>
+    <advisory type="CVE" id="2014-3657"/>
+  </reference>
+
+  <product name="libvirt">
+    <repository>libvirt.git</repository>
+    <branch>
+      <name>master</name>
+      <tag state="vulnerable">v0.9.13</tag>
+      <tag state="vulnerable">v1.0.0</tag>
+      <tag state="vulnerable">v1.0.1</tag>
+      <tag state="vulnerable">v1.0.2</tag>
+      <tag state="vulnerable">v1.0.3</tag>
+      <tag state="vulnerable">v1.0.4</tag>
+      <tag state="vulnerable">v1.0.5</tag>
+      <tag state="vulnerable">v1.0.6</tag>
+      <tag state="vulnerable">v1.1.0</tag>
+      <tag state="vulnerable">v1.1.1</tag>
+      <tag state="vulnerable">v1.1.2</tag>
+      <tag state="vulnerable">v1.1.3</tag>
+      <tag state="vulnerable">v1.1.4</tag>
+      <tag state="vulnerable">v1.2.0</tag>
+      <tag state="vulnerable">v1.2.1</tag>
+      <tag state="vulnerable">v1.2.2</tag>
+      <tag state="vulnerable">v1.2.3</tag>
+      <tag state="vulnerable">v1.2.4</tag>
+      <tag state="vulnerable">v1.2.5</tag>
+      <tag state="vulnerable">v1.2.6</tag>
+      <tag state="vulnerable">v1.2.7</tag>
+      <tag state="vulnerable">v1.2.8</tag>
+      <change state="vulnerable">2c6808044408fba9ff9547ad88bb8a0f44ee21a0</change>
+      <change state="fixed">fc22b2e74890873848b43fffae43025d22053669</change>
+      <tag state="fixed">v1.2.9</tag>
+    </branch>
+    <branch>
+      <name>v0.10.2-maint</name>
+      <change state="vulnerable">2c6808044408fba9ff9547ad88bb8a0f44ee21a0</change>
+      <tag state="vulnerable">v0.10.2.1</tag>
+      <tag state="vulnerable">v0.10.2.2</tag>
+      <tag state="vulnerable">v0.10.2.3</tag>
+      <tag state="vulnerable">v0.10.2.4</tag>
+      <tag state="vulnerable">v0.10.2.5</tag>
+      <tag state="vulnerable">v0.10.2.6</tag>
+      <tag state="vulnerable">v0.10.2.7</tag>
+      <tag state="vulnerable">v0.10.2.8</tag>
+      <change state="fixed">a397e887ed40898cc177e118dffdea8e1f4c6184</change>
+    </branch>
+    <branch>
+      <name>v1.0.2-maint</name>
+      <change state="vulnerable">2c6808044408fba9ff9547ad88bb8a0f44ee21a0</change>
+      <change state="fixed">905f2281e3dbb199191098235e335a2f54bb85c9</change>
+    </branch>
+    <branch>
+      <name>v1.0.3-maint</name>
+      <change state="vulnerable">2c6808044408fba9ff9547ad88bb8a0f44ee21a0</change>
+      <change state="fixed">31674d08fc1b54cd30ad9422ba84090a8b4a3f48</change>
+    </branch>
+    <branch>
+      <name>v1.0.4-maint</name>
+      <change state="vulnerable">2c6808044408fba9ff9547ad88bb8a0f44ee21a0</change>
+      <change state="fixed">26a87db8ea9320f08f5f029f4e1a47c04b322c64</change>
+    </branch>
+    <branch>
+      <name>v1.0.5-maint</name>
+      <change state="vulnerable">2c6808044408fba9ff9547ad88bb8a0f44ee21a0</change>
+      <tag state="vulnerable">v1.0.5.1</tag>
+      <tag state="vulnerable">v1.0.5.2</tag>
+      <tag state="vulnerable">v1.0.5.3</tag>
+      <tag state="vulnerable">v1.0.5.4</tag>
+      <tag state="vulnerable">v1.0.5.5</tag>
+      <tag state="vulnerable">v1.0.5.6</tag>
+      <tag state="vulnerable">v1.0.5.7</tag>
+      <tag state="vulnerable">v1.0.5.8</tag>
+      <tag state="vulnerable">v1.0.5.9</tag>
+      <change state="fixed">f18b86e35f25eacbe1c68cd32caea0310e9d220c</change>
+    </branch>
+    <branch>
+      <name>v1.0.6-maint</name>
+      <change state="vulnerable">2c6808044408fba9ff9547ad88bb8a0f44ee21a0</change>
+      <change state="fixed">4e41e40fde8e9eb5bfd67467450aeb4767b45b9c</change>
+    </branch>
+    <branch>
+      <name>v1.1.0-maint</name>
+      <change state="vulnerable">2c6808044408fba9ff9547ad88bb8a0f44ee21a0</change>
+      <change state="fixed">b64eaab92267480e78133c3d2e7b698f046fe5d0</change>
+    </branch>
+    <branch>
+      <name>v1.1.1-maint</name>
+      <change state="vulnerable">2c6808044408fba9ff9547ad88bb8a0f44ee21a0</change>
+      <change state="fixed">64c04d03ce8d364043e692659220ae1094f1a0cf</change>
+    </branch>
+    <branch>
+      <name>v1.1.2-maint</name>
+      <change state="vulnerable">2c6808044408fba9ff9547ad88bb8a0f44ee21a0</change>
+      <change state="fixed">75d051c7313aaa977bb67fde9b4094ed6da5ad4e</change>
+    </branch>
+    <branch>
+      <name>v1.1.3-maint</name>
+      <change state="vulnerable">2c6808044408fba9ff9547ad88bb8a0f44ee21a0</change>
+      <tag state="vulnerable">v1.1.3.1</tag>
+      <tag state="vulnerable">v1.1.3.2</tag>
+      <tag state="vulnerable">v1.1.3.3</tag>
+      <tag state="vulnerable">v1.1.3.4</tag>
+      <tag state="vulnerable">v1.1.3.5</tag>
+      <tag state="vulnerable">v1.1.3.6</tag>
+      <change state="fixed">0b13d34e89405b6017a935d3c19d6a80ce7f3c6b</change>
+    </branch>
+    <branch>
+      <name>v1.1.4-maint</name>
+      <change state="vulnerable">2c6808044408fba9ff9547ad88bb8a0f44ee21a0</change>
+      <change state="fixed">da254a088ca74377615d127562677fb23c987faa</change>
+    </branch>
+    <branch>
+      <name>v1.2.0-maint</name>
+      <change state="vulnerable">2c6808044408fba9ff9547ad88bb8a0f44ee21a0</change>
+      <change state="fixed">861f9b1c4536b27d2961039aaf73f66732543654</change>
+    </branch>
+    <branch>
+      <name>v1.2.1-maint</name>
+      <change state="vulnerable">2c6808044408fba9ff9547ad88bb8a0f44ee21a0</change>
+      <change state="fixed">c639118634cab93bdf7a8c1bdf7f1f4fd1f8a8ce</change>
+    </branch>
+    <branch>
+      <name>v1.2.2-maint</name>
+      <change state="vulnerable">2c6808044408fba9ff9547ad88bb8a0f44ee21a0</change>
+      <change state="fixed">4ce1bd6e3783eef817ffd265616a2e6aa4cca2a3</change>
+    </branch>
+    <branch>
+      <name>v1.2.3-maint</name>
+      <change state="vulnerable">2c6808044408fba9ff9547ad88bb8a0f44ee21a0</change>
+      <change state="fixed">64700acc914e8ed7e091db2c67b48e7ef7ed99fc</change>
+    </branch>
+    <branch>
+      <name>v1.2.4-maint</name>
+      <change state="vulnerable">2c6808044408fba9ff9547ad88bb8a0f44ee21a0</change>
+      <change state="fixed">98e0692c968e194d5fd7176c6768da91ab48d651</change>
+    </branch>
+    <branch>
+      <name>v1.2.5-maint</name>
+      <change state="vulnerable">2c6808044408fba9ff9547ad88bb8a0f44ee21a0</change>
+      <change state="fixed">af56bafcc9bfb39778790e9cd7f522b98354d978</change>
+    </branch>
+    <branch>
+      <name>v1.2.6-maint</name>
+      <change state="vulnerable">2c6808044408fba9ff9547ad88bb8a0f44ee21a0</change>
+      <change state="fixed">7dcab231de3749e8056597b9b2271cd32b3797bf</change>
+    </branch>
+    <branch>
+      <name>v1.2.7-maint</name>
+      <change state="vulnerable">2c6808044408fba9ff9547ad88bb8a0f44ee21a0</change>
+      <change state="fixed">cd685ddb5d35df227aa5be9ae84368775c20e325</change>
+    </branch>
+    <branch>
+      <name>v1.2.8-maint</name>
+      <change state="vulnerable">2c6808044408fba9ff9547ad88bb8a0f44ee21a0</change>
+      <change state="fixed">c074b4044e021db6765727ea18bca8408758c7a9</change>
+    </branch>
+  </product>
+
+</security-notice>
