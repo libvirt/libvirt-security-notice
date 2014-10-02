@@ -1,0 +1,251 @@
+<security-notice xmlns="http://security.libvirt.org/xmlns/security-notice/1.0">
+  <id>2014-0006</id>
+
+  <summary>virDomainBlockRebase probes file formats in spite of
+  explicit raw request</summary>
+
+  <description>
+<![CDATA[When virDomainBlockRebase gained the
+VIR_DOMAIN_BLOCK_REBASE_COPY flag, it was documented that libvirt
+might probe the format of the destination file under certain
+circumstances; but since file format probing is inherently unsafe for
+raw images (see CVE-2010-2237), the API also included the
+VIR_DOMAIN_BLOCK_REBASE_COPY_RAW flag as a safeguard to avoid the
+probe, in addition to the normal safeguards of /etc/libvirt/qemu.conf
+being able to forbid all probes.  However, if a user has configured to
+allow probes, then two separate bugs in the implementation create
+situations where even though the user explicitly requested a raw
+destination, libvirt can end up probing the file format of the
+destination after the time that virDomainBlockAbort is used to pivot
+to that destination.  The first bug was introduced in v1.0.0, the same
+release as the initial support for block copy: if the user requests
+the raw flag but lets libvirt create the destination, then the
+destination file will be raw but libvirt fails to record the fact.
+The second bug was introduced in libvirt v1.2.1 as part of a fix for
+CVE-2013-6458 (and therefore very likely to be backported to most
+builds that include block copy support): if the user requests the raw
+flag and reuses an existing destination file, but then later makes a
+second attempt to do a block copy while the first copy is still
+underway, then libvirt will forget that the destination is raw.  In
+either scenario, once libvirt has lost track that the destination is
+raw, it will probe for the file format after a pivot.  Note that
+although the block copy API was not implemented upstream until v1.0.0,
+it can be backported to any version that supports virDomainBlockRebase
+(as old as v0.9.8), so downstream versions with a lower version number
+may also suffer from these bugs.]]>
+  </description>
+
+  <impact>
+<![CDATA[A malicious guest can store what looks like a different file
+format in the header of its disk image, in the hopes that the host
+will use block copy to relocate the storage for the guest disk into a
+raw file.  If the host enables format probing, and either bug
+triggers, then the guest will be serviced by a raw destination after a
+block copy pivot, and libvirt may deduce the wrong file format in
+spite of the API being used correctly to copy to a raw destination.
+Once libvirt probes an incorrect format, it may end up incorrectly
+labelling host files, granting the guest access to a mislabeled host
+file, or otherwise violating sVirt protections.  However, for either
+bug to actually happen, the host must set allow_disk_format_probing=1
+in /etc/libvirt/qemu.conf; this setting defaults to 0 with a lengthy
+comment warning of other possible security problems if it is set to 1
+without properly specifying formats everywhere.  Since any host that
+sticks with the default configuration of disallowing probes is immune,
+this vulnerability was not assigned a CVE.  Furthermore, block copy as
+implemented in the affected versions of libvirt is only possible on
+transient domains, and most known users of block copy only perform
+shallow copies (where the destination is qcow2 rather than raw), which
+is also immune to incorrect probe results.]]>
+  </impact>
+
+  <workaround>
+<![CDATA[The guest cannot trigger the host to misbehave if the host
+leaves /etc/libvirt/qemu.conf with its default setting of
+allow_disk_format_probing=0.  Furthermore, even if probing is allowed,
+a host that never performs a block copy to a raw destination file
+(whether pre-existing, or created by libvirt) will not be impacted.
+Finally, even if block copy occurs where libvirt forgets that the
+destination is raw, the worst effects of acting on probed information
+occur when booting a guest, so it is sufficient to edit the domain XML
+before each start of a guest, and re-add any lost <driver
+format='raw'/> element back to any disk that was previously copied to
+a raw destination, to ensure that libvirt does not probe the image and
+perform incorrect actions based on the probe.  The newer
+virDomainBlockCopy API is immune to the problem.]]>
+  </workaround>
+
+  <credits>
+    <reporter>
+      <name>Eric Blake</name>
+      <email>eblake@redhat.com</email>
+    </reporter>
+    <patcher>
+      <name>Peter Krempa</name>
+      <email>pkrempa@redhat.com</email>
+    </patcher>
+  </credits>
+
+  <lifecycle>
+    <reported>20140626</reported>
+    <published>20140626</published>
+    <fixed>20140625</fixed>
+  </lifecycle>
+
+  <product name="libvirt">
+    <repository>libvirt.git</repository>
+    <branch>
+      <name>master</name>
+      <tag state="vulnerable">v1.0.0</tag>
+      <tag state="vulnerable">v1.0.1</tag>
+      <tag state="vulnerable">v1.0.2</tag>
+      <tag state="vulnerable">v1.0.3</tag>
+      <tag state="vulnerable">v1.0.4</tag>
+      <tag state="vulnerable">v1.0.5</tag>
+      <tag state="vulnerable">v1.0.6</tag>
+      <tag state="vulnerable">v1.1.0</tag>
+      <tag state="vulnerable">v1.1.1</tag>
+      <tag state="vulnerable">v1.1.2</tag>
+      <tag state="vulnerable">v1.1.3</tag>
+      <tag state="vulnerable">v1.1.4</tag>
+      <tag state="vulnerable">v1.2.0</tag>
+      <tag state="vulnerable">v1.2.1</tag>
+      <tag state="vulnerable">v1.2.2</tag>
+      <tag state="vulnerable">v1.2.3</tag>
+      <tag state="vulnerable">v1.2.4</tag>
+      <tag state="vulnerable">v1.2.5</tag>
+      <change state="vulnerable">35c7701c64508f975dfeb8379c56b4b6d0d9b71c</change>
+      <change state="vulnerable">ff5f30b6bfa317f2a4c33f69289baf4e887eb048</change>
+      <change state="fixed">02b364e186d487f54ed410c01af042f23e812d42</change>
+      <change state="fixed">42619ed05d7924978f3e6e2399522fc6f30607de</change>
+      <tag state="fixed">v1.2.6</tag>
+    </branch>
+    <branch>
+      <name>v1.0.2-maint</name>
+      <change state="vulnerable">35c7701c64508f975dfeb8379c56b4b6d0d9b71c</change>
+      <change state="vulnerable">c5683680576aa624b7bc29a9c927dc9d5253fe44</change>
+      <change state="fixed">2d03487b702b3946f9ef389614b17bf3c44108a4</change>
+      <change state="fixed">20326db6a536d989e0dd3425a293ee0b4ba7cdb4</change>
+    </branch>
+    <branch>
+      <name>v1.0.3-maint</name>
+      <change state="vulnerable">35c7701c64508f975dfeb8379c56b4b6d0d9b71c</change>
+      <change state="vulnerable">a5987e23d5ff7a79a5c382b964ce3132c593e36d</change>
+      <change state="fixed">6cb267e816fd89e0c362d5a090ec6c0539d5e730</change>
+      <change state="fixed">e22f1c2e13523c830dc5f26c87e644b4a0dfd1df</change>
+    </branch>
+    <branch>
+      <name>v1.0.4-maint</name>
+      <change state="vulnerable">35c7701c64508f975dfeb8379c56b4b6d0d9b71c</change>
+      <change state="vulnerable">cd7021934e8031ce1ae777672c094e9f28d39d45</change>
+      <change state="fixed">ecb305fdbda47bf4855972cb00ae55752e035447</change>
+      <change state="fixed">261679a8c345d0bab905ec0c52f39259ebe16bd9</change>
+    </branch>
+    <branch>
+      <name>v1.0.5-maint</name>
+      <change state="vulnerable">35c7701c64508f975dfeb8379c56b4b6d0d9b71c</change>
+      <change state="vulnerable">0135324b9fc0f4b803fcd1464c83ce458ca1b1e0</change>
+      <tag state="vulnerable">v1.0.5.1</tag>
+      <tag state="vulnerable">v1.0.5.2</tag>
+      <tag state="vulnerable">v1.0.5.3</tag>
+      <tag state="vulnerable">v1.0.5.4</tag>
+      <tag state="vulnerable">v1.0.5.5</tag>
+      <tag state="vulnerable">v1.0.5.6</tag>
+      <tag state="vulnerable">v1.0.5.7</tag>
+      <tag state="vulnerable">v1.0.5.8</tag>
+      <tag state="vulnerable">v1.0.5.9</tag>
+      <change state="fixed">39b5123dc0f08955b68d91a14bdc577ffd1a9558</change>
+      <change state="fixed">17df6a9b3997117b43f6caa56b43c54d1841d93c</change>
+    </branch>
+    <branch>
+      <name>v1.0.6-maint</name>
+      <change state="vulnerable">35c7701c64508f975dfeb8379c56b4b6d0d9b71c</change>
+      <change state="vulnerable">3e41a461b3f587c075005e3da4293e02efbc4f0d</change>
+      <change state="fixed">0e307ecf94967cfb4a8ed49db344e4513216a0df</change>
+      <change state="fixed">4fb55871e925f1d02ecd04f626c6cfecae141d7f</change>
+    </branch>
+    <branch>
+      <name>v1.1.0-maint</name>
+      <change state="vulnerable">35c7701c64508f975dfeb8379c56b4b6d0d9b71c</change>
+      <change state="vulnerable">ebac034d4dafd1774f4b075f7b2b0fa52736c22e</change>
+      <change state="fixed">1141cdc95373b323779b67062fcb11385c72e810</change>
+      <change state="fixed">2a78c0f97e0c0f19e426403c7fd1ded8a9648b7d</change>
+    </branch>
+    <branch>
+      <name>v1.1.1-maint</name>
+      <change state="vulnerable">35c7701c64508f975dfeb8379c56b4b6d0d9b71c</change>
+      <change state="vulnerable">51d13311b89fe9709df0efef8054010d7e539600</change>
+      <change state="fixed">f527b2253e372bb827195ef4af30f46862f6443a</change>
+      <change state="fixed">9bb60cb44357d4b7698db5ca41a524c1411a4358</change>
+    </branch>
+    <branch>
+      <name>v1.1.2-maint</name>
+      <change state="vulnerable">35c7701c64508f975dfeb8379c56b4b6d0d9b71c</change>
+      <change state="vulnerable">939b0818c223cd6e7a59dcf94c8117dfc5df2604</change>
+      <change state="fixed">2fc5924c9eddb25e117bd1bd58eb7aa0a53f1048</change>
+      <change state="fixed">f4a7efeebc1935beeeafc4a5ccaabc037a5c10af</change>
+    </branch>
+    <branch>
+      <name>v1.1.3-maint</name>
+      <change state="vulnerable">35c7701c64508f975dfeb8379c56b4b6d0d9b71c</change>
+      <change state="vulnerable">0c4822c17b6cdcce812fb9201f19d30232b3812d</change>
+      <tag state="vulnerable">v1.1.3.1</tag>
+      <tag state="vulnerable">v1.1.3.2</tag>
+      <tag state="vulnerable">v1.1.3.3</tag>
+      <tag state="vulnerable">v1.1.3.4</tag>
+      <tag state="vulnerable">v1.1.3.5</tag>
+      <change state="fixed">ea1d4666d885ec68480f22a65d1a275a293484cd</change>
+      <change state="fixed">e7ee7542bb9d66539a0ec8d4a1e72efdfb8ccebe</change>
+      <tag state="fixed">v1.1.3.6</tag>
+    </branch>
+    <branch>
+      <name>v1.1.4-maint</name>
+      <change state="vulnerable">35c7701c64508f975dfeb8379c56b4b6d0d9b71c</change>
+      <change state="vulnerable">94256e697b60ac8514ad9b437e4f6ac5dc369939</change>
+      <change state="fixed">b4ef374c2963fe8a034672cb11ed9464009b6fa8</change>
+      <change state="fixed">53bde6b7b4f9bdae6f94a0c196705d4531ae8211</change>
+    </branch>
+    <branch>
+      <name>v1.2.0-maint</name>
+      <change state="vulnerable">35c7701c64508f975dfeb8379c56b4b6d0d9b71c</change>
+      <change state="vulnerable">26ff7d4c6ebc934c8881b93b526abb957738ed1d</change>
+      <change state="fixed">69380800fbfebc17666c38f2226c09cb6a201747</change>
+      <change state="fixed">a103b53f3cd5420e5da986ddbb0de9ab51e54c34</change>
+    </branch>
+    <branch>
+      <name>v1.2.1-maint</name>
+      <change state="vulnerable">35c7701c64508f975dfeb8379c56b4b6d0d9b71c</change>
+      <change state="vulnerable">ff5f30b6bfa317f2a4c33f69289baf4e887eb048</change>
+      <change state="fixed">60e54a50219b38d8d8ce8f95abd231316d95eeda</change>
+      <change state="fixed">a73122a4ab911b7e18fb2837a9173b67beaf8edb</change>
+    </branch>
+    <branch>
+      <name>v1.2.2-maint</name>
+      <change state="vulnerable">35c7701c64508f975dfeb8379c56b4b6d0d9b71c</change>
+      <change state="vulnerable">ff5f30b6bfa317f2a4c33f69289baf4e887eb048</change>
+      <change state="fixed">684893e6924f0304a6749982ac2b5d90f4c66c47</change>
+      <change state="fixed">b7771f928e95c8638aceadae35af328649ada030</change>
+    </branch>
+    <branch>
+      <name>v1.2.3-maint</name>
+      <change state="vulnerable">35c7701c64508f975dfeb8379c56b4b6d0d9b71c</change>
+      <change state="vulnerable">ff5f30b6bfa317f2a4c33f69289baf4e887eb048</change>
+      <change state="fixed">2f7ea630f019656f353dc4d2fff7dad38a0e61b8</change>
+      <change state="fixed">b850e1a95c5d15700a396d7a5466b43113cb3ab5</change>
+    </branch>
+    <branch>
+      <name>v1.2.4-maint</name>
+      <change state="vulnerable">35c7701c64508f975dfeb8379c56b4b6d0d9b71c</change>
+      <change state="vulnerable">ff5f30b6bfa317f2a4c33f69289baf4e887eb048</change>
+      <change state="fixed">b952dbdaa56b62f92eda11087fbcac509b6c8789</change>
+      <change state="fixed">5b3af9c06c42f136efc458b837595e14d3911b1d</change>
+    </branch>
+    <branch>
+      <name>v1.2.5-maint</name>
+      <change state="vulnerable">35c7701c64508f975dfeb8379c56b4b6d0d9b71c</change>
+      <change state="vulnerable">ff5f30b6bfa317f2a4c33f69289baf4e887eb048</change>
+      <change state="fixed">bc390b175030f613e5f23edbde06ea5d466f6c31</change>
+      <change state="fixed">961758a1c66fb1777eba496eb1b328c8107f6a2d</change>
+    </branch>
+  </product>
+
+</security-notice>
