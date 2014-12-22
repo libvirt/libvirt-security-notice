@@ -202,6 +202,7 @@ ACL privilege without also having the 'read_secure' privilege.]]>
       <name>v1.2.9-maint</name>
       <change state="vulnerable">28f8dfdcccd4c0f69063ef741545b37d8a7f7935</change>
       <change state="fixed">744ddb15e0feaf2d6603a88dc8ffc3a7eb0a452d</change>
+      <tag state="fixed">v1.2.9.1</tag>
     </branch>
     <branch>
       <name>v1.2.10-maint</name>
