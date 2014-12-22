@@ -180,6 +180,7 @@ although such a crash is no longer a security problem.]]>
       <tag state="vulnerable">v1.1.3.5</tag>
       <tag state="vulnerable">v1.1.3.6</tag>
       <change state="fixed">eefe2e013820a76dfe5132431db72aade911eeab</change>
+      <tag state="fixed">v1.1.3.7</tag>
     </branch>
     <branch>
       <name>v1.1.4-maint</name>

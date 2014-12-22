@@ -153,6 +153,7 @@ problem.]]>
       <tag state="vulnerable">v1.1.3.5</tag>
       <tag state="vulnerable">v1.1.3.6</tag>
       <change state="fixed">0b13d34e89405b6017a935d3c19d6a80ce7f3c6b</change>
+      <tag state="fixed">v1.1.3.7</tag>
     </branch>
     <branch>
       <name>v1.1.4-maint</name>
