@@ -1,0 +1,174 @@
+<security-notice xmlns="http://security.libvirt.org/xmlns/security-notice/1.0">
+  <id>2014-0008</id>
+
+  <summary>deadlock on failed migration</summary>
+
+  <description>
+<![CDATA[When using fine-grained ACLs to restrict users from migrating
+domains, a logic bug could leave the domain locked and prevent further
+operation on that domain.]]>
+  </description>
+
+  <impact>
+<![CDATA[A client that lacks the domain:migrate fine-grained ACL could
+use a failed migration attempt to trigger a denial of service against
+a more privileged user.]]>
+  </impact>
+
+  <workaround>
+<![CDATA[The bug is mitigated by the fact that the "perform" and
+"finish" states of migration can generally be reached only after a
+successful "begin" or "prepare" state, both of which also require the
+same domain:migrate permission.  Furthermore, the "prepare" state also
+requires the domain:write permission, and any user which has been
+granted that permission is already deemed to have full control over
+the system; even if domain:migrate permission is dynamically denied
+after migration has already started in order to trigger the flaw, an
+attack by such a user generally does not constitute a denial of
+service against a more privileged user.  On the other hand, a
+malicious client that has access to the read-write socket via only a
+weaker privilege such as domain:read can send RPC commands out of
+order, to attempt a "perform" without going through the prerequisite
+states, and thereby trigger the bug in a manner that forms a denial of
+service.  Read-only clients cannot trigger the problem, even via bad
+RPC commands.  It is possible to avoid the bug by not using the
+fine-grained access control mechanism.]]>
+  </workaround>
+
+  <credits>
+    <reporter>
+      <name>Peter Krempa</name>
+      <email>pkrempa@redhat.com</email>
+    </reporter>
+    <patcher>
+      <name>Peter Krempa</name>
+      <email>pkrempa@redhat.com</email>
+    </patcher>
+  </credits>
+
+  <lifecycle>
+    <reported>20141208</reported>
+    <published>20141208</published>
+    <fixed>20141209</fixed>
+  </lifecycle>
+
+  <reference>ppp
+    <advisory type="CVE" id="2014-8136"/>
+  </reference>
+
+  <product name="libvirt">
+    <repository>libvirt.git</repository>
+    <branch>
+      <name>master</name>
+      <tag state="vulnerable">v1.1.0</tag>
+      <tag state="vulnerable">v1.1.1</tag>
+      <tag state="vulnerable">v1.1.2</tag>
+      <tag state="vulnerable">v1.1.3</tag>
+      <tag state="vulnerable">v1.1.4</tag>
+      <tag state="vulnerable">v1.2.0</tag>
+      <tag state="vulnerable">v1.2.1</tag>
+      <tag state="vulnerable">v1.2.2</tag>
+      <tag state="vulnerable">v1.2.3</tag>
+      <tag state="vulnerable">v1.2.4</tag>
+      <tag state="vulnerable">v1.2.5</tag>
+      <tag state="vulnerable">v1.2.6</tag>
+      <tag state="vulnerable">v1.2.7</tag>
+      <tag state="vulnerable">v1.2.8</tag>
+      <tag state="vulnerable">v1.2.9</tag>
+      <tag state="vulnerable">v1.2.10</tag>
+      <change state="vulnerable">abf75aea247ef6e432e5a51bcdb21972e50a4cd1</change>
+      <change state="fixed">2bdcd29c713dfedd813c89f56ae98f6f3898313d</change>
+      <tag state="fixed">v1.2.11</tag>
+    </branch>
+    <branch>
+      <name>v1.1.0-maint</name>
+      <change state="vulnerable">abf75aea247ef6e432e5a51bcdb21972e50a4cd1</change>
+      <change state="fixed">540872ceae9d2850e42d3615f017feb46ab585aa</change>
+    </branch>
+    <branch>
+      <name>v1.1.1-maint</name>
+      <change state="vulnerable">abf75aea247ef6e432e5a51bcdb21972e50a4cd1</change>
+      <change state="fixed">fb1e0312f4cfc2375ee94d40e5f2999cd761337d</change>
+    </branch>
+    <branch>
+      <name>v1.1.2-maint</name>
+      <change state="vulnerable">abf75aea247ef6e432e5a51bcdb21972e50a4cd1</change>
+      <change state="fixed">12c35ca8e6a1dff79fe706b24edc094be7df9f93</change>
+    </branch>
+    <branch>
+      <name>v1.1.3-maint</name>
+      <change state="vulnerable">abf75aea247ef6e432e5a51bcdb21972e50a4cd1</change>
+      <tag state="vulnerable">v1.1.3.1</tag>
+      <tag state="vulnerable">v1.1.3.2</tag>
+      <tag state="vulnerable">v1.1.3.3</tag>
+      <tag state="vulnerable">v1.1.3.4</tag>
+      <tag state="vulnerable">v1.1.3.5</tag>
+      <tag state="vulnerable">v1.1.3.6</tag>
+      <tag state="vulnerable">v1.1.3.7</tag>
+      <tag state="vulnerable">v1.1.3.8</tag>
+      <change state="fixed">63934cae465f757c774db1fa4e86d3c8bda4591b</change>
+    </branch>
+    <branch>
+      <name>v1.1.4-maint</name>
+      <change state="vulnerable">abf75aea247ef6e432e5a51bcdb21972e50a4cd1</change>
+      <change state="fixed">995516ad3dc64fb5a5102ad0fbbea6e1701f0d8d</change>
+    </branch>
+    <branch>
+      <name>v1.2.0-maint</name>
+      <change state="vulnerable">abf75aea247ef6e432e5a51bcdb21972e50a4cd1</change>
+      <change state="fixed">0d365c6f707f55e77ff14d6a52a59b7d1c43f8a4</change>
+    </branch>
+    <branch>
+      <name>v1.2.1-maint</name>
+      <change state="vulnerable">abf75aea247ef6e432e5a51bcdb21972e50a4cd1</change>
+      <change state="fixed">75dfd58284de1fdc146b8aa3deb7d6a2057f0391</change>
+    </branch>
+    <branch>
+      <name>v1.2.2-maint</name>
+      <change state="vulnerable">abf75aea247ef6e432e5a51bcdb21972e50a4cd1</change>
+      <change state="fixed">f5a151754f2080598049baf5d68282f183a30f5c</change>
+    </branch>
+    <branch>
+      <name>v1.2.3-maint</name>
+      <change state="vulnerable">abf75aea247ef6e432e5a51bcdb21972e50a4cd1</change>
+      <change state="fixed">e0e2f7eafc5adfbac4343592def097cbe8a67653</change>
+    </branch>
+    <branch>
+      <name>v1.2.4-maint</name>
+      <change state="vulnerable">abf75aea247ef6e432e5a51bcdb21972e50a4cd1</change>
+      <change state="fixed">4ba560e050fa83a2ef2083fbfa0ad9484b9393d4</change>
+    </branch>
+    <branch>
+      <name>v1.2.5-maint</name>
+      <change state="vulnerable">abf75aea247ef6e432e5a51bcdb21972e50a4cd1</change>
+      <change state="fixed">cd3d695a6be8398b399d0d06c26a618b12ad8946</change>
+    </branch>
+    <branch>
+      <name>v1.2.6-maint</name>
+      <change state="vulnerable">abf75aea247ef6e432e5a51bcdb21972e50a4cd1</change>
+      <change state="fixed">bad50b7501ebfe8076a6f7809d7b44b7a94c38ef</change>
+    </branch>
+    <branch>
+      <name>v1.2.7-maint</name>
+      <change state="vulnerable">abf75aea247ef6e432e5a51bcdb21972e50a4cd1</change>
+      <change state="fixed">220759259bcbcc705a96dc1cbaeb2f2ce980c479</change>
+    </branch>
+    <branch>
+      <name>v1.2.8-maint</name>
+      <change state="vulnerable">abf75aea247ef6e432e5a51bcdb21972e50a4cd1</change>
+      <change state="fixed">372bfe63b501c7580400107682633ad421416f88</change>
+    </branch>
+    <branch>
+      <name>v1.2.9-maint</name>
+      <change state="vulnerable">abf75aea247ef6e432e5a51bcdb21972e50a4cd1</change>
+      <tag state="vulnerable">v1.2.9.1</tag>
+      <change state="fixed">12496319a24dd923c5f321c84112fd0e73979413</change>
+    </branch>
+    <branch>
+      <name>v1.2.10-maint</name>
+      <change state="vulnerable">abf75aea247ef6e432e5a51bcdb21972e50a4cd1</change>
+      <change state="fixed">2a121c635306cd498cdabb63a806ae17821b245f</change>
+    </branch>
+  </product>
+
+</security-notice>

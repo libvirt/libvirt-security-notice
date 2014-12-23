@@ -1,0 +1,87 @@
+<security-notice xmlns="http://security.libvirt.org/xmlns/security-notice/1.0">
+  <id>2014-0008</id>
+
+  <summary>deadlock or segfault in virConnectGetAllDomainStats</summary>
+
+  <description>
+<![CDATA[When using fine-grained ACLs to restrict users from accessing
+all domains, a logic bug in the qemu implementation of
+virConnectGetAllDomainStats could result in incorrect lock management
+of the next domain inspected after a domain that was skipped due to
+ACL restrictions.]]>
+  </description>
+
+  <impact>
+<![CDATA[A restricted client can trigger a denial of service against a
+more privileged user when libvirtd goes into deadlock when trying to
+lock an incorrectly locked domain, or crashes when trying to unlock a
+domain that was not locked.]]>
+  </impact>
+
+  <workaround>
+<![CDATA[Stop use of the fine grained access control mechanism, or
+stop trying to use access control to restrict the set of domains that
+an authorized client can see.]]>
+  </workaround>
+
+  <credits>
+    <reporter>
+      <name>Martin Kletzander</name>
+      <email>mkletzan@redhat.com</email>
+    </reporter>
+    <patcher>
+      <name>Martin Kletzander</name>
+      <email>mkletzan@redhat.com</email>
+    </patcher>
+    <patcher>
+      <name>Francesco Romani</name>
+      <email>fromani@redhat.com</email>
+    </patcher>
+  </credits>
+
+  <lifecycle>
+    <reported>20141127</reported>
+    <published>20141205</published>
+    <fixed>20141211</fixed>
+  </lifecycle>
+
+  <reference>
+    <advisory type="CVE" id="2014-8131"/>
+  </reference>
+
+  <product name="libvirt">
+    <repository>libvirt.git</repository>
+    <branch>
+      <name>master</name>
+      <tag state="vulnerable">v1.2.8</tag>
+      <tag state="vulnerable">v1.2.9</tag>
+      <tag state="vulnerable">v1.2.10</tag>
+      <change state="vulnerable">d1bde8eda3b4027b38c7c1d5942a6388b0458803</change>
+      <change state="vulnerable">1f4831ee6ecc17d0f2008d7db15bfd9bc3b1d685</change>
+      <change state="fixed">57023c0a3af4af1c547189c1f6712ed5edeb0c0b</change>
+      <change state="fixed">cb104ef734dfea12cb8826dba7e2c98912c4b7e1</change>
+      <tag state="fixed">v1.2.11</tag>
+    </branch>
+    <branch>
+      <name>v1.2.8-maint</name>
+      <change state="vulnerable">d1bde8eda3b4027b38c7c1d5942a6388b0458803</change>
+      <change state="fixed">27431ec96e617f186bd3f5900aeb7d622770533a</change>
+    </branch>
+    <branch>
+      <name>v1.2.9-maint</name>
+      <change state="vulnerable">d1bde8eda3b4027b38c7c1d5942a6388b0458803</change>
+      <change state="vulnerable">1f4831ee6ecc17d0f2008d7db15bfd9bc3b1d685</change>
+      <tag state="vulnerable">v1.2.9.1</tag>
+      <change state="fixed">5d8bee6d57cddf462912ad2fc544c8a57b1c2841</change>
+      <change state="fixed">dfbdea7ea8fa36d9f27942c5b2882acfd86a3c3b</change>
+    </branch>
+    <branch>
+      <name>v1.2.10-maint</name>
+      <change state="vulnerable">d1bde8eda3b4027b38c7c1d5942a6388b0458803</change>
+      <change state="vulnerable">1f4831ee6ecc17d0f2008d7db15bfd9bc3b1d685</change>
+      <change state="fixed">a20e818cb3f46d2dce586327dcc49ffcd82d94cb</change>
+      <change state="fixed">a9638ae975a1c784d958e3fb2f0aab36b3ebddeb</change>
+    </branch>
+  </product>
+
+</security-notice>

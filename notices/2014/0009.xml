@@ -1,0 +1,78 @@
+<security-notice xmlns="http://security.libvirt.org/xmlns/security-notice/1.0">
+  <id>2014-0009</id>
+
+  <summary>crash when using virStorageVolUpload</summary>
+
+  <description>
+<![CDATA[Incorrect parameter validation of the virStorageVolUpload
+command could cause libvirtd to attempt to dereference NULL.]]>
+  </description>
+
+  <impact>
+<![CDATA[When using fine-grained ACLs, a user that is permitted to
+modify storage volumes but not create arbitrary domains can use bogus
+parameters to cause a denial of service attack against more privileged
+users.]]>
+  </impact>
+
+  <workaround>
+<![CDATA[Passing valid parameters to virStorageVolUpload will not
+trigger a problem.  It is also possible to prevent the denial of
+service by stopping the use of the fine grained access control
+mechanism, or by not granting users the storage_vol:data_write
+permission if they do not also have the domain:write permission; doing
+this will not prevent the crash for invalid parameters, but such a
+crash is no longer a security attack.]]>
+  </workaround>
+
+  <credits>
+    <reporter>
+      <name>Pei Zhang</name>
+      <email>pzhang@redhat.com</email>
+    </reporter>
+    <patcher>
+      <name>Luyao Huang</name>
+      <email>lhuang@redhat.com</email>
+    </patcher>
+  </credits>
+
+  <lifecycle>
+    <reported>20141202</reported>
+    <published>20141203</published>
+    <fixed>20141203</fixed>
+  </lifecycle>
+
+  <reference>
+    <advisory type="CVE" id="2014-8135"/>
+  </reference>
+
+  <product name="libvirt">
+    <repository>libvirt.git</repository>
+    <branch>
+      <name>master</name>
+      <tag state="vulnerable">v1.2.8</tag>
+      <tag state="vulnerable">v1.2.9</tag>
+      <tag state="vulnerable">v1.2.10</tag>
+      <change state="vulnerable">4a85bf3e2fa703fdc14e8c49d5017ef04832a1d7</change>
+      <change state="fixed">87b9437f8951f9d24f9a85c6bbfff0e54df8c984</change>
+      <tag state="fixed">v1.2.11</tag>
+    </branch>
+    <branch>
+      <name>v1.2.8-maint</name>
+      <change state="vulnerable">4a85bf3e2fa703fdc14e8c49d5017ef04832a1d7</change>
+      <change state="fixed">05ba8c50b15f7078ba7981f550fc59c3dc74c469</change>
+    </branch>
+    <branch>
+      <name>v1.2.9-maint</name>
+      <change state="vulnerable">4a85bf3e2fa703fdc14e8c49d5017ef04832a1d7</change>
+      <tag state="vulnerable">v1.2.9.1</tag>
+      <change state="fixed">584e876ba2057b472074dbf177d2397392d70363</change>
+    </branch>
+    <branch>
+      <name>v1.2.10-maint</name>
+      <change state="vulnerable">4a85bf3e2fa703fdc14e8c49d5017ef04832a1d7</change>
+      <change state="fixed">c89df3695b397d155ca15ac174c983ae9a77387e</change>
+    </branch>
+  </product>
+
+</security-notice>
