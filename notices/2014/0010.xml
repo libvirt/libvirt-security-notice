@@ -1,5 +1,5 @@
 <security-notice xmlns="http://security.libvirt.org/xmlns/security-notice/1.0">
-  <id>2014-0008</id>
+  <id>2014-0010</id>
 
   <summary>deadlock on failed migration</summary>
 
