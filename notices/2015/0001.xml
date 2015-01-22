@@ -1,0 +1,202 @@
+<security-notice xmlns="http://security.libvirt.org/xmlns/security-notice/1.0">
+  <id>2015-0001</id>
+
+  <summary>snapshots and save images leak VNC passwords</summary>
+
+  <description>
+<![CDATA[The two interfaces virDomainSnapshotGetXMLDesc and
+virDomainSaveImageGetXMLDesc would accept the VIR_DOMAIN_XML_SECURE
+flag in situations where virDomainGetXMLDesc did not, when
+fine-grained access control lists (ACL) are in use.  As a result, a
+client can use a snapshot or save image to bypass restrictions and
+gain access to the secured information.]]>
+  </description>
+
+  <impact>
+<![CDATA[A client using a read-write connection, and which has the
+'domain:read' ACL privilege while lacking 'domain:secure_read', can
+trigger an information leak of data by using VIR_DOMAIN_XML_SECURE
+with the affected interfaces.  Fortunately, the only data in this
+category is the value of an optional VNC password.]]>
+  </impact>
+
+  <workaround>
+<![CDATA[VNC passwords are notoriously weak (they are capped at an 8
+byte maximum length; the VNC protocol sends them in plaintext over the
+network; and FIPS mode execution prohibits the use of a VNC password),
+so it is recommended that users not create domains with a VNC password
+in the first place.  Domains that do not use VNC passwords do not
+suffer from information leaks; the use of SPICE connections is
+recommended not only because it avoids the leak, but also because
+SPICE provides better features than VNC for a guest graphics device.
+Furthermore, the leak is only possible when fine-grained ACLs are in
+use; read-only clients cannot trigger the issue.  Therefore, the
+problem is avoided if no user is granted the 'read' ACL privilege
+without also having the 'read_secure' privilege.  Another mitigation
+is that the information leak can only occur if a snapshot or save
+image exists; a user that is denied 'read_secure' is typically also
+unable to create such an image, so the leak depends on a more
+privileged user making use of that feature.]]>
+  </workaround>
+
+  <credits>
+    <reporter>
+      <name>Luyao Huang</name>
+      <email>lhuang@redhat.com</email>
+    </reporter>
+    <patcher>
+      <name>Peter Krempa</name>
+      <email>pkrempa@redhat.com</email>
+    </patcher>
+  </credits>
+
+  <lifecycle>
+    <reported>20150120</reported>
+    <published>20150122</published>
+    <fixed>20150122</fixed>
+  </lifecycle>
+
+  <reference>
+    <advisory type="CVE" id="2015-0236"/>
+  </reference>
+
+  <product name="libvirt">
+    <repository>libvirt.git</repository>
+    <branch>
+      <name>master</name>
+      <tag state="vulnerable">v1.1.0</tag>
+      <tag state="vulnerable">v1.1.1</tag>
+      <tag state="vulnerable">v1.1.2</tag>
+      <tag state="vulnerable">v1.1.3</tag>
+      <tag state="vulnerable">v1.1.4</tag>
+      <tag state="vulnerable">v1.2.0</tag>
+      <tag state="vulnerable">v1.2.1</tag>
+      <tag state="vulnerable">v1.2.2</tag>
+      <tag state="vulnerable">v1.2.3</tag>
+      <tag state="vulnerable">v1.2.4</tag>
+      <tag state="vulnerable">v1.2.5</tag>
+      <tag state="vulnerable">v1.2.6</tag>
+      <tag state="vulnerable">v1.2.7</tag>
+      <tag state="vulnerable">v1.2.8</tag>
+      <tag state="vulnerable">v1.2.9</tag>
+      <tag state="vulnerable">v1.2.10</tag>
+      <tag state="vulnerable">v1.2.11</tag>
+      <change state="vulnerable">e341435e5090677c67a0d3d4ca0393102054841f</change>
+      <change state="fixed">03c3c0c874c84dfa51ef17556062b095c6e1c0a3</change>
+      <change state="fixed">b1674ad5a97441b7e1bd5f5ebaff498ef2fbb11b</change>
+      <tag state="fixed">v1.2.12</tag>
+    </branch>
+    <branch>
+      <name>v1.1.0-maint</name>
+      <change state="vulnerable">e341435e5090677c67a0d3d4ca0393102054841f</change>
+      <change state="fixed">a976724f9a10730e1339628482a283653efdb72c</change>
+      <change state="fixed">c4c824ec818ce85de049ed5546fa8ce3c8b76e32</change>
+    </branch>
+    <branch>
+      <name>v1.1.1-maint</name>
+      <change state="vulnerable">e341435e5090677c67a0d3d4ca0393102054841f</change>
+      <change state="fixed">9a2728e1b28b67a682e55d8dd3c0d79e21f0ad37</change>
+      <change state="fixed">2c6fc46d987911e310d30621cd6fc195af102fee</change>
+    </branch>
+    <branch>
+      <name>v1.1.2-maint</name>
+      <change state="vulnerable">e341435e5090677c67a0d3d4ca0393102054841f</change>
+      <change state="fixed">6eec2b830a752c95fc2d971d3daf7626f9701290</change>
+      <change state="fixed">947c969fc248c2324e565b5e4f80a3d11733f12b</change>
+    </branch>
+    <branch>
+      <name>v1.1.3-maint</name>
+      <change state="vulnerable">e341435e5090677c67a0d3d4ca0393102054841f</change>
+      <tag state="vulnerable">v1.1.3.1</tag>
+      <tag state="vulnerable">v1.1.3.2</tag>
+      <tag state="vulnerable">v1.1.3.3</tag>
+      <tag state="vulnerable">v1.1.3.4</tag>
+      <tag state="vulnerable">v1.1.3.5</tag>
+      <tag state="vulnerable">v1.1.3.6</tag>
+      <tag state="vulnerable">v1.1.3.7</tag>
+      <tag state="vulnerable">v1.1.3.8</tag>
+      <change state="fixed">ca840e9c827fefadae2e00875b4a552b990b959f</change>
+      <change state="fixed">76d6cc3f24ab545694e77e2eafa981d861b965a4</change>
+    </branch>
+    <branch>
+      <name>v1.1.4-maint</name>
+      <change state="vulnerable">e341435e5090677c67a0d3d4ca0393102054841f</change>
+      <change state="fixed">43d16684c2018c20db1fba35542eb1d52ecb8d7a</change>
+      <change state="fixed">17defce9159c5111e7011e575ba72803a9418086</change>
+    </branch>
+    <branch>
+      <name>v1.2.0-maint</name>
+      <change state="vulnerable">e341435e5090677c67a0d3d4ca0393102054841f</change>
+      <change state="fixed">9475a25c86f3748e2069af67db69d79864b707b9</change>
+      <change state="fixed">8abca887b19600b6652654a01a78455afd4d8294</change>
+    </branch>
+    <branch>
+      <name>v1.2.1-maint</name>
+      <change state="vulnerable">e341435e5090677c67a0d3d4ca0393102054841f</change>
+      <change state="fixed">f7c70c20530954c2c1a2ce0d192d01a8f71c0093</change>
+      <change state="fixed">1f348188e0698ef2535c81d5a779189531c5df99</change>
+    </branch>
+    <branch>
+      <name>v1.2.2-maint</name>
+      <change state="vulnerable">e341435e5090677c67a0d3d4ca0393102054841f</change>
+      <change state="fixed">e99c25ca63c695a63b4c9b91ee956be4fb660772</change>
+      <change state="fixed">8107c1e3694ba4685960ec09868076379718f037</change>
+    </branch>
+    <branch>
+      <name>v1.2.3-maint</name>
+      <change state="vulnerable">e341435e5090677c67a0d3d4ca0393102054841f</change>
+      <change state="fixed">4edae3cb9600132e875a5b97cf31089a6c8f4cb2</change>
+      <change state="fixed">94d18e8f6dbe3afdc72b6df13e3eaa8861874a14</change>
+    </branch>
+    <branch>
+      <name>v1.2.4-maint</name>
+      <change state="vulnerable">e341435e5090677c67a0d3d4ca0393102054841f</change>
+      <change state="fixed">d406f0858e7e3a6199788d3c64217c69d7702032</change>
+      <change state="fixed">4700507a484aec43b02724893cbed931e52f86e0</change>
+    </branch>
+    <branch>
+      <name>v1.2.5-maint</name>
+      <change state="vulnerable">e341435e5090677c67a0d3d4ca0393102054841f</change>
+      <change state="fixed">b0b5e885f05a80d63e8a457031ea884e867244ad</change>
+      <change state="fixed">6b78ba5a15fb1077cee88cc30f1e5ba16485cd83</change>
+    </branch>
+    <branch>
+      <name>v1.2.6-maint</name>
+      <change state="vulnerable">e341435e5090677c67a0d3d4ca0393102054841f</change>
+      <change state="fixed">9b056d8daf68b6357ca05adbfddb53a85d077a1d</change>
+      <change state="fixed">b87f3f835a5c88625d9514aae9a2ddf30bc64319</change>
+    </branch>
+    <branch>
+      <name>v1.2.7-maint</name>
+      <change state="vulnerable">e341435e5090677c67a0d3d4ca0393102054841f</change>
+      <change state="fixed">cc0cc987a53f5e3825c7d972e219e08688d4480b</change>
+      <change state="fixed">aeb505814531d505f4d7718a10a96dd6dea14457</change>
+    </branch>
+    <branch>
+      <name>v1.2.8-maint</name>
+      <change state="vulnerable">e341435e5090677c67a0d3d4ca0393102054841f</change>
+      <change state="fixed">c0f3e664a68509a3d842bdc3fd126257da46d0c0</change>
+      <change state="fixed">cef411296b2513ffd80dbf9cab1f54bd0c68fe6a</change>
+    </branch>
+    <branch>
+      <name>v1.2.9-maint</name>
+      <change state="vulnerable">e341435e5090677c67a0d3d4ca0393102054841f</change>
+      <tag state="vulnerable">v1.2.9.1</tag>
+      <change state="fixed">19f8fec02d9b0a8de877d872c5b59597bd878a8d</change>
+      <change state="fixed">295f3c88ce71b8e83a489cb0d48431e124c12081</change>
+    </branch>
+    <branch>
+      <name>v1.2.10-maint</name>
+      <change state="vulnerable">e341435e5090677c67a0d3d4ca0393102054841f</change>
+      <change state="fixed">c379b17e259db4f07843c2a7a883fda1a1bd043f</change>
+      <change state="fixed">d6e10847e0cd2bd7fc1824ad65fe859987715881</change>
+    </branch>
+    <branch>
+      <name>v1.2.11-maint</name>
+      <change state="vulnerable">e341435e5090677c67a0d3d4ca0393102054841f</change>
+      <change state="fixed">41358b7e91a20c9a89b03202b8c4139f92dd1953</change>
+      <change state="fixed">7195a5fa4718d915b28bb6e3380255eb1fbf994a</change>
+    </branch>
+  </product>
+
+</security-notice>
