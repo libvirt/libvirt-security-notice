@@ -1,0 +1,114 @@
+<security-notice xmlns="http://security.libvirt.org/xmlns/security-notice/1.0">
+  <id>2015-0002</id>
+
+  <summary>small memory leak in ListAll APIs</summary>
+
+  <description>
+<![CDATA[The interfaces remoteDispatchConnectListAllDomains,
+remoteDispatchDomainListAllSnapshots,
+remoteDispatchDomainSnapshotListAllChildren,
+remoteDispatchConnectListAllStoragePools,
+remoteDispatchStoragePoolListAllVolumes,
+remoteDispatchConnectListAllNetworks,
+remoteDispatchConnectListAllInterfaces,
+remoteDispatchConnectListAllNodeDevices,
+remoteDispatchConnectListAllNWFilters,
+remoteDispatchConnectListAllSecrets, and
+remoteDispatchNetworkGetDHCPLeases each have a guarantee that on a
+successful return, an array with a trailing NULL slot will be
+allocated, with the array size at least one larger than the return
+value.  However, when using a remote connection where any of these
+calls returned a result of 0, the allocated array was leaked in the
+libvirtd server side of the API call.]]>
+  </description>
+
+  <impact>
+<![CDATA[Since each ListAll API call is accessible to read-only
+clients, a client could repeatedly call the APIs to leak memory and
+attempt turning it into an out-of-memory denial of service against
+more privileged clients.  In practice, though, since the leak is
+typically only 8 bytes per API call, an out-of-memory condition is
+unlikely to occur unless the client is calling the API so frequently
+as to be obvious that the client is attempting a denial of service
+long before memory is exhausted, so this vulnerability was not
+assigned a CVE.]]>
+  </impact>
+
+  <workaround>
+<![CDATA[It is possible to guarantee that a memory leak cannot be
+escalated into a denial of service attack by preventing read-only
+connections and avoiding the use of fine-grained Access Control Lists
+(although this does not prevent the leaks, such a problem is no longer
+a security attack).  Meanwhile, monitoring the libvirtd process for
+unexpected memory usage can be used to detect if any client is
+intentionally trying to exploit a memory leak, where restarting
+libvirtd is effective at avoiding issues where an eventual
+out-of-memory condition would cause adverse behavior.]]>
+  </workaround>
+
+  <credits>
+    <reporter>
+      <name>Eric Blake</name>
+      <email>eblake@redhat.com</email>
+    </reporter>
+    <patcher>
+      <name>Eric Blake</name>
+      <email>eblake@redhat.com</email>
+    </patcher>
+  </credits>
+
+  <lifecycle>
+    <reported>20150313</reported>
+    <published>20150316</published>
+    <fixed>20150316</fixed>
+  </lifecycle>
+
+  <product name="libvirt">
+    <repository>libvirt.git</repository>
+    <branch>
+      <name>master</name>
+      <tag state="vulnerable">v1.2.8</tag>
+      <tag state="vulnerable">v1.2.9</tag>
+      <tag state="vulnerable">v1.2.10</tag>
+      <tag state="vulnerable">v1.2.11</tag>
+      <tag state="vulnerable">v1.2.12</tag>
+      <tag state="vulnerable">v1.2.13</tag>
+      <change state="vulnerable">4f25146bf4335cb2b1b31c07dab39e26458bdf61</change>
+      <change state="fixed">3c2ff5029b83c9b33be0f1607a3c61f4f5850612</change>
+      <tag state="fixed">v1.2.14</tag>
+    </branch>
+    <branch>
+      <name>v1.2.8-maint</name>
+      <change state="vulnerable">4f25146bf4335cb2b1b31c07dab39e26458bdf61</change>
+      <change state="fixed">4fc4f669eb6a1d776b917d410b6db46e09b6feed</change>
+    </branch>
+    <branch>
+      <name>v1.2.9-maint</name>
+      <change state="vulnerable">4f25146bf4335cb2b1b31c07dab39e26458bdf61</change>
+      <tag state="vulnerable">v1.2.9.1</tag>
+      <tag state="vulnerable">v1.2.9.2</tag>
+      <change state="fixed">b9dacdd4d992ba1e5aab2e0189cf64b36a1a7e13</change>
+    </branch>
+    <branch>
+      <name>v1.2.10-maint</name>
+      <change state="vulnerable">4f25146bf4335cb2b1b31c07dab39e26458bdf61</change>
+      <change state="fixed">70461a11b3410053b89c8c9309e011ce4f62bc07</change>
+    </branch>
+    <branch>
+      <name>v1.2.11-maint</name>
+      <change state="vulnerable">4f25146bf4335cb2b1b31c07dab39e26458bdf61</change>
+      <change state="fixed">b175298be8e92eb3d7883fa3927b97db04d449be</change>
+    </branch>
+    <branch>
+      <name>v1.2.12-maint</name>
+      <change state="vulnerable">4f25146bf4335cb2b1b31c07dab39e26458bdf61</change>
+      <change state="fixed">34538870c770515fc38fa3c71f39e8765113316d</change>
+    </branch>
+    <branch>
+      <name>v1.2.13-maint</name>
+      <change state="vulnerable">4f25146bf4335cb2b1b31c07dab39e26458bdf61</change>
+      <change state="fixed">117f60ca53eb36aa7751573ac274850bd96a4799</change>
+    </branch>
+  </product>
+
+</security-notice>
