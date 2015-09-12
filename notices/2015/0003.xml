@@ -1,0 +1,129 @@
+<security-notice xmlns="http://security.libvirt.org/xmlns/security-notice/1.0">
+  <id>2015-0003</id>
+
+  <summary>denial of service through root-squash NFS storage pools</summary>
+
+  <description>
+<![CDATA[The virStorageVolCreateXML API had a bug where it could
+create a volume on a root-squash NFS mount, but then fail to remove
+that volume if later steps during the API encountered problems.  This
+was further compounded by code which used a wrong conditional on
+whether the new volume needed to have permissions changed, making it
+more likely to trigger the failed unlink attempt.  Poor error handling
+after a failed unlink left libvirt with an inconsistent view of the
+storage volume that could then result in a libvirtd crash.  While the
+libvirtd crash might be delayed until by subsequent actions from a
+read-only connection, the conditions that set up the crash can only be
+triggered by a client with a read-write connection.]]>
+  </description>
+
+  <impact>
+<![CDATA[When using fine-grained Access Control Lists (ACL), the
+virStorageVolCreateXML API only requires the storage_vol:create
+permission.  A client with this privilege but lacking the
+more-powerful domain:write permission could exploit the API bugs to
+cause a denial-of-service attack by taking down libvirtd
+through a crash.  It can also be argued that the ability to cause
+libvirt to create files which it cannot delete can be used as a
+denial-of-service attack on storage resources.]]>
+  </impact>
+
+  <workaround>
+<![CDATA[The problems with libvirt creating a file which it does not
+then clean up on error is specific to root-squash NFS, so one
+mitigation is avoiding the use of the root-squash option when
+exporting NFS volumes for use by libvirt storage pools.  Note that in
+general, the use of root-squash NFS does not add any real security (it
+makes certain tasks harder for a root user, but the root user can
+trivially change ids to another user to still perform those tasks).
+Furthermore, it is possible to prevent the denial of service attacks
+by stopping the use of the fine grained access control mechanism
+(while this does not prevent a crash, such a crash is no longer a
+security problem as there is no longer a privilege boundary between a
+user creating a volume and a user with full system access).]]>
+  </workaround>
+
+  <credits>
+    <reporter>
+      <name>Han Han</name>
+      <email>hhan@redhat.com</email>
+    </reporter>
+    <patcher>
+      <name>John Ferlan</name>
+      <email>jferlan@redhat.com</email>
+    </patcher>
+  </credits>
+
+  <lifecycle>
+    <reported>20150814</reported>
+    <published>20150903</published>
+    <fixed>20150903</fixed>
+  </lifecycle>
+
+  <reference>
+    <advisory type="CVE" id="2015-5247"/>
+  </reference>
+
+  <product name="libvirt">
+    <repository>libvirt.git</repository>
+    <branch>
+      <name>master</name>
+      <tag state="vulnerable">v1.2.14</tag>
+      <tag state="vulnerable">v1.2.15</tag>
+      <tag state="vulnerable">v1.2.16</tag>
+      <tag state="vulnerable">v1.2.17</tag>
+      <tag state="vulnerable">v1.2.18</tag>
+      <tag state="vulnerable">v1.2.19</tag>
+      <change state="vulnerable">155ca616eb231181f6978efc9e3a1eb0eb60af8a</change>
+      <change state="vulnerable">7c2d65dde2595c07d56aad1e043f7b1836592d89</change>
+      <change state="fixed">db9277a39bc364806e8d3e08a08fc128d59b7094</change>
+      <change state="fixed">691dd388aee99f8b06177540303b690586d5f5b3</change>
+      <change state="fixed">35847860f65f92e444db9730e00cdaef45198e0c</change>
+    </branch>
+    <branch>
+      <name>v1.2.14-maint</name>
+      <change state="vulnerable">155ca616eb231181f6978efc9e3a1eb0eb60af8a</change>
+      <change state="fixed">605b12068392d29beb44a8ab7d6ec176d6b05237</change>
+      <change state="fixed">454cb7c40dbcff84192094963d71369ac7d94546</change>
+    </branch>
+    <branch>
+      <name>v1.2.15-maint</name>
+      <change state="vulnerable">155ca616eb231181f6978efc9e3a1eb0eb60af8a</change>
+      <change state="fixed">3c41b3ea5e68f391b8ff901082608bda5f7f3fbc</change>
+      <change state="fixed">fe2cf73800e3be87d1d4d811facb3f2be48126e5</change>
+    </branch>
+    <branch>
+      <name>v1.2.16-maint</name>
+      <change state="vulnerable">155ca616eb231181f6978efc9e3a1eb0eb60af8a</change>
+      <change state="vulnerable">7c2d65dde2595c07d56aad1e043f7b1836592d89</change>
+      <change state="fixed">9e48400f4606bac16b7e4db195f610928c3d5a04</change>
+      <change state="fixed">2f4b41861c1729ff4b754986782d7428ccdca455</change>
+      <change state="fixed">7f0505705c70f7eb1e435a2e7732d1a74abfadfd</change>
+    </branch>
+    <branch>
+      <name>v1.2.17-maint</name>
+      <change state="vulnerable">155ca616eb231181f6978efc9e3a1eb0eb60af8a</change>
+      <change state="vulnerable">7c2d65dde2595c07d56aad1e043f7b1836592d89</change>
+      <change state="fixed">d055989083df4bf68eb1388d327ebffb3501bb83</change>
+      <change state="fixed">98242f94cd181f0257535479369054f07f951b21</change>
+      <change state="fixed">a3ee6885d95a2ce6fb7e58bb0737cfb1612e0fb7</change>
+    </branch>
+    <branch>
+      <name>v1.2.18-maint</name>
+      <change state="vulnerable">155ca616eb231181f6978efc9e3a1eb0eb60af8a</change>
+      <change state="vulnerable">7c2d65dde2595c07d56aad1e043f7b1836592d89</change>
+      <change state="fixed">e63b32e22dafd99547f82f5383fdbf58b5f651a1</change>
+      <change state="fixed">075eb526c9817d9d8e3a759e3fbe180d8d326dcf</change>
+      <change state="fixed">966cc922221be2b8cc6a9842ed0dc4cf1568a7b3</change>
+    </branch>
+    <branch>
+      <name>v1.2.19-maint</name>
+      <change state="vulnerable">155ca616eb231181f6978efc9e3a1eb0eb60af8a</change>
+      <change state="vulnerable">7c2d65dde2595c07d56aad1e043f7b1836592d89</change>
+      <change state="fixed">e0025d2967bbe3f283937216c9e2c12b6e9d1010</change>
+      <change state="fixed">8b1d84e640f1a6e6ebb47caf23a664e2f651b32d</change>
+      <change state="fixed">3468542f06f6f5dc94defa1603c6a6adea3e2da8</change>
+    </branch>
+  </product>
+
+</security-notice>
