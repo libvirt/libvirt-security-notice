@@ -166,6 +166,16 @@
       <change state="fixed">418a165da6e61ab548349408e4ba0c0d612ef5af</change>
     </branch>
     <branch>
+      <name>v1.0.0-maint</name>
+      <change state="vulnerable">9d73efdbe3ea61a13a11fdc24a2cb530eaa0b66f</change>
+      <change state="fixed">7ea825672e9b9ab5f2986f4f3c2b2b3f254f1485</change>
+    </branch>
+    <branch>
+      <name>v1.0.1-maint</name>
+      <change state="vulnerable">9d73efdbe3ea61a13a11fdc24a2cb530eaa0b66f</change>
+      <change state="fixed">36386a9356ca161a325af51a0b0b555090afebff</change>
+    </branch>
+    <branch>
       <name>v1.0.2-maint</name>
       <change state="vulnerable">9d73efdbe3ea61a13a11fdc24a2cb530eaa0b66f</change>
       <change state="fixed">139a4265774b7aa194f8479a82188bc1337cd7a4</change>
@@ -364,10 +374,25 @@
       <change state="fixed">2d5370eba6b52f44cf832eba28f162c55331a47c</change>
     </branch>
     <branch>
+      <name>v1.3.2-maint</name>
+      <change state="vulnerable">9d73efdbe3ea61a13a11fdc24a2cb530eaa0b66f</change>
+      <change state="fixed">c9317fcdd431cff4b17aa72cacfc6110f046ea77</change>
+    </branch>
+    <branch>
       <name>v1.3.3-maint</name>
       <tag state="vulnerable">v1.3.3.1</tag>
       <change state="vulnerable">9d73efdbe3ea61a13a11fdc24a2cb530eaa0b66f</change>
       <change state="fixed">881441f84a30cd3921df313a982f7162d7ca04f4</change>
+    </branch>
+    <branch>
+      <name>v1.3.4-maint</name>
+      <change state="vulnerable">9d73efdbe3ea61a13a11fdc24a2cb530eaa0b66f</change>
+      <change state="fixed">040c033292ad566d2ef6662c88defd511a54c13c</change>
+    </branch>
+    <branch>
+      <name>v1.3.5-maint</name>
+      <change state="vulnerable">9d73efdbe3ea61a13a11fdc24a2cb530eaa0b66f</change>
+      <change state="fixed">46d27cde24b495320dc28bbf79134e0ce48c11b8</change>
     </branch>
   </product>
 
