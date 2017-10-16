@@ -1,0 +1,94 @@
+<security-notice xmlns="http://security.libvirt.org/xmlns/security-notice/1.0">
+  <id>2017-0002</id>
+
+  <summary>TLS certificate verification disabled for clients</summary>
+
+  <description>
+<![CDATA[The default_tls_x509_verify (and related) parameters in qemu.conf
+control whether the TLS servers in QEMU request & verify certificates
+from clients. This works as a simple access control system for QEMU
+servers by requiring the CA to issue certs to permitted clients.
+This use of client certificates is disabled by default, since it
+requires extra work to issue client certificates.
+
+Unfortunately the libvirt code was using these configuration parameters
+when setting up both TLS clients and servers in QEMU. The result was that
+TLS clients for character devices and disk devices had verification turned
+off, meaning they would ignore any errors while validating the server
+certificate.]]>
+  </description>
+
+  <impact>
+    <![CDATA[A MITM attacker can attack any client connection made by QEMU's
+character devices and disk devices which have TLS enabled. The attacker can
+send an arbitrary certificate back to the client QEMU and it will ignore all
+errors that result during validation.]]>
+  </impact>
+
+  <workaround>
+    <![CDATA[Enable the 'default_tls_x509_verify' parameter in qemu.conf
+restart libvirtd. This will trigger libvirt to turn on certificate verification
+in QEMU clients. Unfortunately this will also turn on use of client
+certificates in QEMU servers. ]]>
+  </workaround>
+
+  <credits>
+    <reporter>
+      <name>Daniel P. Berrange</name>
+      <email>berrange@redhat.com</email>
+    </reporter>
+    <patcher>
+      <name>Daniel P. Berrange</name>
+      <email>berrange@redhat.com</email>
+    </patcher>
+  </credits>
+
+  <lifecycle>
+    <reported>20171005</reported>
+    <published>20171016</published>
+    <fixed>20171016</fixed>
+  </lifecycle>
+
+  <reference>
+    <advisory type="CVE" id="2017-1000256"/>
+  </reference>
+
+  <product name="libvirt">
+    <repository>libvirt.git</repository>
+    <branch>
+      <name>master</name>
+      <change state="vulnerable">ce61c16450d4992612d1fc6f39a39e79bfccead5</change>
+      <change state="fixed">441d3eb6d1be940a67ce45a286602a967601b157</change>
+      <tag state="vulnerable">v2.3.0</tag>
+      <tag state="vulnerable">v2.4.0</tag>
+      <tag state="vulnerable">v2.5.0</tag>
+      <tag state="vulnerable">v3.0.0</tag>
+      <tag state="vulnerable">v3.1.0</tag>
+      <tag state="vulnerable">v3.2.0</tag>
+      <tag state="vulnerable">v3.3.0</tag>
+      <tag state="vulnerable">v3.4.0</tag>
+      <tag state="vulnerable">v3.5.0</tag>
+      <tag state="vulnerable">v3.6.0</tag>
+      <tag state="vulnerable">v3.7.0</tag>
+      <tag state="vulnerable">v3.8.0</tag>
+      <tag state="fixed">v3.9.0</tag>
+    </branch>
+    <branch>
+      <name>v3.0-maint</name>
+      <change state="vulnerable">ce61c16450d4992612d1fc6f39a39e79bfccead5</change>
+      <change state="fixed">16daadc708be65c2681f54d33ac4004ccaf6e82d</change>
+    </branch>
+    <branch>
+      <name>v3.2-maint</name>
+      <change state="vulnerable">ce61c16450d4992612d1fc6f39a39e79bfccead5</change>
+      <tag state="vulnerable">v3.2.1</tag>
+      <change state="fixed">9e6bc47bb541d8eea10cdd5704ea7f5e699bf0ba</change>
+    </branch>
+    <branch>
+      <name>v3.7-maint</name>
+      <change state="vulnerable">ce61c16450d4992612d1fc6f39a39e79bfccead5</change>
+      <change state="fixed">dc6c41798d1eb5c52c75365ffa22f7672709dfa7</change>
+    </branch>
+  </product>
+
+</security-notice>
