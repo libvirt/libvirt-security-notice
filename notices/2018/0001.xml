@@ -8,7 +8,7 @@
 	     a set of changes in libvirt to enable mitigation of
 	     the Spectre hardware flaws by providing extra CPU
 	     models with the "spec-ctrl" feature . Refer to https://spectreattack.com/
-	     for further backend information.]]>
+	     for further background information.]]>
   </description>
 
   <credits>
