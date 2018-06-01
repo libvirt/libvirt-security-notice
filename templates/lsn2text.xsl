@@ -130,9 +130,11 @@
 	<xsl:text>                </xsl:text>
       </xsl:if>
       <xsl:value-of select="lsn:name"/>
-      <xsl:text> &lt;</xsl:text>
-      <xsl:value-of select="lsn:email"/>
-      <xsl:text>&gt;</xsl:text>
+      <xsl:if test="count(lsn:email) = 1">
+	<xsl:text> &lt;</xsl:text>
+	<xsl:value-of select="lsn:email"/>
+	<xsl:text>&gt;</xsl:text>
+      </xsl:if>
       <xsl:if test="position() != last()">
 	<xsl:value-of select="$nl"/>
       </xsl:if>
@@ -144,9 +146,11 @@
 	<xsl:text>                </xsl:text>
       </xsl:if>
       <xsl:value-of select="lsn:name"/>
-      <xsl:text> &lt;</xsl:text>
-      <xsl:value-of select="lsn:email"/>
-      <xsl:text>&gt;</xsl:text>
+      <xsl:if test="count(lsn:email) = 1">
+	<xsl:text> &lt;</xsl:text>
+	<xsl:value-of select="lsn:email"/>
+	<xsl:text>&gt;</xsl:text>
+      </xsl:if>
       <xsl:if test="position() != last()">
 	<xsl:value-of select="concat(',',$nl)"/>
       </xsl:if>

@@ -118,7 +118,12 @@
 	    <th></th>
 	  </xsl:if>
 	  <td>
-	    <a href="mailto:{lsn:email}"><xsl:value-of select="lsn:name"/></a>
+	    <xsl:if test="count(lsn:email) = 1">
+	      <a href="mailto:{lsn:email}"><xsl:value-of select="lsn:name"/></a>
+	    </xsl:if>
+	    <xsl:if test="count(lsn:email) = 0">
+	      <xsl:value-of select="lsn:name"/>
+	    </xsl:if>
 	  </td>
 	</tr>
       </xsl:for-each>
@@ -131,7 +136,12 @@
 	    <th></th>
 	  </xsl:if>
 	  <td>
-	    <a href="mailto:{lsn:email}"><xsl:value-of select="lsn:name"/></a>
+	    <xsl:if test="count(lsn:email) = 1">
+	      <a href="mailto:{lsn:email}"><xsl:value-of select="lsn:name"/></a>
+	    </xsl:if>
+	    <xsl:if test="count(lsn:email) = 0">
+	      <xsl:value-of select="lsn:name"/>
+	    </xsl:if>
 	  </td>
 	</tr>
       </xsl:for-each>
