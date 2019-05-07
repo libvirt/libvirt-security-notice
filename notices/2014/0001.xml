@@ -109,6 +109,14 @@ file]]>
       <change state="fixed">35ed9796981cf7b939f28b60ca828824a0488a3a</change>
     </branch>
     <branch>
+      <name>v1.0.0-maint</name>
+      <change state="vulnerable">f4324e32927580e3620f0de3a0ec80334936e263</change>
+    </branch>
+    <branch>
+      <name>v1.0.1-maint</name>
+      <change state="vulnerable">f4324e32927580e3620f0de3a0ec80334936e263</change>
+    </branch>
+    <branch>
       <name>v1.0.2-maint</name>
       <change state="vulnerable">f4324e32927580e3620f0de3a0ec80334936e263</change>
       <change state="fixed">7fad864afa2f7137f5ebfa7874c70d2a2ca5c6b1</change>

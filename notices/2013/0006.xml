@@ -48,6 +48,7 @@ or deny the permission bits in the access control policy.]]>
       <name>master</name>
       <tag state="vulnerable">v1.1.0</tag>
       <change state="vulnerable">d47eff88fe50e43a36671f6d8d0eeda52835d5e0</change>
+      <tag state="fixed">v1.1.1</tag>
       <change state="fixed">96518d4316b711c72205117f8d5c967d5127bbb6</change>
     </branch>
     <branch>

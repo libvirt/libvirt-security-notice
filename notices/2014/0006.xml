@@ -115,9 +115,19 @@ virDomainBlockCopy API is immune to the problem.]]>
       <tag state="vulnerable">v1.2.5</tag>
       <change state="vulnerable">35c7701c64508f975dfeb8379c56b4b6d0d9b71c</change>
       <change state="vulnerable">ff5f30b6bfa317f2a4c33f69289baf4e887eb048</change>
+      <tag state="fixed">v1.2.6</tag>
       <change state="fixed">02b364e186d487f54ed410c01af042f23e812d42</change>
       <change state="fixed">42619ed05d7924978f3e6e2399522fc6f30607de</change>
-      <tag state="fixed">v1.2.6</tag>
+    </branch>
+    <branch>
+      <name>v1.0.0-maint</name>
+      <change state="vulnerable">35c7701c64508f975dfeb8379c56b4b6d0d9b71c</change>
+      <change state="vulnerable">ff5f30b6bfa317f2a4c33f69289baf4e887eb048</change>
+    </branch>
+    <branch>
+      <name>v1.0.1-maint</name>
+      <change state="vulnerable">35c7701c64508f975dfeb8379c56b4b6d0d9b71c</change>
+      <change state="vulnerable">ff5f30b6bfa317f2a4c33f69289baf4e887eb048</change>
     </branch>
     <branch>
       <name>v1.0.2-maint</name>
@@ -142,8 +152,6 @@ virDomainBlockCopy API is immune to the problem.]]>
     </branch>
     <branch>
       <name>v1.0.5-maint</name>
-      <change state="vulnerable">35c7701c64508f975dfeb8379c56b4b6d0d9b71c</change>
-      <change state="vulnerable">0135324b9fc0f4b803fcd1464c83ce458ca1b1e0</change>
       <tag state="vulnerable">v1.0.5.1</tag>
       <tag state="vulnerable">v1.0.5.2</tag>
       <tag state="vulnerable">v1.0.5.3</tag>
@@ -153,6 +161,8 @@ virDomainBlockCopy API is immune to the problem.]]>
       <tag state="vulnerable">v1.0.5.7</tag>
       <tag state="vulnerable">v1.0.5.8</tag>
       <tag state="vulnerable">v1.0.5.9</tag>
+      <change state="vulnerable">35c7701c64508f975dfeb8379c56b4b6d0d9b71c</change>
+      <change state="vulnerable">0135324b9fc0f4b803fcd1464c83ce458ca1b1e0</change>
       <change state="fixed">39b5123dc0f08955b68d91a14bdc577ffd1a9558</change>
       <change state="fixed">17df6a9b3997117b43f6caa56b43c54d1841d93c</change>
     </branch>
@@ -186,16 +196,16 @@ virDomainBlockCopy API is immune to the problem.]]>
     </branch>
     <branch>
       <name>v1.1.3-maint</name>
-      <change state="vulnerable">35c7701c64508f975dfeb8379c56b4b6d0d9b71c</change>
-      <change state="vulnerable">0c4822c17b6cdcce812fb9201f19d30232b3812d</change>
       <tag state="vulnerable">v1.1.3.1</tag>
       <tag state="vulnerable">v1.1.3.2</tag>
       <tag state="vulnerable">v1.1.3.3</tag>
       <tag state="vulnerable">v1.1.3.4</tag>
       <tag state="vulnerable">v1.1.3.5</tag>
+      <change state="vulnerable">35c7701c64508f975dfeb8379c56b4b6d0d9b71c</change>
+      <change state="vulnerable">0c4822c17b6cdcce812fb9201f19d30232b3812d</change>
+      <tag state="fixed">v1.1.3.6</tag>
       <change state="fixed">ea1d4666d885ec68480f22a65d1a275a293484cd</change>
       <change state="fixed">e7ee7542bb9d66539a0ec8d4a1e72efdfb8ccebe</change>
-      <tag state="fixed">v1.1.3.6</tag>
     </branch>
     <branch>
       <name>v1.1.4-maint</name>

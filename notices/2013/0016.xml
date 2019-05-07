@@ -68,12 +68,27 @@ daemon]]>
       <tag state="vulnerable">v0.10.2.6</tag>
       <tag state="vulnerable">v0.10.2.7</tag>
       <change state="vulnerable">0fc89098a68f0f6962de8be4fc03ddd960ffbf08</change>
-      <change state="fixed">v0.10.2.8</change>
+      <tag state="fixed">v0.10.2.8</tag>
       <change state="fixed">ecad40d8b84864bee4495d1447902a6206a39a4d</change>
     </branch>
     <branch>
+      <name>v1.0.0-maint</name>
+      <change state="vulnerable">0fc89098a68f0f6962de8be4fc03ddd960ffbf08</change>
+    </branch>
+    <branch>
+      <name>v1.0.1-maint</name>
+      <change state="vulnerable">0fc89098a68f0f6962de8be4fc03ddd960ffbf08</change>
+    </branch>
+    <branch>
+      <name>v1.0.2-maint</name>
+      <change state="vulnerable">0fc89098a68f0f6962de8be4fc03ddd960ffbf08</change>
+    </branch>
+    <branch>
+      <name>v1.0.3-maint</name>
+      <change state="vulnerable">0fc89098a68f0f6962de8be4fc03ddd960ffbf08</change>
+    </branch>
+    <branch>
       <name>v1.0.4-maint</name>
-      <tag state="vulnerable"></tag>
       <change state="vulnerable">0fc89098a68f0f6962de8be4fc03ddd960ffbf08</change>
       <change state="fixed">b68a721d45085115d9d1ffd5329aff1fdaf1845a</change>
     </branch>
@@ -90,19 +105,16 @@ daemon]]>
     </branch>
     <branch>
       <name>v1.0.6-maint</name>
-      <tag state="vulnerable"></tag>
       <change state="vulnerable">0fc89098a68f0f6962de8be4fc03ddd960ffbf08</change>
       <change state="fixed">c56f17e5435858f30471eb3da3a19a3ccd9d5a3b</change>
     </branch>
     <branch>
       <name>v1.1.0-maint</name>
-      <tag state="vulnerable"></tag>
       <change state="vulnerable">0fc89098a68f0f6962de8be4fc03ddd960ffbf08</change>
       <change state="fixed">7d7e29bb939e3caabe8ddfef42bb44c0011436f3</change>
     </branch>
     <branch>
       <name>v1.1.1-maint</name>
-      <tag state="vulnerable"></tag>
       <change state="vulnerable">0fc89098a68f0f6962de8be4fc03ddd960ffbf08</change>
       <change state="fixed">02340c7f67c381395aeede4586bd3b1ff3f5d291</change>
     </branch>

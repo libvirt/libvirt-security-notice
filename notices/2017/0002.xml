@@ -57,8 +57,6 @@ certificates in QEMU servers. ]]>
     <repository>libvirt.git</repository>
     <branch>
       <name>master</name>
-      <change state="vulnerable">ce61c16450d4992612d1fc6f39a39e79bfccead5</change>
-      <change state="fixed">441d3eb6d1be940a67ce45a286602a967601b157</change>
       <tag state="vulnerable">v2.3.0</tag>
       <tag state="vulnerable">v2.4.0</tag>
       <tag state="vulnerable">v2.5.0</tag>
@@ -71,7 +69,9 @@ certificates in QEMU servers. ]]>
       <tag state="vulnerable">v3.6.0</tag>
       <tag state="vulnerable">v3.7.0</tag>
       <tag state="vulnerable">v3.8.0</tag>
+      <change state="vulnerable">ce61c16450d4992612d1fc6f39a39e79bfccead5</change>
       <tag state="fixed">v3.9.0</tag>
+      <change state="fixed">441d3eb6d1be940a67ce45a286602a967601b157</change>
     </branch>
     <branch>
       <name>v3.0-maint</name>
@@ -80,8 +80,8 @@ certificates in QEMU servers. ]]>
     </branch>
     <branch>
       <name>v3.2-maint</name>
-      <change state="vulnerable">ce61c16450d4992612d1fc6f39a39e79bfccead5</change>
       <tag state="vulnerable">v3.2.1</tag>
+      <change state="vulnerable">ce61c16450d4992612d1fc6f39a39e79bfccead5</change>
       <change state="fixed">9e6bc47bb541d8eea10cdd5704ea7f5e699bf0ba</change>
     </branch>
     <branch>

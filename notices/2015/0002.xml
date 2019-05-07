@@ -74,8 +74,8 @@ out-of-memory condition would cause adverse behavior.]]>
       <tag state="vulnerable">v1.2.12</tag>
       <tag state="vulnerable">v1.2.13</tag>
       <change state="vulnerable">4f25146bf4335cb2b1b31c07dab39e26458bdf61</change>
-      <change state="fixed">3c2ff5029b83c9b33be0f1607a3c61f4f5850612</change>
       <tag state="fixed">v1.2.14</tag>
+      <change state="fixed">3c2ff5029b83c9b33be0f1607a3c61f4f5850612</change>
     </branch>
     <branch>
       <name>v1.2.8-maint</name>
@@ -84,9 +84,10 @@ out-of-memory condition would cause adverse behavior.]]>
     </branch>
     <branch>
       <name>v1.2.9-maint</name>
-      <change state="vulnerable">4f25146bf4335cb2b1b31c07dab39e26458bdf61</change>
       <tag state="vulnerable">v1.2.9.1</tag>
       <tag state="vulnerable">v1.2.9.2</tag>
+      <change state="vulnerable">4f25146bf4335cb2b1b31c07dab39e26458bdf61</change>
+      <tag state="fixed">v1.2.9.3</tag>
       <change state="fixed">b9dacdd4d992ba1e5aab2e0189cf64b36a1a7e13</change>
     </branch>
     <branch>
@@ -107,6 +108,7 @@ out-of-memory condition would cause adverse behavior.]]>
     <branch>
       <name>v1.2.13-maint</name>
       <change state="vulnerable">4f25146bf4335cb2b1b31c07dab39e26458bdf61</change>
+      <tag state="fixed">v1.2.13.1</tag>
       <change state="fixed">117f60ca53eb36aa7751573ac274850bd96a4799</change>
     </branch>
   </product>

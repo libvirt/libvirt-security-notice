@@ -74,6 +74,10 @@ daemon itself may crash.]]>
       <tag state="fixed">v0.9.0</tag>
       <change state="fixed">f44bfb7fb978c9313ce050a1c4149bf04aa0a670</change>
     </branch>
+    <branch>
+      <name>v0.8.3-maint</name>
+      <change state="vulnerable">4a00119a0ac6828b0f54ed8ecc9f4c338e167d6b</change>
+    </branch>
   </product>
 
 </security-notice>

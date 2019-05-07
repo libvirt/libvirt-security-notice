@@ -54,8 +54,8 @@ crash is no longer a security attack.]]>
       <tag state="vulnerable">v1.2.9</tag>
       <tag state="vulnerable">v1.2.10</tag>
       <change state="vulnerable">4a85bf3e2fa703fdc14e8c49d5017ef04832a1d7</change>
-      <change state="fixed">87b9437f8951f9d24f9a85c6bbfff0e54df8c984</change>
       <tag state="fixed">v1.2.11</tag>
+      <change state="fixed">87b9437f8951f9d24f9a85c6bbfff0e54df8c984</change>
     </branch>
     <branch>
       <name>v1.2.8-maint</name>
@@ -64,8 +64,9 @@ crash is no longer a security attack.]]>
     </branch>
     <branch>
       <name>v1.2.9-maint</name>
-      <change state="vulnerable">4a85bf3e2fa703fdc14e8c49d5017ef04832a1d7</change>
       <tag state="vulnerable">v1.2.9.1</tag>
+      <change state="vulnerable">4a85bf3e2fa703fdc14e8c49d5017ef04832a1d7</change>
+      <tag state="fixed">v1.2.9.2</tag>
       <change state="fixed">584e876ba2057b472074dbf177d2397392d70363</change>
     </branch>
     <branch>

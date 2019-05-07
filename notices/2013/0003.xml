@@ -69,6 +69,26 @@ interfaces.]]>
       <change state="vulnerable">a3cf061c824aac0c4cb06ac91ac0bff612bf0e86</change>
     </branch>
     <branch>
+      <name>v1.0.0-maint</name>
+      <change state="vulnerable">a3cf061c824aac0c4cb06ac91ac0bff612bf0e86</change>
+    </branch>
+    <branch>
+      <name>v1.0.1-maint</name>
+      <change state="vulnerable">a3cf061c824aac0c4cb06ac91ac0bff612bf0e86</change>
+    </branch>
+    <branch>
+      <name>v1.0.2-maint</name>
+      <change state="vulnerable">a3cf061c824aac0c4cb06ac91ac0bff612bf0e86</change>
+    </branch>
+    <branch>
+      <name>v1.0.3-maint</name>
+      <change state="vulnerable">a3cf061c824aac0c4cb06ac91ac0bff612bf0e86</change>
+    </branch>
+    <branch>
+      <name>v1.0.4-maint</name>
+      <change state="vulnerable">a3cf061c824aac0c4cb06ac91ac0bff612bf0e86</change>
+    </branch>
+    <branch>
       <name>v1.0.5-maint</name>
       <tag state="vulnerable">v1.0.5.1</tag>
       <tag state="vulnerable">v1.0.5.2</tag>
@@ -78,6 +98,7 @@ interfaces.]]>
       <tag state="vulnerable">v1.0.5.6</tag>
       <tag state="vulnerable">v1.0.5.7</tag>
       <tag state="vulnerable">v1.0.5.8</tag>
+      <tag state="vulnerable">v1.0.5.9</tag>
       <change state="vulnerable">a3cf061c824aac0c4cb06ac91ac0bff612bf0e86</change>
     </branch>
     <branch>

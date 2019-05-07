@@ -84,8 +84,16 @@ ACL privilege without also having the 'read_secure' privilege.]]>
       <tag state="vulnerable">v1.2.9</tag>
       <tag state="vulnerable">v1.2.10</tag>
       <change state="vulnerable">28f8dfdcccd4c0f69063ef741545b37d8a7f7935</change>
-      <change state="fixed">b1674ad5a97441b7e1bd5f5ebaff498ef2fbb11b</change>
       <tag state="fixed">v1.2.11</tag>
+      <change state="fixed">b1674ad5a97441b7e1bd5f5ebaff498ef2fbb11b</change>
+    </branch>
+    <branch>
+      <name>v1.0.0-maint</name>
+      <change state="vulnerable">28f8dfdcccd4c0f69063ef741545b37d8a7f7935</change>
+    </branch>
+    <branch>
+      <name>v1.0.1-maint</name>
+      <change state="vulnerable">28f8dfdcccd4c0f69063ef741545b37d8a7f7935</change>
     </branch>
     <branch>
       <name>v1.0.2-maint</name>
@@ -104,7 +112,6 @@ ACL privilege without also having the 'read_secure' privilege.]]>
     </branch>
     <branch>
       <name>v1.0.5-maint</name>
-      <change state="vulnerable">28f8dfdcccd4c0f69063ef741545b37d8a7f7935</change>
       <tag state="vulnerable">v1.0.5.1</tag>
       <tag state="vulnerable">v1.0.5.2</tag>
       <tag state="vulnerable">v1.0.5.3</tag>
@@ -114,6 +121,7 @@ ACL privilege without also having the 'read_secure' privilege.]]>
       <tag state="vulnerable">v1.0.5.7</tag>
       <tag state="vulnerable">v1.0.5.8</tag>
       <tag state="vulnerable">v1.0.5.9</tag>
+      <change state="vulnerable">28f8dfdcccd4c0f69063ef741545b37d8a7f7935</change>
       <change state="fixed">107f1ff20edc805433cade910a00328158b1c231</change>
     </branch>
     <branch>
@@ -138,15 +146,15 @@ ACL privilege without also having the 'read_secure' privilege.]]>
     </branch>
     <branch>
       <name>v1.1.3-maint</name>
-      <change state="vulnerable">28f8dfdcccd4c0f69063ef741545b37d8a7f7935</change>
       <tag state="vulnerable">v1.1.3.1</tag>
       <tag state="vulnerable">v1.1.3.2</tag>
       <tag state="vulnerable">v1.1.3.3</tag>
       <tag state="vulnerable">v1.1.3.4</tag>
       <tag state="vulnerable">v1.1.3.5</tag>
       <tag state="vulnerable">v1.1.3.6</tag>
-      <change state="fixed">bdbcf66ae72f82d45faa889a1208444f83f5756b</change>
+      <change state="vulnerable">28f8dfdcccd4c0f69063ef741545b37d8a7f7935</change>
       <tag state="fixed">v1.1.3.7</tag>
+      <change state="fixed">bdbcf66ae72f82d45faa889a1208444f83f5756b</change>
     </branch>
     <branch>
       <name>v1.1.4-maint</name>
@@ -201,8 +209,8 @@ ACL privilege without also having the 'read_secure' privilege.]]>
     <branch>
       <name>v1.2.9-maint</name>
       <change state="vulnerable">28f8dfdcccd4c0f69063ef741545b37d8a7f7935</change>
-      <change state="fixed">744ddb15e0feaf2d6603a88dc8ffc3a7eb0a452d</change>
       <tag state="fixed">v1.2.9.1</tag>
+      <change state="fixed">744ddb15e0feaf2d6603a88dc8ffc3a7eb0a452d</change>
     </branch>
     <branch>
       <name>v1.2.10-maint</name>

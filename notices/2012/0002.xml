@@ -66,7 +66,7 @@ non-allocated memory.]]>
       <change state="vulnerable">40624d32fb54920e4aa434fbb2b8999d17e02931</change>
       <tag state="fixed">v0.9.11.5</tag>
       <change state="fixed">45d6729f98e9842b139b809078d43f1f7a8c779b</change>
-   </branch>
+    </branch>
     <branch>
       <name>v0.9.12-maint</name>
       <change state="vulnerable">40624d32fb54920e4aa434fbb2b8999d17e02931</change>

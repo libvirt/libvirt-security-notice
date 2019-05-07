@@ -82,9 +82,9 @@ privileged user making use of that feature.]]>
       <tag state="vulnerable">v1.2.10</tag>
       <tag state="vulnerable">v1.2.11</tag>
       <change state="vulnerable">e341435e5090677c67a0d3d4ca0393102054841f</change>
-      <change state="fixed">03c3c0c874c84dfa51ef17556062b095c6e1c0a3</change>
-      <change state="fixed">b1674ad5a97441b7e1bd5f5ebaff498ef2fbb11b</change>
       <tag state="fixed">v1.2.12</tag>
+      <change state="fixed">03c3c0c874c84dfa51ef17556062b095c6e1c0a3</change>
+      <change state="fixed">b347c0c2a321ec5c20aae214927949832a288c5a</change>
     </branch>
     <branch>
       <name>v1.1.0-maint</name>
@@ -106,7 +106,6 @@ privileged user making use of that feature.]]>
     </branch>
     <branch>
       <name>v1.1.3-maint</name>
-      <change state="vulnerable">e341435e5090677c67a0d3d4ca0393102054841f</change>
       <tag state="vulnerable">v1.1.3.1</tag>
       <tag state="vulnerable">v1.1.3.2</tag>
       <tag state="vulnerable">v1.1.3.3</tag>
@@ -115,6 +114,8 @@ privileged user making use of that feature.]]>
       <tag state="vulnerable">v1.1.3.6</tag>
       <tag state="vulnerable">v1.1.3.7</tag>
       <tag state="vulnerable">v1.1.3.8</tag>
+      <change state="vulnerable">e341435e5090677c67a0d3d4ca0393102054841f</change>
+      <tag state="fixed">v1.1.3.9</tag>
       <change state="fixed">ca840e9c827fefadae2e00875b4a552b990b959f</change>
       <change state="fixed">76d6cc3f24ab545694e77e2eafa981d861b965a4</change>
     </branch>
@@ -180,8 +181,9 @@ privileged user making use of that feature.]]>
     </branch>
     <branch>
       <name>v1.2.9-maint</name>
-      <change state="vulnerable">e341435e5090677c67a0d3d4ca0393102054841f</change>
       <tag state="vulnerable">v1.2.9.1</tag>
+      <change state="vulnerable">e341435e5090677c67a0d3d4ca0393102054841f</change>
+      <tag state="fixed">v1.2.9.2</tag>
       <change state="fixed">19f8fec02d9b0a8de877d872c5b59597bd878a8d</change>
       <change state="fixed">295f3c88ce71b8e83a489cb0d48431e124c12081</change>
     </branch>

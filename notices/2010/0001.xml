@@ -57,11 +57,8 @@ expected to be a raw disks file and writing a qcow2 header into it.]]>
       <tag state="vulnerable">v0.8.0</tag>
       <tag state="vulnerable">v0.8.1</tag>
       <tag state="vulnerable">v0.8.2</tag>
-      <!-- SELinux driver -->
       <change state="vulnerable">fe627697a3830cd2db0efcc201d8caa9e171263d</change>
-      <!-- DAC driver -->
       <change state="vulnerable">15f5eaa09895d68b849a0b0ec458acdafe75d080</change>
-      <!-- CGroups driver -->
       <change state="vulnerable">117d04fb1d388df700cc37c4d2a68189fab280c0</change>
       <tag state="fixed">v0.8.3</tag>
       <change state="fixed">68719c4bddb85fbcc931a5b7d99ac7c8a0af09b0</change>

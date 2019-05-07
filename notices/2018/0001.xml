@@ -151,9 +151,8 @@
       <tag state="vulnerable">v3.8.0</tag>
       <tag state="vulnerable">v3.9.0</tag>
       <tag state="vulnerable">v3.10.0</tag>
-      <tag state="vulnerable">v4.0.0</tag>
-      <tag state="fixed">v4.1.0</tag>
       <change state="vulnerable">23ad665cb05ef9ce7d298cc34bff5efb95ef6948</change>
+      <tag state="fixed">v4.0.0</tag>
       <change state="fixed">24d504396c3c05eff87d29173a224e2faaeb2637</change>
       <change state="fixed">b2042020c32b74069fa5365b5e966537aaba8cf6</change>
       <change state="fixed">7bb4ce9761dfbd1620ddffb26fbd6f0ff1fedf3f</change>
@@ -165,6 +164,10 @@
       <change state="fixed">2e3b220a874e558e54678afd7cf49466fe605e09</change>
       <change state="fixed">6b7e7d1cc24a28a9f5ece8626f807189647d14b4</change>
       <change state="fixed">6d4a3cd42781babed7d29b061e220ebff24dd43e</change>
+    </branch>
+    <branch>
+      <name>v0.8.3-maint</name>
+      <change state="vulnerable">23ad665cb05ef9ce7d298cc34bff5efb95ef6948</change>
     </branch>
     <branch>
       <name>v0.9.6-maint</name>
@@ -208,6 +211,26 @@
       <change state="vulnerable">23ad665cb05ef9ce7d298cc34bff5efb95ef6948</change>
     </branch>
     <branch>
+      <name>v1.0.0-maint</name>
+      <change state="vulnerable">23ad665cb05ef9ce7d298cc34bff5efb95ef6948</change>
+    </branch>
+    <branch>
+      <name>v1.0.1-maint</name>
+      <change state="vulnerable">23ad665cb05ef9ce7d298cc34bff5efb95ef6948</change>
+    </branch>
+    <branch>
+      <name>v1.0.2-maint</name>
+      <change state="vulnerable">23ad665cb05ef9ce7d298cc34bff5efb95ef6948</change>
+    </branch>
+    <branch>
+      <name>v1.0.3-maint</name>
+      <change state="vulnerable">23ad665cb05ef9ce7d298cc34bff5efb95ef6948</change>
+    </branch>
+    <branch>
+      <name>v1.0.4-maint</name>
+      <change state="vulnerable">23ad665cb05ef9ce7d298cc34bff5efb95ef6948</change>
+    </branch>
+    <branch>
       <name>v1.0.5-maint</name>
       <tag state="vulnerable">v1.0.5.1</tag>
       <tag state="vulnerable">v1.0.5.2</tag>
@@ -218,6 +241,22 @@
       <tag state="vulnerable">v1.0.5.7</tag>
       <tag state="vulnerable">v1.0.5.8</tag>
       <tag state="vulnerable">v1.0.5.9</tag>
+      <change state="vulnerable">23ad665cb05ef9ce7d298cc34bff5efb95ef6948</change>
+    </branch>
+    <branch>
+      <name>v1.0.6-maint</name>
+      <change state="vulnerable">23ad665cb05ef9ce7d298cc34bff5efb95ef6948</change>
+    </branch>
+    <branch>
+      <name>v1.1.0-maint</name>
+      <change state="vulnerable">23ad665cb05ef9ce7d298cc34bff5efb95ef6948</change>
+    </branch>
+    <branch>
+      <name>v1.1.1-maint</name>
+      <change state="vulnerable">23ad665cb05ef9ce7d298cc34bff5efb95ef6948</change>
+    </branch>
+    <branch>
+      <name>v1.1.2-maint</name>
       <change state="vulnerable">23ad665cb05ef9ce7d298cc34bff5efb95ef6948</change>
     </branch>
     <branch>
@@ -234,6 +273,46 @@
       <change state="vulnerable">23ad665cb05ef9ce7d298cc34bff5efb95ef6948</change>
     </branch>
     <branch>
+      <name>v1.1.4-maint</name>
+      <change state="vulnerable">23ad665cb05ef9ce7d298cc34bff5efb95ef6948</change>
+    </branch>
+    <branch>
+      <name>v1.2.0-maint</name>
+      <change state="vulnerable">23ad665cb05ef9ce7d298cc34bff5efb95ef6948</change>
+    </branch>
+    <branch>
+      <name>v1.2.1-maint</name>
+      <change state="vulnerable">23ad665cb05ef9ce7d298cc34bff5efb95ef6948</change>
+    </branch>
+    <branch>
+      <name>v1.2.2-maint</name>
+      <change state="vulnerable">23ad665cb05ef9ce7d298cc34bff5efb95ef6948</change>
+    </branch>
+    <branch>
+      <name>v1.2.3-maint</name>
+      <change state="vulnerable">23ad665cb05ef9ce7d298cc34bff5efb95ef6948</change>
+    </branch>
+    <branch>
+      <name>v1.2.4-maint</name>
+      <change state="vulnerable">23ad665cb05ef9ce7d298cc34bff5efb95ef6948</change>
+    </branch>
+    <branch>
+      <name>v1.2.5-maint</name>
+      <change state="vulnerable">23ad665cb05ef9ce7d298cc34bff5efb95ef6948</change>
+    </branch>
+    <branch>
+      <name>v1.2.6-maint</name>
+      <change state="vulnerable">23ad665cb05ef9ce7d298cc34bff5efb95ef6948</change>
+    </branch>
+    <branch>
+      <name>v1.2.7-maint</name>
+      <change state="vulnerable">23ad665cb05ef9ce7d298cc34bff5efb95ef6948</change>
+    </branch>
+    <branch>
+      <name>v1.2.8-maint</name>
+      <change state="vulnerable">23ad665cb05ef9ce7d298cc34bff5efb95ef6948</change>
+    </branch>
+    <branch>
       <name>v1.2.9-maint</name>
       <tag state="vulnerable">v1.2.9.1</tag>
       <tag state="vulnerable">v1.2.9.2</tag>
@@ -241,9 +320,37 @@
       <change state="vulnerable">23ad665cb05ef9ce7d298cc34bff5efb95ef6948</change>
     </branch>
     <branch>
+      <name>v1.2.10-maint</name>
+      <change state="vulnerable">23ad665cb05ef9ce7d298cc34bff5efb95ef6948</change>
+    </branch>
+    <branch>
+      <name>v1.2.11-maint</name>
+      <change state="vulnerable">23ad665cb05ef9ce7d298cc34bff5efb95ef6948</change>
+    </branch>
+    <branch>
+      <name>v1.2.12-maint</name>
+      <change state="vulnerable">23ad665cb05ef9ce7d298cc34bff5efb95ef6948</change>
+    </branch>
+    <branch>
       <name>v1.2.13-maint</name>
       <tag state="vulnerable">v1.2.13.1</tag>
       <tag state="vulnerable">v1.2.13.2</tag>
+      <change state="vulnerable">23ad665cb05ef9ce7d298cc34bff5efb95ef6948</change>
+    </branch>
+    <branch>
+      <name>v1.2.14-maint</name>
+      <change state="vulnerable">23ad665cb05ef9ce7d298cc34bff5efb95ef6948</change>
+    </branch>
+    <branch>
+      <name>v1.2.15-maint</name>
+      <change state="vulnerable">23ad665cb05ef9ce7d298cc34bff5efb95ef6948</change>
+    </branch>
+    <branch>
+      <name>v1.2.16-maint</name>
+      <change state="vulnerable">23ad665cb05ef9ce7d298cc34bff5efb95ef6948</change>
+    </branch>
+    <branch>
+      <name>v1.2.17-maint</name>
       <change state="vulnerable">23ad665cb05ef9ce7d298cc34bff5efb95ef6948</change>
     </branch>
     <branch>
@@ -255,10 +362,50 @@
       <change state="vulnerable">23ad665cb05ef9ce7d298cc34bff5efb95ef6948</change>
     </branch>
     <branch>
+      <name>v1.2.19-maint</name>
+      <change state="vulnerable">23ad665cb05ef9ce7d298cc34bff5efb95ef6948</change>
+    </branch>
+    <branch>
+      <name>v1.2.20-maint</name>
+      <change state="vulnerable">23ad665cb05ef9ce7d298cc34bff5efb95ef6948</change>
+    </branch>
+    <branch>
+      <name>v1.2.21-maint</name>
+      <change state="vulnerable">23ad665cb05ef9ce7d298cc34bff5efb95ef6948</change>
+    </branch>
+    <branch>
+      <name>v1.3.0-maint</name>
+      <change state="vulnerable">23ad665cb05ef9ce7d298cc34bff5efb95ef6948</change>
+    </branch>
+    <branch>
+      <name>v1.3.1-maint</name>
+      <change state="vulnerable">23ad665cb05ef9ce7d298cc34bff5efb95ef6948</change>
+    </branch>
+    <branch>
+      <name>v1.3.2-maint</name>
+      <change state="vulnerable">23ad665cb05ef9ce7d298cc34bff5efb95ef6948</change>
+    </branch>
+    <branch>
       <name>v1.3.3-maint</name>
       <tag state="vulnerable">v1.3.3.1</tag>
       <tag state="vulnerable">v1.3.3.2</tag>
       <tag state="vulnerable">v1.3.3.3</tag>
+      <change state="vulnerable">23ad665cb05ef9ce7d298cc34bff5efb95ef6948</change>
+    </branch>
+    <branch>
+      <name>v1.3.4-maint</name>
+      <change state="vulnerable">23ad665cb05ef9ce7d298cc34bff5efb95ef6948</change>
+    </branch>
+    <branch>
+      <name>v1.3.5-maint</name>
+      <change state="vulnerable">23ad665cb05ef9ce7d298cc34bff5efb95ef6948</change>
+    </branch>
+    <branch>
+      <name>v2.0-maint</name>
+      <change state="vulnerable">23ad665cb05ef9ce7d298cc34bff5efb95ef6948</change>
+    </branch>
+    <branch>
+      <name>v2.1-maint</name>
       <change state="vulnerable">23ad665cb05ef9ce7d298cc34bff5efb95ef6948</change>
     </branch>
     <branch>
@@ -267,8 +414,16 @@
       <change state="vulnerable">23ad665cb05ef9ce7d298cc34bff5efb95ef6948</change>
     </branch>
     <branch>
+      <name>v3.0-maint</name>
+      <change state="vulnerable">23ad665cb05ef9ce7d298cc34bff5efb95ef6948</change>
+    </branch>
+    <branch>
       <name>v3.2-maint</name>
       <tag state="vulnerable">v3.2.1</tag>
+      <change state="vulnerable">23ad665cb05ef9ce7d298cc34bff5efb95ef6948</change>
+    </branch>
+    <branch>
+      <name>v3.7-maint</name>
       <change state="vulnerable">23ad665cb05ef9ce7d298cc34bff5efb95ef6948</change>
     </branch>
   </product>

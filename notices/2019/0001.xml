@@ -101,8 +101,8 @@ libvirtd socket]]>
       <tag state="vulnerable">v5.0.0</tag>
       <tag state="vulnerable">v5.1.0</tag>
       <tag state="vulnerable">v5.2.0</tag>
-      <tag state="fixed">v5.3.0</tag>
       <change state="vulnerable">0abb36938027f3991f3ce5151b31cca9737a1287</change>
+      <tag state="fixed">v5.3.0</tag>
       <change state="fixed">ae076bb40e0e150aef41361b64001138d04d6c60</change>
       <change state="fixed">2a07c990bd9143d7a0fe8d1b6b7c763c52185240</change>
     </branch>

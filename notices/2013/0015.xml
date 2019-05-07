@@ -49,7 +49,7 @@ could cause the libvirtd daemon to execute arbitrary binaries as root]]>
       <tag state="vulnerable">v1.1.2</tag>
       <tag state="vulnerable">v1.1.3</tag>
       <change state="vulnerable">e341435e5090677c67a0d3d4ca0393102054841f</change>
-      <tag state="fixed">1.1.4</tag>
+      <tag state="fixed">v1.1.4</tag>
       <change state="fixed">57687fd6bf7f6e1b3662c52f3f26c06ab19dc96c</change>
     </branch>
     <branch>

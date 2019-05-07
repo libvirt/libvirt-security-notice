@@ -60,7 +60,6 @@ actions is sufficient to avoid the problem.]]>
     <repository>libvirt.git</repository>
     <branch>
       <name>master</name>
-      <change state="vulnerable">ebb0c19c48690f0598de954f8e0e9d4d29d48b85</change>
       <tag state="vulnerable">v0.8.2</tag>
       <tag state="vulnerable">v0.8.3</tag>
       <tag state="vulnerable">v0.8.4</tag>
@@ -70,15 +69,12 @@ actions is sufficient to avoid the problem.]]>
       <tag state="vulnerable">v0.8.8</tag>
       <tag state="vulnerable">v0.9.0</tag>
       <tag state="vulnerable">v0.9.1</tag>
-      <change state="vulnerable">18c2a592064d69499f70428e498f4a3cb5161cda</change>
       <tag state="vulnerable">v0.9.2</tag>
       <tag state="vulnerable">v0.9.3</tag>
-      <change state="vulnerable">b976165ca4d82788be77d14843a4d079139539ba</change>
       <tag state="vulnerable">v0.9.4</tag>
       <tag state="vulnerable">v0.9.5</tag>
       <tag state="vulnerable">v0.9.6</tag>
       <tag state="vulnerable">v0.9.7</tag>
-      <change state="vulnerable">eca96694a7f992be633d48d5ca03cedc9bbc3c9a</change>
       <tag state="vulnerable">v0.9.8</tag>
       <tag state="vulnerable">v0.9.9</tag>
       <tag state="vulnerable">v0.9.10</tag>
@@ -101,6 +97,10 @@ actions is sufficient to avoid the problem.]]>
       <tag state="vulnerable">v1.1.3</tag>
       <tag state="vulnerable">v1.1.4</tag>
       <tag state="vulnerable">v1.2.0</tag>
+      <change state="vulnerable">ebb0c19c48690f0598de954f8e0e9d4d29d48b85</change>
+      <change state="vulnerable">18c2a592064d69499f70428e498f4a3cb5161cda</change>
+      <change state="vulnerable">b976165ca4d82788be77d14843a4d079139539ba</change>
+      <change state="vulnerable">eca96694a7f992be633d48d5ca03cedc9bbc3c9a</change>
       <tag state="fixed">v1.2.1</tag>
       <change state="fixed">db86da5ca2109e4006c286a09b6c75bfe10676ad</change>
       <change state="fixed">b799259583bd65c0b2f5042e6c3ff19637ade881</change>
@@ -110,23 +110,23 @@ actions is sufficient to avoid the problem.]]>
     <branch>
       <name>v0.8.3-maint</name>
       <change state="vulnerable">ebb0c19c48690f0598de954f8e0e9d4d29d48b85</change>
+      <change state="vulnerable">18c2a592064d69499f70428e498f4a3cb5161cda</change>
+      <change state="vulnerable">b976165ca4d82788be77d14843a4d079139539ba</change>
+      <change state="vulnerable">eca96694a7f992be633d48d5ca03cedc9bbc3c9a</change>
     </branch>
     <branch>
       <name>v0.9.6-maint</name>
-      <change state="vulnerable">ebb0c19c48690f0598de954f8e0e9d4d29d48b85</change>
-      <change state="vulnerable">18c2a592064d69499f70428e498f4a3cb5161cda</change>
-      <change state="vulnerable">b976165ca4d82788be77d14843a4d079139539ba</change>
       <tag state="vulnerable">v0.9.6.1</tag>
       <tag state="vulnerable">v0.9.6.2</tag>
       <tag state="vulnerable">v0.9.6.3</tag>
       <tag state="vulnerable">v0.9.6.4</tag>
-    </branch>
-    <branch>
-      <name>v0.9.11-maint</name>
       <change state="vulnerable">ebb0c19c48690f0598de954f8e0e9d4d29d48b85</change>
       <change state="vulnerable">18c2a592064d69499f70428e498f4a3cb5161cda</change>
       <change state="vulnerable">b976165ca4d82788be77d14843a4d079139539ba</change>
       <change state="vulnerable">eca96694a7f992be633d48d5ca03cedc9bbc3c9a</change>
+    </branch>
+    <branch>
+      <name>v0.9.11-maint</name>
       <tag state="vulnerable">v0.9.11.1</tag>
       <tag state="vulnerable">v0.9.11.2</tag>
       <tag state="vulnerable">v0.9.11.3</tag>
@@ -137,27 +137,27 @@ actions is sufficient to avoid the problem.]]>
       <tag state="vulnerable">v0.9.11.8</tag>
       <tag state="vulnerable">v0.9.11.9</tag>
       <tag state="vulnerable">v0.9.11.10</tag>
-    </branch>
-    <branch>
-      <name>v0.9.12-maint</name>
       <change state="vulnerable">ebb0c19c48690f0598de954f8e0e9d4d29d48b85</change>
       <change state="vulnerable">18c2a592064d69499f70428e498f4a3cb5161cda</change>
       <change state="vulnerable">b976165ca4d82788be77d14843a4d079139539ba</change>
       <change state="vulnerable">eca96694a7f992be633d48d5ca03cedc9bbc3c9a</change>
+    </branch>
+    <branch>
+      <name>v0.9.12-maint</name>
       <tag state="vulnerable">v0.9.12.1</tag>
       <tag state="vulnerable">v0.9.12.2</tag>
+      <change state="vulnerable">ebb0c19c48690f0598de954f8e0e9d4d29d48b85</change>
+      <change state="vulnerable">18c2a592064d69499f70428e498f4a3cb5161cda</change>
+      <change state="vulnerable">b976165ca4d82788be77d14843a4d079139539ba</change>
+      <change state="vulnerable">eca96694a7f992be633d48d5ca03cedc9bbc3c9a</change>
+      <tag state="fixed">v0.9.12.3</tag>
       <change state="fixed">c430c002dd8287c5d7b834993ddfbd61435248c4</change>
       <change state="fixed">4dd29d3bdf4bf3a4c4b1077ddf4355bcf548ca2f</change>
       <change state="fixed">3e7d9e54e9ce286fe1bee5d32089cd58d63e5cee</change>
       <change state="fixed">2786686eb5855e0046817d47055cd784881ca8cb</change>
-      <tag state="fixed">v0.9.12.3</tag>
     </branch>
     <branch>
       <name>v0.10.2-maint</name>
-      <change state="vulnerable">ebb0c19c48690f0598de954f8e0e9d4d29d48b85</change>
-      <change state="vulnerable">18c2a592064d69499f70428e498f4a3cb5161cda</change>
-      <change state="vulnerable">b976165ca4d82788be77d14843a4d079139539ba</change>
-      <change state="vulnerable">eca96694a7f992be633d48d5ca03cedc9bbc3c9a</change>
       <tag state="vulnerable">v0.10.2.1</tag>
       <tag state="vulnerable">v0.10.2.2</tag>
       <tag state="vulnerable">v0.10.2.3</tag>
@@ -166,10 +166,28 @@ actions is sufficient to avoid the problem.]]>
       <tag state="vulnerable">v0.10.2.6</tag>
       <tag state="vulnerable">v0.10.2.7</tag>
       <tag state="vulnerable">v0.10.2.8</tag>
+      <change state="vulnerable">ebb0c19c48690f0598de954f8e0e9d4d29d48b85</change>
+      <change state="vulnerable">18c2a592064d69499f70428e498f4a3cb5161cda</change>
+      <change state="vulnerable">b976165ca4d82788be77d14843a4d079139539ba</change>
+      <change state="vulnerable">eca96694a7f992be633d48d5ca03cedc9bbc3c9a</change>
       <change state="fixed">5f5e9eb23dead857b1858da8b97a6cb0442fabed</change>
       <change state="fixed">7a9bcfa1ccc190e33e6fa931df8143cc9623cf24</change>
       <change state="fixed">95836cb26b1d91b8e9eba0c4764bc24cccc78684</change>
       <change state="fixed">f59d02c487659e9d9f8e152673a0fe4d612172b2</change>
+    </branch>
+    <branch>
+      <name>v1.0.0-maint</name>
+      <change state="vulnerable">ebb0c19c48690f0598de954f8e0e9d4d29d48b85</change>
+      <change state="vulnerable">18c2a592064d69499f70428e498f4a3cb5161cda</change>
+      <change state="vulnerable">b976165ca4d82788be77d14843a4d079139539ba</change>
+      <change state="vulnerable">eca96694a7f992be633d48d5ca03cedc9bbc3c9a</change>
+    </branch>
+    <branch>
+      <name>v1.0.1-maint</name>
+      <change state="vulnerable">ebb0c19c48690f0598de954f8e0e9d4d29d48b85</change>
+      <change state="vulnerable">18c2a592064d69499f70428e498f4a3cb5161cda</change>
+      <change state="vulnerable">b976165ca4d82788be77d14843a4d079139539ba</change>
+      <change state="vulnerable">eca96694a7f992be633d48d5ca03cedc9bbc3c9a</change>
     </branch>
     <branch>
       <name>v1.0.2-maint</name>
@@ -206,10 +224,6 @@ actions is sufficient to avoid the problem.]]>
     </branch>
     <branch>
       <name>v1.0.5-maint</name>
-      <change state="vulnerable">ebb0c19c48690f0598de954f8e0e9d4d29d48b85</change>
-      <change state="vulnerable">18c2a592064d69499f70428e498f4a3cb5161cda</change>
-      <change state="vulnerable">b976165ca4d82788be77d14843a4d079139539ba</change>
-      <change state="vulnerable">eca96694a7f992be633d48d5ca03cedc9bbc3c9a</change>
       <tag state="vulnerable">v1.0.5.1</tag>
       <tag state="vulnerable">v1.0.5.2</tag>
       <tag state="vulnerable">v1.0.5.3</tag>
@@ -218,11 +232,15 @@ actions is sufficient to avoid the problem.]]>
       <tag state="vulnerable">v1.0.5.6</tag>
       <tag state="vulnerable">v1.0.5.7</tag>
       <tag state="vulnerable">v1.0.5.8</tag>
+      <change state="vulnerable">ebb0c19c48690f0598de954f8e0e9d4d29d48b85</change>
+      <change state="vulnerable">18c2a592064d69499f70428e498f4a3cb5161cda</change>
+      <change state="vulnerable">b976165ca4d82788be77d14843a4d079139539ba</change>
+      <change state="vulnerable">eca96694a7f992be633d48d5ca03cedc9bbc3c9a</change>
+      <tag state="fixed">v1.0.5.9</tag>
       <change state="fixed">c67b0de046b16dca352537e8f39ff935a5fded76</change>
       <change state="fixed">923319189022c5806da01b963dddd8dff0d6c747</change>
       <change state="fixed">6cd879829aaf02f56182feb16b4284d5b3fdcfd7</change>
       <change state="fixed">dee5fc756648e62062da3366583fc343413e1ba7</change>
-      <tag state="fixed">v1.0.5.9</tag>
     </branch>
     <branch>
       <name>v1.0.6-maint</name>
@@ -270,17 +288,17 @@ actions is sufficient to avoid the problem.]]>
     </branch>
     <branch>
       <name>v1.1.3-maint</name>
+      <tag state="vulnerable">v1.1.3.1</tag>
+      <tag state="vulnerable">v1.1.3.2</tag>
       <change state="vulnerable">ebb0c19c48690f0598de954f8e0e9d4d29d48b85</change>
       <change state="vulnerable">18c2a592064d69499f70428e498f4a3cb5161cda</change>
       <change state="vulnerable">b976165ca4d82788be77d14843a4d079139539ba</change>
       <change state="vulnerable">eca96694a7f992be633d48d5ca03cedc9bbc3c9a</change>
-      <tag state="vulnerable">v1.1.3.1</tag>
-      <tag state="vulnerable">v1.1.3.2</tag>
+      <tag state="fixed">v1.1.3.3</tag>
       <change state="fixed">1bfc35e3f837ab7b399fe664281b7db06db96a05</change>
       <change state="fixed">0e98442e3bcbf832f49a6d36f94558bb026e3f3a</change>
       <change state="fixed">7354aaf4607beaa9f4a6d68e3b26a28c97494e58</change>
       <change state="fixed">a7844b9ec2718dad9f5e5316cc0673e95098d812</change>
-      <tag state="fixed">v1.1.3.3</tag>
     </branch>
     <branch>
       <name>v1.1.4-maint</name>

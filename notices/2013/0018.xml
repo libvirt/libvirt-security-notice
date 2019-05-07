@@ -73,7 +73,7 @@ unless the guest OS is trusted.]]>
       <tag state="vulnerable">v1.0.4</tag>
       <tag state="vulnerable">v1.0.5</tag>
       <tag state="vulnerable">v1.0.6</tag>
-      <tag state="vulnerable">v1.0.0</tag>
+      <tag state="vulnerable">v1.1.0</tag>
       <tag state="vulnerable">v1.1.1</tag>
       <tag state="vulnerable">v1.1.2</tag>
       <tag state="vulnerable">v1.1.3</tag>
@@ -85,15 +85,21 @@ unless the guest OS is trusted.]]>
       <change state="vulnerable">ed77abc58bc5a6837a5021f26e1a335dbfb477bf</change>
       <change state="vulnerable">a5efb3190913b6903775ca3756f79443d4ea8a5b</change>
       <change state="vulnerable">4ad6a013304f6fe29b0866742c902054bfbcf23f</change>
-      <!--
       <tag state="fixed">v1.2.2</tag>
-      -->
       <change state="fixed">aebbcdd33c8c18891f0bdbbf8924599a28152c9c</change>
       <change state="fixed">4dd3a7d5bc44980135a1b11810ba9aeab42a4a59</change>
       <change state="fixed">7fba01c15c1f886b4235825692b4c13e88dd9f7b</change>
       <change state="fixed">1754c7f0ab1407dcf7c89636a35711dd9b1febe1</change>
       <change state="fixed">1cadeafcaa422844a27ef622e2a7041d0235bcb3</change>
       <change state="fixed">5fc590ad9f4071350a8df4d567ba88baacc8334d</change>
+    </branch>
+    <branch>
+      <name>v1.0.1-maint</name>
+      <change state="vulnerable">cbb106f807b32f1f6af22d1e92fe0ff9ba6d73b3</change>
+      <change state="vulnerable">de858e3fa7ffcab5f80d07f8a74d94cbaf8716b9</change>
+      <change state="vulnerable">ed77abc58bc5a6837a5021f26e1a335dbfb477bf</change>
+      <change state="vulnerable">a5efb3190913b6903775ca3756f79443d4ea8a5b</change>
+      <change state="vulnerable">4ad6a013304f6fe29b0866742c902054bfbcf23f</change>
     </branch>
     <branch>
       <name>v1.0.2-maint</name>
@@ -135,12 +141,12 @@ unless the guest OS is trusted.]]>
       <change state="vulnerable">ed77abc58bc5a6837a5021f26e1a335dbfb477bf</change>
       <change state="vulnerable">a5efb3190913b6903775ca3756f79443d4ea8a5b</change>
       <change state="vulnerable">4ad6a013304f6fe29b0866742c902054bfbcf23f</change>
-      <change state="fixed">f84056cf6166332b1f15f3e6584a88f5d42273fe</change>
-      <change state="fixed">0e9fee68b3bff24e4d3ab48de8129946202f3bc0</change>
-      <change state="fixed">9849cf6d89e5665667a0df449ddc3fd5582da242</change>
-      <change state="fixed">21821ed4d1faf5bf563a26e8ac7cd2eb0450d322</change>
-      <change state="fixed">e57058cfe827b1971ca0dee224ff273c9cad7756</change>
       <change state="fixed">e1e7e05376faf1ed471cb5c1d1e0415458f2af7d</change>
+      <change state="fixed">e57058cfe827b1971ca0dee224ff273c9cad7756</change>
+      <change state="fixed">21821ed4d1faf5bf563a26e8ac7cd2eb0450d322</change>
+      <change state="fixed">9849cf6d89e5665667a0df449ddc3fd5582da242</change>
+      <change state="fixed">0e9fee68b3bff24e4d3ab48de8129946202f3bc0</change>
+      <change state="fixed">f84056cf6166332b1f15f3e6584a88f5d42273fe</change>
     </branch>
     <branch>
       <name>v1.0.6-maint</name>
@@ -149,12 +155,12 @@ unless the guest OS is trusted.]]>
       <change state="vulnerable">ed77abc58bc5a6837a5021f26e1a335dbfb477bf</change>
       <change state="vulnerable">a5efb3190913b6903775ca3756f79443d4ea8a5b</change>
       <change state="vulnerable">4ad6a013304f6fe29b0866742c902054bfbcf23f</change>
-      <change state="fixed">e9941eee1a3c1cb0af7bc39076eb0e8c2c4eb603</change>
-      <change state="fixed">84cf9af8d9a803f2e12df0b8b0c2bd2de544cf93</change>
-      <change state="fixed">f8706947b86e6de2961aacddb5eb2345d9c033b4</change>
-      <change state="fixed">081e0fabfd8c0f5c3f2c869ddcf11710c445a962</change>
-      <change state="fixed">b2a853e1f6aea9683a30eafd2b069b8be0fcf898</change>
       <change state="fixed">bd9ec4506e29a9ce682961eee99d0326ed64145d</change>
+      <change state="fixed">b2a853e1f6aea9683a30eafd2b069b8be0fcf898</change>
+      <change state="fixed">081e0fabfd8c0f5c3f2c869ddcf11710c445a962</change>
+      <change state="fixed">f8706947b86e6de2961aacddb5eb2345d9c033b4</change>
+      <change state="fixed">84cf9af8d9a803f2e12df0b8b0c2bd2de544cf93</change>
+      <change state="fixed">e9941eee1a3c1cb0af7bc39076eb0e8c2c4eb603</change>
     </branch>
     <branch>
       <name>v1.1.0-maint</name>
@@ -163,12 +169,12 @@ unless the guest OS is trusted.]]>
       <change state="vulnerable">ed77abc58bc5a6837a5021f26e1a335dbfb477bf</change>
       <change state="vulnerable">a5efb3190913b6903775ca3756f79443d4ea8a5b</change>
       <change state="vulnerable">4ad6a013304f6fe29b0866742c902054bfbcf23f</change>
-      <change state="fixed">61c7e0b66e8b37d4ea64024c100d2ed467d5cb47</change>
-      <change state="fixed">43720035b7f4c175ef2594296d874bc1910840b3</change>
-      <change state="fixed">212414281f0001da78f2312d7f52dcf124317fc9</change>
-      <change state="fixed">c17dd7ede2affd147ffdc5e8daef85939bda0dd0</change>
-      <change state="fixed">ed46a680a02cf96b229a89f74ddbab69522c9ef5</change>
       <change state="fixed">807db4a30ee903f973d496b3293d9e6aaa511174</change>
+      <change state="fixed">ed46a680a02cf96b229a89f74ddbab69522c9ef5</change>
+      <change state="fixed">c17dd7ede2affd147ffdc5e8daef85939bda0dd0</change>
+      <change state="fixed">212414281f0001da78f2312d7f52dcf124317fc9</change>
+      <change state="fixed">43720035b7f4c175ef2594296d874bc1910840b3</change>
+      <change state="fixed">61c7e0b66e8b37d4ea64024c100d2ed467d5cb47</change>
     </branch>
     <branch>
       <name>v1.1.1-maint</name>
@@ -177,12 +183,12 @@ unless the guest OS is trusted.]]>
       <change state="vulnerable">ed77abc58bc5a6837a5021f26e1a335dbfb477bf</change>
       <change state="vulnerable">a5efb3190913b6903775ca3756f79443d4ea8a5b</change>
       <change state="vulnerable">4ad6a013304f6fe29b0866742c902054bfbcf23f</change>
-      <change state="fixed">6ecb7bc3aed7f60edad5289c9b0cfcf99eee6611</change>
-      <change state="fixed">72a4c29ca72789b13de1ed9cb96df9fb2b0fdde4</change>
-      <change state="fixed">83f83508e128275bd1b74988162dc6b9f86e00ee</change>
-      <change state="fixed">398c88edfaef50b9b59eb2d9a61b07c9c940a661</change>
-      <change state="fixed">dd055960df60c536957664f0ae3c591feecf7b09</change>
       <change state="fixed">14d69bd00e4455a1d174d14c5af73975cf9e904a</change>
+      <change state="fixed">dd055960df60c536957664f0ae3c591feecf7b09</change>
+      <change state="fixed">398c88edfaef50b9b59eb2d9a61b07c9c940a661</change>
+      <change state="fixed">83f83508e128275bd1b74988162dc6b9f86e00ee</change>
+      <change state="fixed">72a4c29ca72789b13de1ed9cb96df9fb2b0fdde4</change>
+      <change state="fixed">6ecb7bc3aed7f60edad5289c9b0cfcf99eee6611</change>
     </branch>
     <branch>
       <name>v1.1.2-maint</name>
@@ -191,12 +197,12 @@ unless the guest OS is trusted.]]>
       <change state="vulnerable">ed77abc58bc5a6837a5021f26e1a335dbfb477bf</change>
       <change state="vulnerable">a5efb3190913b6903775ca3756f79443d4ea8a5b</change>
       <change state="vulnerable">4ad6a013304f6fe29b0866742c902054bfbcf23f</change>
-      <change state="fixed">f639b2d17ce935b650bb2aca7bdd8d727cab8b02</change>
-      <change state="fixed">a06bdfcb446f182e490f70422a8431c3bcb2c801</change>
-      <change state="fixed">77ddbad2a9272239a09673c5d6993793308514e9</change>
-      <change state="fixed">a6e9270ec79924fabd5a872984bb5d38eaf3df8a</change>
-      <change state="fixed">eae2a2ada81c5828991bb1b9438f7556a7e51ce8</change>
       <change state="fixed">21368274a9aa91e8a5f0addb3a6bba8dad91e334</change>
+      <change state="fixed">eae2a2ada81c5828991bb1b9438f7556a7e51ce8</change>
+      <change state="fixed">a6e9270ec79924fabd5a872984bb5d38eaf3df8a</change>
+      <change state="fixed">77ddbad2a9272239a09673c5d6993793308514e9</change>
+      <change state="fixed">a06bdfcb446f182e490f70422a8431c3bcb2c801</change>
+      <change state="fixed">f639b2d17ce935b650bb2aca7bdd8d727cab8b02</change>
     </branch>
     <branch>
       <name>v1.1.3-maint</name>
@@ -209,12 +215,12 @@ unless the guest OS is trusted.]]>
       <change state="vulnerable">a5efb3190913b6903775ca3756f79443d4ea8a5b</change>
       <change state="vulnerable">4ad6a013304f6fe29b0866742c902054bfbcf23f</change>
       <tag state="fixed">v1.1.3.4</tag>
-      <change state="fixed">a3a3cfcb7c400bcde198b5b929ff2d4f889dee78</change>
-      <change state="fixed">cb016b9ef1a6d786657a98546db8412f86510367</change>
-      <change state="fixed">72e379ed93b4707e26bbc5e3457a85833f50eb1a</change>
-      <change state="fixed">fcf05c194cb1cca6b5c703073b97ed1408a2c546</change>
-      <change state="fixed">d5c0b57fffbe651c425b4de6c11712030cce7e7e</change>
       <change state="fixed">fef343339127b989746214b86901553da6d17863</change>
+      <change state="fixed">d5c0b57fffbe651c425b4de6c11712030cce7e7e</change>
+      <change state="fixed">fcf05c194cb1cca6b5c703073b97ed1408a2c546</change>
+      <change state="fixed">72e379ed93b4707e26bbc5e3457a85833f50eb1a</change>
+      <change state="fixed">cb016b9ef1a6d786657a98546db8412f86510367</change>
+      <change state="fixed">a3a3cfcb7c400bcde198b5b929ff2d4f889dee78</change>
     </branch>
     <branch>
       <name>v1.1.4-maint</name>
@@ -223,12 +229,12 @@ unless the guest OS is trusted.]]>
       <change state="vulnerable">ed77abc58bc5a6837a5021f26e1a335dbfb477bf</change>
       <change state="vulnerable">a5efb3190913b6903775ca3756f79443d4ea8a5b</change>
       <change state="vulnerable">4ad6a013304f6fe29b0866742c902054bfbcf23f</change>
-      <change state="fixed">28681077373f1fa567b7f56117a22047f90925fe</change>
-      <change state="fixed">0e931dfcda308fbb84eef42bc92e257e39af083d</change>
-      <change state="fixed">3101022b4d4fee46916b87b1c21a3956a91d94b2</change>
-      <change state="fixed">1d1daaf58677cfa843b6891a98dc6cdb42116434</change>
-      <change state="fixed">80f57ec4224af65392db09fb8f47be7434e2fc86</change>
       <change state="fixed">ba4065b6f64fca7706070b8458fdf0bc06115b9b</change>
+      <change state="fixed">80f57ec4224af65392db09fb8f47be7434e2fc86</change>
+      <change state="fixed">1d1daaf58677cfa843b6891a98dc6cdb42116434</change>
+      <change state="fixed">3101022b4d4fee46916b87b1c21a3956a91d94b2</change>
+      <change state="fixed">0e931dfcda308fbb84eef42bc92e257e39af083d</change>
+      <change state="fixed">28681077373f1fa567b7f56117a22047f90925fe</change>
     </branch>
     <branch>
       <name>v1.2.0-maint</name>
@@ -237,12 +243,12 @@ unless the guest OS is trusted.]]>
       <change state="vulnerable">ed77abc58bc5a6837a5021f26e1a335dbfb477bf</change>
       <change state="vulnerable">a5efb3190913b6903775ca3756f79443d4ea8a5b</change>
       <change state="vulnerable">4ad6a013304f6fe29b0866742c902054bfbcf23f</change>
-      <change state="fixed">3e97a53caa9adddd47da1c22dbed81ef2e02f735</change>
-      <change state="fixed">17188260657e095f5d210bc73ba1661875a8f885</change>
-      <change state="fixed">70665ec5f2cd910666bc703727dc6d7c15efe7bf</change>
-      <change state="fixed">3f43a7727ac068de8aac6b9c030b38fb3cb1426d</change>
-      <change state="fixed">cd48d62aca488a116b47073be2607653a1d3305e</change>
       <change state="fixed">8fca7a4fa6b40d21723008d2092536349f20517d</change>
+      <change state="fixed">cd48d62aca488a116b47073be2607653a1d3305e</change>
+      <change state="fixed">3f43a7727ac068de8aac6b9c030b38fb3cb1426d</change>
+      <change state="fixed">70665ec5f2cd910666bc703727dc6d7c15efe7bf</change>
+      <change state="fixed">17188260657e095f5d210bc73ba1661875a8f885</change>
+      <change state="fixed">3e97a53caa9adddd47da1c22dbed81ef2e02f735</change>
     </branch>
     <branch>
       <name>v1.2.1-maint</name>
@@ -251,12 +257,12 @@ unless the guest OS is trusted.]]>
       <change state="vulnerable">ed77abc58bc5a6837a5021f26e1a335dbfb477bf</change>
       <change state="vulnerable">a5efb3190913b6903775ca3756f79443d4ea8a5b</change>
       <change state="vulnerable">4ad6a013304f6fe29b0866742c902054bfbcf23f</change>
-      <change state="fixed">8b546028f901dc414463678574ceabbacc37c4cb</change>
-      <change state="fixed">b0ed2d94ace3c57198ce7b4793f906abf5397e36</change>
-      <change state="fixed">ee1269eecd3566729f3909db624f7ebd7bf1b84a</change>
-      <change state="fixed">b9997828231b3492252cb6d9a0ad4f3dc522791e</change>
-      <change state="fixed">51a897a22e1c031edd46fd077487a2f8e649cb9f</change>
       <change state="fixed">ad52184399aa414fa3d7e2756e4ea6a45ec0d3a3</change>
+      <change state="fixed">51a897a22e1c031edd46fd077487a2f8e649cb9f</change>
+      <change state="fixed">b9997828231b3492252cb6d9a0ad4f3dc522791e</change>
+      <change state="fixed">ee1269eecd3566729f3909db624f7ebd7bf1b84a</change>
+      <change state="fixed">b0ed2d94ace3c57198ce7b4793f906abf5397e36</change>
+      <change state="fixed">8b546028f901dc414463678574ceabbacc37c4cb</change>
     </branch>
   </product>
 

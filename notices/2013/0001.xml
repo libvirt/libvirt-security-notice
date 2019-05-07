@@ -89,6 +89,14 @@ to crash]]>
       <tag state="fixed">v0.10.2.3</tag>
       <change state="fixed">f104a2a6b36aa6f4842c0a64354055657c0df8e2</change>
     </branch>
+    <branch>
+      <name>v1.0.0-maint</name>
+      <change state="vulnerable">b2c62316477989f8d728af49bdac8248ab5f5463</change>
+    </branch>
+    <branch>
+      <name>v1.0.1-maint</name>
+      <change state="vulnerable">b2c62316477989f8d728af49bdac8248ab5f5463</change>
+    </branch>
   </product>
 
 </security-notice>

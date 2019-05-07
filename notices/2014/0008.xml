@@ -58,20 +58,22 @@ an authorized client can see.]]>
       <tag state="vulnerable">v1.2.10</tag>
       <change state="vulnerable">d1bde8eda3b4027b38c7c1d5942a6388b0458803</change>
       <change state="vulnerable">1f4831ee6ecc17d0f2008d7db15bfd9bc3b1d685</change>
+      <tag state="fixed">v1.2.11</tag>
       <change state="fixed">57023c0a3af4af1c547189c1f6712ed5edeb0c0b</change>
       <change state="fixed">cb104ef734dfea12cb8826dba7e2c98912c4b7e1</change>
-      <tag state="fixed">v1.2.11</tag>
     </branch>
     <branch>
       <name>v1.2.8-maint</name>
       <change state="vulnerable">d1bde8eda3b4027b38c7c1d5942a6388b0458803</change>
+      <change state="vulnerable">1f4831ee6ecc17d0f2008d7db15bfd9bc3b1d685</change>
       <change state="fixed">27431ec96e617f186bd3f5900aeb7d622770533a</change>
     </branch>
     <branch>
       <name>v1.2.9-maint</name>
+      <tag state="vulnerable">v1.2.9.1</tag>
       <change state="vulnerable">d1bde8eda3b4027b38c7c1d5942a6388b0458803</change>
       <change state="vulnerable">1f4831ee6ecc17d0f2008d7db15bfd9bc3b1d685</change>
-      <tag state="vulnerable">v1.2.9.1</tag>
+      <tag state="fixed">v1.2.9.2</tag>
       <change state="fixed">5d8bee6d57cddf462912ad2fc544c8a57b1c2841</change>
       <change state="fixed">dfbdea7ea8fa36d9f27942c5b2882acfd86a3c3b</change>
     </branch>

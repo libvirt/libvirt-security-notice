@@ -82,6 +82,10 @@ malicious user from connecting to libvirtd.]]>
       <change state="fixed">b7ff9e696063189a715802d081d55a398663c15a</change>
     </branch>
     <branch>
+      <name>v0.8.3-maint</name>
+      <change state="vulnerable">a147ef38374f17c3d02b7db8e857ca33c5c346f9</change>
+    </branch>
+    <branch>
       <name>v0.9.6-maint</name>
       <tag state="vulnerable">v0.9.6.1</tag>
       <tag state="vulnerable">v0.9.6.2</tag>

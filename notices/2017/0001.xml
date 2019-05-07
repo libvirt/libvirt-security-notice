@@ -44,10 +44,10 @@
     <repository>libvirt.git</repository>
     <branch>
       <name>master</name>
-      <change state="vulnerable">c5f6151390ff0a8e65014172bb8c0a8d312c3353</change>
-      <change state="fixed">c3de387380f6057ee0e46cd9f2f0a092e8070875</change>
       <tag state="vulnerable">v3.0.0</tag>
+      <change state="vulnerable">c5f6151390ff0a8e65014172bb8c0a8d312c3353</change>
       <tag state="fixed">v3.1.0</tag>
+      <change state="fixed">c3de387380f6057ee0e46cd9f2f0a092e8070875</change>
     </branch>
     <branch>
       <name>v3.0-maint</name>

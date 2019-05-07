@@ -102,8 +102,9 @@ access control framework.]]>
     </branch>
     <branch>
       <name>v0.9.12-maint</name>
+      <tag state="vulnerable">v0.9.12.1</tag>
       <change state="vulnerable">158ba8730e44b7dd07a21ab90499996c5dec080a</change>
-      <tag state="fixed">v0.9.12.1</tag>
+      <tag state="fixed">v0.9.12.2</tag>
       <change state="fixed">2f34eae93a09ac94297eaa91ad8f4b037b2c9e27</change>
     </branch>
     <branch>
@@ -118,6 +119,14 @@ access control framework.]]>
       <change state="vulnerable">158ba8730e44b7dd07a21ab90499996c5dec080a</change>
       <tag state="fixed">v0.10.2.8</tag>
       <change state="fixed">455de1215cc921efcd2b210f129f55c27445d623</change>
+    </branch>
+    <branch>
+      <name>v1.0.0-maint</name>
+      <change state="vulnerable">158ba8730e44b7dd07a21ab90499996c5dec080a</change>
+    </branch>
+    <branch>
+      <name>v1.0.1-maint</name>
+      <change state="vulnerable">158ba8730e44b7dd07a21ab90499996c5dec080a</change>
     </branch>
     <branch>
       <name>v1.0.2-maint</name>
@@ -159,6 +168,11 @@ access control framework.]]>
       <name>v1.1.1-maint</name>
       <change state="vulnerable">158ba8730e44b7dd07a21ab90499996c5dec080a</change>
       <change state="fixed">f229972fd92374eed356c3ede74b886ebe77734e</change>
+    </branch>
+    <branch>
+      <name>v1.1.2-maint</name>
+      <change state="vulnerable">158ba8730e44b7dd07a21ab90499996c5dec080a</change>
+      <change state="fixed">10d159fee27d007de42890626340c581cd12d788</change>
     </branch>
   </product>
 

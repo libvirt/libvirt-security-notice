@@ -66,6 +66,14 @@ service]]>
       <change state="fixed">0f2eda0da9efd25b280c23a5a0d0fdf46f0c3c67</change>
     </branch>
     <branch>
+      <name>v1.0.0-maint</name>
+      <change state="vulnerable">a8bac1c0f3b9ff8dd3982a7086d45466055ea0d1</change>
+    </branch>
+    <branch>
+      <name>v1.0.1-maint</name>
+      <change state="vulnerable">a8bac1c0f3b9ff8dd3982a7086d45466055ea0d1</change>
+    </branch>
+    <branch>
       <name>v1.0.2-maint</name>
       <change state="vulnerable">a8bac1c0f3b9ff8dd3982a7086d45466055ea0d1</change>
       <change state="fixed">89c74908954ede64756faaf6f3e6ebc0d425c6f9</change>

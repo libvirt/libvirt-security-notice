@@ -86,8 +86,8 @@ the QEMU guest agent in trusted guests]]>
       <tag state="vulnerable">v4.8.0</tag>
       <tag state="vulnerable">v4.9.0</tag>
       <tag state="vulnerable">v4.10.0</tag>
-      <tag state="fixed">v5.0.0</tag>
       <change state="vulnerable">0977b8aa071de550e1a013d35e2c72615e65d520</change>
+      <tag state="fixed">v5.0.0</tag>
       <change state="fixed">7cfd1fbb1332ae5df678b9f41a62156cb2e88c73</change>
     </branch>
     <branch>
