@@ -40,14 +40,9 @@
     <repository>libvirt.git</repository>
     <branch>
       <name>master</name>
-      <change state="vulnerable"></change>
-      <change state="fixed"></change>
-    </branch>
-    <branch>
-      <name></name>
       <tag state="vulnerable"></tag>
-      <change state="vulnerable"></change>
       <tag state="fixed"></tag>
+      <change state="vulnerable"></change>
       <change state="fixed"></change>
     </branch>
   </product>
