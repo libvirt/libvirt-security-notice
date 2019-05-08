@@ -99,6 +99,28 @@ sub get_branches {
     return @branches;
 }
 
+sub get_cherry_picks {
+    my $branch = shift @_;
+    my $tag = shift @_;
+
+    open GIT, "-|", "git", "log", "$tag..origin/$branch" or
+        die "cannot query 'git log $tag..origin/$branch': $!\n";
+
+    my $commit;
+    my %cherrypicks;
+    while (<GIT>) {
+        chomp;
+
+        if (/^commit ([a-zA-Z0-9]+)/) {
+            $commit = $1;
+        } elsif (/cherry picked from commit ([a-zA-Z0-9]+)/) {
+            $cherrypicks{$1} = $commit;
+        }
+    }
+
+    return %cherrypicks;
+}
+
 sub add_branch {
     my $name = shift @_;
 
@@ -177,7 +199,54 @@ if (defined $broken) {
     for my $branch (get_branches($broken)) {
         add_branch($branch);
     }
+}
 
+if (defined $fixed) {
+    # Try to match up fixed commit with cherry-picks
+    for my $branch (sort versioncmp keys %branches) {
+        next if $branch eq "master";
+
+        my $basetag = $branch;
+        $basetag =~ s/-maint//;
+        my @bits = split /\./, $basetag;
+
+        if (int(@bits) == 2) {
+            $basetag = $basetag . ".0";
+        }
+
+        my %cherrypicks = get_cherry_picks($branch, $basetag);
+
+        my @missing;
+        for my $commit (@fixed) {
+            if (exists $cherrypicks{$commit}) {
+                my $cherry = $cherrypicks{$commit};
+                add_fixed_commit($branch, $cherry);
+            } else {
+                push @missing, $commit;
+            }
+        }
+
+        # If all fixes on master exist on branch, then
+        # identify any tags holding the last cherry-pick
+        # so the branch gets marked as non-vulnerable.
+        if (int(@missing) == 0) {
+            my $bfixed = $branches{$branch}->{fixedchanges}->[$#{$branches{$branch}->{fixedchanges}}];
+            # Mark any tags containing the fix as known so they
+            # get excluded when later finding vulnerable tags
+            for my $tag (get_tags("--contains", $bfixed)) {
+                $tags{$tag} = 0;
+            }
+
+            # Record the first tag in master which has the fix, if any
+            my @fixedtags = sort versioncmp get_tags("--contains", $bfixed, "--merged", $branch);
+            if (int(@fixedtags)) {
+                add_fixed_tag($branch, $fixedtags[0]);
+            }
+        }
+    }
+}
+
+if (defined $broken) {
     # Now we need slower work to find branches for
     # few remaining tags
     for my $tag (get_tags("--contains", $broken)) {
