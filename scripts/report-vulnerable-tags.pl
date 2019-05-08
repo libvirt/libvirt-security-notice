@@ -9,7 +9,9 @@ if (int(@ARGV) != 1) {
     die "syntax: $0 NOTICE.XML\n";
 }
 
+my @broken;
 my $broken;
+my @fixed;
 my $fixed;
 my $notice = shift @ARGV;
 my @notice;
@@ -28,14 +30,21 @@ for my $line (<NOTICE>) {
     } elsif ($master) {
         if ($line =~ m,<change state="(vulnerable|fixed)">([a-zA-Z0-9]+)</change>,) {
             if ($1 eq "vulnerable") {
-                $broken = $2;
+                push @broken, $2;
             } else {
-                $fixed = $2;
+                push @fixed, $2;
             }
         }
     }
 }
 close NOTICE;
+
+if (int(@broken)) {
+    $broken = $broken[0];
+}
+if (int(@fixed)) {
+    $fixed = $fixed[$#fixed];
+}
 
 # branch name to hash with keys
 #   - brokenchanges -> list of commit ids
@@ -96,7 +105,7 @@ sub add_branch {
     return if exists $branches{$name};
 
     $branches{$name} = {
-       "brokenchanges" => [$broken],
+       "brokenchanges" => [@broken],
        "brokentags" => {},
        "fixedchanges" => [],
        "fixedtags" => {},
@@ -151,44 +160,48 @@ if (defined $fixed) {
         add_fixed_tag("master", $fixedtags[0]);
     }
 
-    add_fixed_commit("master", $fixed);
+    for my $commit (@fixed) {
+        add_fixed_commit("master", $commit);
+    }
 }
 
-# Most tags live on master so lets get them first
-for my $tag (get_tags("--contains", $broken, "--merged", "master")) {
+if (defined $broken) {
+    # Most tags live on master so lets get them first
+    for my $tag (get_tags("--contains", $broken, "--merged", "master")) {
 
-    next if exists $tags{$tag};
+        next if exists $tags{$tag};
 
-    add_broken_tag("master", $tag);
-}
+        add_broken_tag("master", $tag);
+    }
 
-# Now we need slower work to find branches for
-# few remaining tags
-for my $tag (get_tags("--contains", $broken)) {
+    # Now we need slower work to find branches for
+    # few remaining tags
+    for my $tag (get_tags("--contains", $broken)) {
 
-    next if exists $tags{$tag};
+        next if exists $tags{$tag};
 
-    my @tagbranches = get_branches($tag);
-    if (int(@tagbranches) == 0) {
-        if ($tag eq "v2.1.0") {
-            @tagbranches = ("master")
-        } else {
-            print "Tag $tag doesn't appear in any branch\n";
-            next;
+        my @tagbranches = get_branches($tag);
+        if (int(@tagbranches) == 0) {
+            if ($tag eq "v2.1.0") {
+                @tagbranches = ("master")
+            } else {
+                print "Tag $tag doesn't appear in any branch\n";
+                next;
+            }
         }
+
+        if (int(@tagbranches) > 1) {
+            print "Tag $tag appears in multiple branches\n";
+        }
+        my $branch = $tagbranches[0];
+
+        add_branch($branch);
+        add_broken_tag($branch, $tag);
     }
 
-    if (int(@tagbranches) > 1) {
-        print "Tag $tag appears in multiple branches\n";
+    for my $branch (get_branches($broken)) {
+        add_branch($branch);
     }
-    my $branch = $tagbranches[0];
-
-    add_branch($branch);
-    add_broken_tag($branch, $tag);
-}
-
-for my $branch (get_branches($broken)) {
-    add_branch($branch);
 }
 
 if (defined $fixed) {
