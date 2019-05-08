@@ -174,33 +174,30 @@ if (defined $broken) {
         add_broken_tag("master", $tag);
     }
 
+    for my $branch (get_branches($broken)) {
+        add_branch($branch);
+    }
+
     # Now we need slower work to find branches for
     # few remaining tags
     for my $tag (get_tags("--contains", $broken)) {
-
         next if exists $tags{$tag};
 
-        my @tagbranches = get_branches($tag);
-        if (int(@tagbranches) == 0) {
-            if ($tag eq "v2.1.0") {
-                @tagbranches = ("master")
-            } else {
-                print "Tag $tag doesn't appear in any branch\n";
-                next;
-            }
+        # Hack as tag was mistakenly not on master branch
+        if ($tag eq "v2.1.0") {
+            $branches{"master"}->{"brokentags"}->{$tag} = 1;
+            next;
         }
 
-        if (int(@tagbranches) > 1) {
-            print "Tag $tag appears in multiple branches\n";
-        }
-        my $branch = $tagbranches[0];
+        die "malformed tag $tag" unless $tag =~ /(v.*)\.(\d+)$/;
+        my $branch = "$1-maint";
 
-        add_branch($branch);
+        if (!exists $branches{$branch}) {
+            print "Tag $tag mapped to branch $branch which doesn't exist\n";
+            next;
+        }
+
         add_broken_tag($branch, $tag);
-    }
-
-    for my $branch (get_branches($broken)) {
-        add_branch($branch);
     }
 }
 
