@@ -42,7 +42,7 @@ sub get_tags {
     return @tags;
 }
 
-sub get_branch {
+sub get_branches {
     my $tag = shift;
 
     my @branches;
@@ -94,7 +94,7 @@ for my $tag (get_tags("--contains", $changeset)) {
 
     next if exists $tags{$tag};
 
-    my @tagbranches = get_branch($tag);
+    my @tagbranches = get_branches($tag);
     if (int(@tagbranches) == 0) {
         if ($tag eq "v2.1.0") {
             @tagbranches = ("master")
@@ -113,6 +113,9 @@ for my $tag (get_tags("--contains", $changeset)) {
     add_broken_tag($branch, $tag);
 }
 
+for my $branch (get_branches($broken)) {
+    add_branch($branch);
+}
 
 foreach my $branch (sort versioncmp keys %branches) {
     print "    <branch>\n";
@@ -125,7 +128,7 @@ foreach my $branch (sort versioncmp keys %branches) {
     }
 
     if ($branch eq "master") {
-        print "      <change state=\"fixed\"></change>\n";
+        print "      <change state=\"fixed\">$fixed</change>\n";
     }
     print "    </branch>\n";
 }
