@@ -11,6 +11,15 @@ if (int(@ARGV) != 1) {
 
 my $changeset = shift @ARGV;
 
+# branch name to hash with keys
+#   - brokenchanges -> list of commit ids
+#   - brokentags -> hash of tag names to '1'
+my %branches;
+
+# tag name to '0' (fixed) or '1' (broken)
+my %tags;
+
+
 sub get_tags {
     my @args = @_;
 
@@ -53,17 +62,31 @@ sub get_branch {
     return @branches;
 }
 
-my @branches;
-my %tags;
-my %branches;
+sub add_branch {
+    my $name = shift @_;
 
-$branches{"master"} = [];
+    return if exists $branches{$name};
+
+    $branches{$name} = {
+       "brokenchanges" => [$changeset],
+       "brokentags" => {},
+    };
+}
+
+sub add_broken_tag {
+    my $branch = shift @_;
+    my $tag = shift @_;
+
+    $tags{$tag} = 1;
+    $branches{$branch}->{"brokentags"}->{$tag} = 1;
+}
+
+add_branch("master");
+
 # Most tags live on master so lets get them first
 for my $tag (get_tags("--contains", $changeset, "--merged", "master")) {
-    push @{$branches{"master"}}, $tag;
-    $tags{$tag} = 1;
+    add_broken_tag("master", $tag);
 }
-push @branches, "master";
 
 # Now we need slower work to find branches for
 # few remaining tags
@@ -84,22 +107,22 @@ for my $tag (get_tags("--contains", $changeset)) {
     if (int(@tagbranches) > 1) {
         print "Tag $tag appears in multiple branches\n";
     }
+    my $branch = $tagbranches[0];
 
-    unless (exists($branches{$tagbranches[0]})) {
-        $branches{$tagbranches[0]} = [];
-        push @branches, $tagbranches[0];
-    }
-    push @{$branches{$tagbranches[0]}}, $tag;
+    add_branch($branch);
+    add_broken_tag($branch, $tag);
 }
 
 
-foreach my $branch (sort versioncmp @branches) {
+foreach my $branch (sort versioncmp keys %branches) {
     print "    <branch>\n";
     print "      <name>$branch</name>\n";
-    foreach my $tag (sort versioncmp @{$branches{$branch}}) {
+    foreach my $tag (sort versioncmp keys %{$branches{$branch}->{"brokentags"}}) {
         print "      <tag state=\"vulnerable\">$tag</tag>\n";
     }
-    print "      <change state=\"vulnerable\">$changeset</change>\n";
+    foreach my $commit (@{$branches{$branch}->{"brokenchanges"}}) {
+        print "      <change state=\"vulnerable\">$commit</change>\n";
+    }
 
     if ($branch eq "master") {
         print "      <change state=\"fixed\"></change>\n";
