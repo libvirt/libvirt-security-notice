@@ -1,0 +1,192 @@
+<security-notice xmlns="http://security.libvirt.org/xmlns/security-notice/1.0">
+  <id>2019-0002</id>
+
+  <summary>Crash after running guest agent command to fetch interfaces</summary>
+
+  <description>
+<![CDATA[If the guest agent does not reply to the command for listing
+interfaces, libvirt will reference a NULL pointer trying to parse a
+reply that doesn't exist]]>
+  </description>
+
+  <impact>
+<![CDATA[A malicious QEMU guest agent can trigger a crash in the libvirtd
+daemon when the host admin queries guest interfaces]]>
+  </impact>
+
+  <workaround>
+<![CDATA[Avoid quering the guest network interfaces, or disable use of
+the QEMU guest agent in trusted guests]]>
+  </workaround>
+
+  <credits>
+    <reporter>
+      <name>Gordon Watson</name>
+      <email>gwatson@redhat.com</email>
+    </reporter>
+    <patcher>
+      <name>Ján Tomko</name>
+      <email>jtomko@redhat.com</email>
+    </patcher>
+  </credits>
+
+  <lifecycle>
+    <reported>20190102</reported>
+    <published>20190104</published>
+    <fixed>20190104</fixed>
+  </lifecycle>
+
+  <reference>
+    <advisory type="CVE" id="2019-3840"/>
+  </reference>
+
+  <product name="libvirt">
+    <repository>libvirt.git</repository>
+    <branch>
+      <name>master</name>
+      <tag state="vulnerable">v1.2.14</tag>
+      <tag state="vulnerable">v1.2.15</tag>
+      <tag state="vulnerable">v1.2.16</tag>
+      <tag state="vulnerable">v1.2.17</tag>
+      <tag state="vulnerable">v1.2.18</tag>
+      <tag state="vulnerable">v1.2.19</tag>
+      <tag state="vulnerable">v1.2.20</tag>
+      <tag state="vulnerable">v1.2.21</tag>
+      <tag state="vulnerable">v1.3.0</tag>
+      <tag state="vulnerable">v1.3.1</tag>
+      <tag state="vulnerable">v1.3.2</tag>
+      <tag state="vulnerable">v1.3.3</tag>
+      <tag state="vulnerable">v1.3.4</tag>
+      <tag state="vulnerable">v1.3.5</tag>
+      <tag state="vulnerable">v2.0.0</tag>
+      <tag state="vulnerable">v2.1.0</tag>
+      <tag state="vulnerable">v2.2.0</tag>
+      <tag state="vulnerable">v2.3.0</tag>
+      <tag state="vulnerable">v2.4.0</tag>
+      <tag state="vulnerable">v2.5.0</tag>
+      <tag state="vulnerable">v3.0.0</tag>
+      <tag state="vulnerable">v3.1.0</tag>
+      <tag state="vulnerable">v3.2.0</tag>
+      <tag state="vulnerable">v3.3.0</tag>
+      <tag state="vulnerable">v3.4.0</tag>
+      <tag state="vulnerable">v3.5.0</tag>
+      <tag state="vulnerable">v3.6.0</tag>
+      <tag state="vulnerable">v3.7.0</tag>
+      <tag state="vulnerable">v3.8.0</tag>
+      <tag state="vulnerable">v3.9.0</tag>
+      <tag state="vulnerable">v3.10.0</tag>
+      <tag state="vulnerable">v4.0.0</tag>
+      <tag state="vulnerable">v4.1.0</tag>
+      <tag state="vulnerable">v4.2.0</tag>
+      <tag state="vulnerable">v4.3.0</tag>
+      <tag state="vulnerable">v4.4.0</tag>
+      <tag state="vulnerable">v4.5.0</tag>
+      <tag state="vulnerable">v4.6.0</tag>
+      <tag state="vulnerable">v4.7.0</tag>
+      <tag state="vulnerable">v4.8.0</tag>
+      <tag state="vulnerable">v4.9.0</tag>
+      <tag state="vulnerable">v4.10.0</tag>
+      <tag state="fixed">v5.0.0</tag>
+      <change state="vulnerable">0977b8aa071de550e1a013d35e2c72615e65d520</change>
+      <change state="fixed">7cfd1fbb1332ae5df678b9f41a62156cb2e88c73</change>
+    </branch>
+    <branch>
+      <name>v1.2.14-maint</name>
+      <change state="vulnerable">0977b8aa071de550e1a013d35e2c72615e65d520</change>
+    </branch>
+    <branch>
+      <name>v1.2.15-maint</name>
+      <change state="vulnerable">0977b8aa071de550e1a013d35e2c72615e65d520</change>
+    </branch>
+    <branch>
+      <name>v1.2.16-maint</name>
+      <change state="vulnerable">0977b8aa071de550e1a013d35e2c72615e65d520</change>
+    </branch>
+    <branch>
+      <name>v1.2.17-maint</name>
+      <change state="vulnerable">0977b8aa071de550e1a013d35e2c72615e65d520</change>
+    </branch>
+    <branch>
+      <name>v1.2.18-maint</name>
+      <tag state="vulnerable">v1.2.18.1</tag>
+      <tag state="vulnerable">v1.2.18.2</tag>
+      <tag state="vulnerable">v1.2.18.3</tag>
+      <tag state="vulnerable">v1.2.18.4</tag>
+      <change state="vulnerable">0977b8aa071de550e1a013d35e2c72615e65d520</change>
+    </branch>
+    <branch>
+      <name>v1.2.19-maint</name>
+      <change state="vulnerable">0977b8aa071de550e1a013d35e2c72615e65d520</change>
+    </branch>
+    <branch>
+      <name>v1.2.20-maint</name>
+      <change state="vulnerable">0977b8aa071de550e1a013d35e2c72615e65d520</change>
+    </branch>
+    <branch>
+      <name>v1.2.21-maint</name>
+      <change state="vulnerable">0977b8aa071de550e1a013d35e2c72615e65d520</change>
+    </branch>
+    <branch>
+      <name>v1.3.0-maint</name>
+      <change state="vulnerable">0977b8aa071de550e1a013d35e2c72615e65d520</change>
+    </branch>
+    <branch>
+      <name>v1.3.1-maint</name>
+      <change state="vulnerable">0977b8aa071de550e1a013d35e2c72615e65d520</change>
+    </branch>
+    <branch>
+      <name>v1.3.2-maint</name>
+      <change state="vulnerable">0977b8aa071de550e1a013d35e2c72615e65d520</change>
+    </branch>
+    <branch>
+      <name>v1.3.3-maint</name>
+      <tag state="vulnerable">v1.3.3.1</tag>
+      <tag state="vulnerable">v1.3.3.2</tag>
+      <tag state="vulnerable">v1.3.3.3</tag>
+      <change state="vulnerable">0977b8aa071de550e1a013d35e2c72615e65d520</change>
+    </branch>
+    <branch>
+      <name>v1.3.4-maint</name>
+      <change state="vulnerable">0977b8aa071de550e1a013d35e2c72615e65d520</change>
+    </branch>
+    <branch>
+      <name>v1.3.5-maint</name>
+      <change state="vulnerable">0977b8aa071de550e1a013d35e2c72615e65d520</change>
+    </branch>
+    <branch>
+      <name>v2.0-maint</name>
+      <change state="vulnerable">0977b8aa071de550e1a013d35e2c72615e65d520</change>
+    </branch>
+    <branch>
+      <name>v2.1-maint</name>
+      <change state="vulnerable">0977b8aa071de550e1a013d35e2c72615e65d520</change>
+    </branch>
+    <branch>
+      <name>v2.2-maint</name>
+      <tag state="vulnerable">v2.2.1</tag>
+      <change state="vulnerable">0977b8aa071de550e1a013d35e2c72615e65d520</change>
+    </branch>
+    <branch>
+      <name>v3.0-maint</name>
+      <change state="vulnerable">0977b8aa071de550e1a013d35e2c72615e65d520</change>
+    </branch>
+    <branch>
+      <name>v3.2-maint</name>
+      <tag state="vulnerable">v3.2.1</tag>
+      <change state="vulnerable">0977b8aa071de550e1a013d35e2c72615e65d520</change>
+    </branch>
+    <branch>
+      <name>v3.7-maint</name>
+      <change state="vulnerable">0977b8aa071de550e1a013d35e2c72615e65d520</change>
+    </branch>
+    <branch>
+      <name>v4.1-maint</name>
+      <change state="vulnerable">0977b8aa071de550e1a013d35e2c72615e65d520</change>
+    </branch>
+    <branch>
+      <name>v4.5-maint</name>
+      <change state="vulnerable">0977b8aa071de550e1a013d35e2c72615e65d520</change>
+    </branch>
+  </product>
+
+</security-notice>
