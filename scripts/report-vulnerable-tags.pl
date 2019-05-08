@@ -5,12 +5,37 @@ use warnings;
 
 use Sort::Versions;
 
-if (int(@ARGV) != 1 && int(@ARGV) != 2) {
-    die "syntax: $0 BROKEN-CHANGESET [FIXED-CHANGESET]\n";
+if (int(@ARGV) != 1) {
+    die "syntax: $0 NOTICE.XML\n";
 }
 
-my $broken = shift @ARGV;
-my $fixed = shift @ARGV;
+my $broken;
+my $fixed;
+my $notice = shift @ARGV;
+my @notice;
+
+open NOTICE, $notice or die "cannot read $notice: $!";
+my $master;
+my $discard;
+for my $line (<NOTICE>) {
+    push @notice, $line unless $discard;
+    if ($line =~ m,<repository>,) {
+        $discard = 1;
+    } elsif ($line =~ m,<name>master</name>,) {
+        $master = 1;
+    } elsif ($line =~ m,</branch>,) {
+        $master = 0;
+    } elsif ($master) {
+        if ($line =~ m,<change state="(vulnerable|fixed)">([a-zA-Z0-9]+)</change>,) {
+            if ($1 eq "vulnerable") {
+                $broken = $2;
+            } else {
+                $fixed = $2;
+            }
+        }
+    }
+}
+close NOTICE;
 
 # branch name to hash with keys
 #   - brokenchanges -> list of commit ids
@@ -172,21 +197,34 @@ if (defined $fixed) {
     }
 }
 
+open NOTICE, ">$notice.tmp" or die "cannot create $notice.tmp: $!";
+foreach my $line (@notice) {
+    print NOTICE $line;
+}
+
 foreach my $branch (sort versioncmp keys %branches) {
-    print "    <branch>\n";
-    print "      <name>$branch</name>\n";
+    print NOTICE "    <branch>\n";
+    print NOTICE "      <name>$branch</name>\n";
+
     foreach my $tag (sort versioncmp keys %{$branches{$branch}->{"brokentags"}}) {
-        print "      <tag state=\"vulnerable\">$tag</tag>\n";
+        print NOTICE "      <tag state=\"vulnerable\">$tag</tag>\n";
     }
-    foreach my $commit (@{$branches{$branch}->{"brokenchanges"}}) {
-        print "      <change state=\"vulnerable\">$commit</change>\n";
+    foreach my $change (@{$branches{$branch}->{"brokenchanges"}}) {
+        print NOTICE "      <change state=\"vulnerable\">$change</change>\n";
     }
 
     foreach my $tag (sort versioncmp keys %{$branches{$branch}->{"fixedtags"}}) {
-        print "      <tag state=\"fixed\">$tag</tag>\n";
+        print NOTICE "      <tag state=\"fixed\">$tag</tag>\n";
     }
-    foreach my $commit (@{$branches{$branch}->{"fixedchanges"}}) {
-        print "      <change state=\"fixed\">$commit</change>\n";
+    foreach my $change (@{$branches{$branch}->{"fixedchanges"}}) {
+        print NOTICE "      <change state=\"fixed\">$change</change>\n";
     }
-    print "    </branch>\n";
+    print NOTICE "    </branch>\n";
 }
+
+print NOTICE "  </product>\n";
+print NOTICE "\n";
+print NOTICE "</security-notice>\n";
+close NOTICE;
+
+rename "$notice.tmp", "$notice" or die "cannot replace $notice: $!";
