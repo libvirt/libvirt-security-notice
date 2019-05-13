@@ -121,6 +121,38 @@ sub get_cherry_picks {
     return %cherrypicks;
 }
 
+sub get_fuzzy_picks {
+    my $branch = shift @_;
+    my $tag = shift @_;
+
+    my %subjects;
+
+    for my $commit (@fixed) {
+        open GIT, "-|", "git", "show", "--no-patch", "--format=%s", $commit
+            or die "cannot query 'git show --no-patch --format=%s $commit': $!";
+        my $subject = <GIT>;
+        chomp $subject;
+        close GIT;
+
+        $subjects{$subject} = $commit;
+    }
+
+    open GIT, "-|", "git", "log", "--format=%H %s", "$tag..origin/$branch" or
+        die "cannot query 'git log --format='%h %s' $tag..origin/$branch': $!\n";
+
+    my $commit;
+    my %fuzzypicks;
+    while (<GIT>) {
+        if (/([a-zA-Z0-9]+)\s(.*)$/) {
+            if (exists $subjects{$2}) {
+                $fuzzypicks{$subjects{$2}} = $1;
+            }
+        }
+    }
+
+    return %fuzzypicks;
+}
+
 sub add_branch {
     my $name = shift @_;
 
@@ -223,6 +255,20 @@ if (defined $fixed) {
                 add_fixed_commit($branch, $cherry);
             } else {
                 push @missing, $commit;
+            }
+        }
+
+        if (int(@missing)) {
+            my @unfixed = @missing;
+            my %fuzzypicks = get_fuzzy_picks($branch, $basetag);
+            @missing = ();
+            for my $commit (@unfixed) {
+                if (exists $fuzzypicks{$commit}) {
+                    my $fuzzy = $fuzzypicks{$commit};
+                    add_fixed_commit($branch, $fuzzy);
+                } else {
+                    push @missing, $commit;
+                }
             }
         }
 
