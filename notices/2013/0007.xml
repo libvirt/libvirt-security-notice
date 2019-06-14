@@ -5,7 +5,7 @@
 
   <description>
 <![CDATA[The legacy Xen driver code for listing inactive domains
-would stasrt populating an array at index -1. This causes memory
+would start populating an array at index -1. This causes memory
 corruption leading to a crash of libvirtd]]>
   </description>
 

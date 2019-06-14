@@ -6,7 +6,7 @@
   <description>
 <![CDATA[The code handling the virDomainMemoryStats API in the
 libvirtd daemon dispatch did not correctly initialize variables
-to NULL. This if RPC parameter validation failed it was possible
+to NULL. Thus if RPC parameter validation failed it was possible
 for libvirtd to access uninitialized memory during cleanup.]]>
   </description>
 

@@ -1,7 +1,7 @@
 <security-notice xmlns="http://security.libvirt.org/xmlns/security-notice/1.0">
   <id>2013-0008</id>
 
-  <summary>Libvirt security driver does nto clear supplementary groups</summary>
+  <summary>Libvirt security driver does not clear supplementary groups</summary>
 
   <description>
 <![CDATA[When parsing the process security label for the DAC driver

@@ -5,8 +5,8 @@
 
   <description>
     <![CDATA[When calling the virConnectGetAllDomainStats API on a guest which has
-	     a CDROM drive with no media present, libvirtd will crash on a NULL pointer
-	     acess]]>
+          a CDROM drive with no media present, libvirtd will crash on a NULL pointer
+          access]]>
   </description>
 
   <impact>

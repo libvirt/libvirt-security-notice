@@ -18,7 +18,7 @@ virtualization host, by checking if the source port is less than
 virtual network to gain access to network services only intended
 to be used by the host. For example, an NFS filesystem exported to
 the virtualization host relying on IP based security with the "secure"
-option will be inadvertantly accessible to guests.]]>
+option will be inadvertently accessible to guests.]]>
   </impact>
 
   <workaround>

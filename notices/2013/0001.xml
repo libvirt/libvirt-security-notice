@@ -6,7 +6,7 @@
   <description>
 <![CDATA[When reading and dispatching of a message failed the
 message was freed but was not removed from the message queue.
-When the conneciton was later clsed this would result in an
+When the connection was later closed this would result in an
 attempt to free uninitialized memory]]>
   </description>
 

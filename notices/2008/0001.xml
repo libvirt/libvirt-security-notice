@@ -6,8 +6,8 @@
   <description>
 <![CDATA[The APIs virDomainMigrate, virDomainBlockPeek, virDomainMemoryPeek,
  virDomainSetAutostart, virNetworkSetAutostart, virConnectFindStoragePoolSources
-and virStoragePoolSetAutostart  did not check the read-only flag of the
-connection. This allow unprivileged users to invoke APIs that they should
+and virStoragePoolSetAutostart did not check the read-only flag of the
+connection. This allowed unprivileged users to invoke APIs that they should
 not have access to.]]>
   </description>
 

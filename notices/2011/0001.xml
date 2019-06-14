@@ -7,7 +7,7 @@
 <![CDATA[The APIs virConnectDomainXMLToNative,
 virNodeDeviceDettach, virNodeDeviceReAttach, virNodeDeviceReset,
 virDomainRevertToSnapshot, virDomainSnapshotDelete did not check
-the read-only flag of the connection. This allow unprivileged
+the read-only flag of the connection. This allowed unprivileged
 users to invoke APIs that they should not have access to.]]>
   </description>
 

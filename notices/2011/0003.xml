@@ -13,7 +13,7 @@ access to inappropriate host files.]]>
 
   <impact>
 <![CDATA[A malicious guest disk image could trick the security
-drivre into providing access to inappropriate host files]]>
+driver into providing access to inappropriate host files]]>
   </impact>
 
   <workaround>
