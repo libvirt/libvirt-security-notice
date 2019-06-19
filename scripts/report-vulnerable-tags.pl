@@ -73,12 +73,12 @@ for my $tag (get_tags("--contains", $changeset)) {
 
     my @tagbranches = get_branch($tag);
     if (int(@tagbranches) == 0) {
-	if ($tag eq "v2.1.0") {
-	    @tagbranches = ("master")
-	} else {
-	    print "Tag $tag doesn't appear in any branch\n";
-	    next;
-	}
+        if ($tag eq "v2.1.0") {
+            @tagbranches = ("master")
+        } else {
+            print "Tag $tag doesn't appear in any branch\n";
+            next;
+        }
     }
 
     if (int(@tagbranches) > 1) {
@@ -102,7 +102,7 @@ foreach my $branch (sort versioncmp @branches) {
     print "      <change state=\"vulnerable\">$changeset</change>\n";
 
     if ($branch eq "master") {
-	print "      <change state=\"fixed\"></change>\n";
+        print "      <change state=\"fixed\"></change>\n";
     }
     print "    </branch>\n";
 }
