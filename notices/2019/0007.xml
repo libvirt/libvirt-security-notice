@@ -1,0 +1,141 @@
+<security-notice xmlns="http://security.libvirt.org/xmlns/security-notice/1.0">
+  <id>2019-0007</id>
+
+  <summary>virConnect*HypervisorCPU do not check for read-only connection</summary>
+
+  <description>
+<![CDATA[The virConnect*HypervisorCPU APIs allow reporting CPU capabilities from
+arbitrary emulator binaries without checking for a read-only connection.
+This allows unprivileged users to execute arbitrary binaries with elevated privileges.]]>
+  </description>
+
+  <impact>
+<![CDATA[The default libvirt configuration allows all local user
+accounts read-only access to the libvirtd daemon. Any local user
+can provide an arbitrary emulator, executing arbitrary binaries as
+the configured QEMU user. Since v5.1.0, the emulator binary is run
+with CAP_DAC_OVERRIDE, essentially having root privileges.]]>
+  </impact>
+
+  <workaround>
+<![CDATA[Edit the /etc/libvirt/libvirtd.conf configuration file,
+to set the 'unix_sock_ro_perms = "0700"' to prevent local users
+from connecting to libvirt. Alternatively setup a policy kit
+rule to prevent them access without first authenticating as root.]]>
+  </workaround>
+
+  <credits>
+    <reporter>
+      <name>Ján Tomko</name>
+      <email>jtomko@redhat.com</email>
+    </reporter>
+    <patcher>
+      <name>Ján Tomko</name>
+      <email>jtomko@redhat.com</email>
+    </patcher>
+  </credits>
+
+  <lifecycle>
+    <reported>20190604</reported>
+    <published>20190620</published>
+    <fixed>20190620</fixed>
+  </lifecycle>
+
+  <reference>
+    <advisory type="CVE" id="2019-10168"/>
+  </reference>
+
+  <product name="libvirt">
+    <repository>libvirt.git</repository>
+    <branch>
+      <name>master</name>
+      <tag state="vulnerable">v4.4.0</tag>
+      <tag state="vulnerable">v4.5.0</tag>
+      <tag state="vulnerable">v4.6.0</tag>
+      <tag state="vulnerable">v4.7.0</tag>
+      <tag state="vulnerable">v4.8.0</tag>
+      <tag state="vulnerable">v4.9.0</tag>
+      <tag state="vulnerable">v4.10.0</tag>
+      <tag state="vulnerable">v5.0.0</tag>
+      <tag state="vulnerable">v5.1.0</tag>
+      <tag state="vulnerable">v5.2.0</tag>
+      <tag state="vulnerable">v5.3.0</tag>
+      <tag state="vulnerable">v5.4.0</tag>
+      <change state="vulnerable">24a41aa6435045df2cf711d34cf399c2d74e4bf2</change>
+      <change state="vulnerable">7d0a1efcd6087096671f3769ec2b850292465e9a</change>
+      <change state="fixed">bf6c2830b6c338b1f5699b095df36f374777b291</change>
+    </branch>
+    <branch>
+      <name>v4.4-maint</name>
+      <change state="vulnerable">24a41aa6435045df2cf711d34cf399c2d74e4bf2</change>
+      <change state="vulnerable">7d0a1efcd6087096671f3769ec2b850292465e9a</change>
+      <change state="fixed">a6116fc8618300f6e2a082396812363310d1420f</change>
+    </branch>
+    <branch>
+      <name>v4.5-maint</name>
+      <change state="vulnerable">24a41aa6435045df2cf711d34cf399c2d74e4bf2</change>
+      <change state="vulnerable">7d0a1efcd6087096671f3769ec2b850292465e9a</change>
+      <change state="fixed">415cc5c0644304fd1e1bb721a092cf65e07be79f</change>
+    </branch>
+    <branch>
+      <name>v4.6-maint</name>
+      <change state="vulnerable">24a41aa6435045df2cf711d34cf399c2d74e4bf2</change>
+      <change state="vulnerable">7d0a1efcd6087096671f3769ec2b850292465e9a</change>
+      <change state="fixed">890965e8943a8837b41c3c6f366135ccfef48fb3</change>
+    </branch>
+    <branch>
+      <name>v4.7-maint</name>
+      <change state="vulnerable">24a41aa6435045df2cf711d34cf399c2d74e4bf2</change>
+      <change state="vulnerable">7d0a1efcd6087096671f3769ec2b850292465e9a</change>
+      <change state="fixed">f5ace9c05d59b70d4899199a187cb32ec6f600d8</change>
+    </branch>
+    <branch>
+      <name>v4.8-maint</name>
+      <change state="vulnerable">24a41aa6435045df2cf711d34cf399c2d74e4bf2</change>
+      <change state="vulnerable">7d0a1efcd6087096671f3769ec2b850292465e9a</change>
+      <change state="fixed">fc30929ffdf339d920b2e2183faf4373920bff6f</change>
+    </branch>
+    <branch>
+      <name>v4.9-maint</name>
+      <change state="vulnerable">24a41aa6435045df2cf711d34cf399c2d74e4bf2</change>
+      <change state="vulnerable">7d0a1efcd6087096671f3769ec2b850292465e9a</change>
+      <change state="fixed">dd88b69a207c1ed6e89d7e9fa6b5f4a9ec4db97c</change>
+    </branch>
+    <branch>
+      <name>v4.10-maint</name>
+      <change state="vulnerable">24a41aa6435045df2cf711d34cf399c2d74e4bf2</change>
+      <change state="vulnerable">7d0a1efcd6087096671f3769ec2b850292465e9a</change>
+      <change state="fixed">09c2635d0deec198de0f250abc2958f2d1c09eaa</change>
+    </branch>
+    <branch>
+      <name>v5.0-maint</name>
+      <change state="vulnerable">24a41aa6435045df2cf711d34cf399c2d74e4bf2</change>
+      <change state="vulnerable">7d0a1efcd6087096671f3769ec2b850292465e9a</change>
+      <change state="fixed">1ef98539a655109480628c91feac48c3c69675ef</change>
+    </branch>
+    <branch>
+      <name>v5.1-maint</name>
+      <change state="vulnerable">24a41aa6435045df2cf711d34cf399c2d74e4bf2</change>
+      <change state="vulnerable">7d0a1efcd6087096671f3769ec2b850292465e9a</change>
+      <change state="fixed">2a3f95a40725f743b5189868bcc1a78d922517f6</change>
+    </branch>
+    <branch>
+      <name>v5.1.0-maint</name>
+      <change state="vulnerable">24a41aa6435045df2cf711d34cf399c2d74e4bf2</change>
+      <change state="vulnerable">7d0a1efcd6087096671f3769ec2b850292465e9a</change>
+    </branch>
+    <branch>
+      <name>v5.2-maint</name>
+      <change state="vulnerable">24a41aa6435045df2cf711d34cf399c2d74e4bf2</change>
+      <change state="vulnerable">7d0a1efcd6087096671f3769ec2b850292465e9a</change>
+      <change state="fixed">45ae5e529d4e886f47dacca9dfe5a08d95a3425a</change>
+    </branch>
+    <branch>
+      <name>v5.3-maint</name>
+      <change state="vulnerable">24a41aa6435045df2cf711d34cf399c2d74e4bf2</change>
+      <change state="vulnerable">7d0a1efcd6087096671f3769ec2b850292465e9a</change>
+      <change state="fixed">d8e4d13446a0b04b757bd28c242a4cfecaaa8f1e</change>
+    </branch>
+  </product>
+
+</security-notice>
