@@ -1,0 +1,53 @@
+<security-notice xmlns="http://security.libvirt.org/xmlns/security-notice/1.0">
+  <id>2020-0002</id>
+
+  <summary>Leak of sensitive cookie information</summary>
+
+  <description>
+<![CDATA[The implementation of cookies for HTTP-based disks formatted them
+         in the XML even if the VIR_DOMAIN_XML_SECURE was not present.]]>
+  </description>
+
+  <impact>
+<![CDATA[A read-only client can access potentionally sensitive information
+         in the cookies.]]>
+  </impact>
+
+  <workaround>
+<![CDATA[Denying access to the readonly libvirt socket will avoid the
+potential information leak.]]>
+  </workaround>
+
+  <credits>
+    <reporter>
+      <name>Han Han</name>
+      <email>hhan@redhat.com</email>
+    </reporter>
+    <patcher>
+      <name>Peter Krempa</name>
+      <email>pkrempa@redhat.com</email>
+    </patcher>
+  </credits>
+
+  <lifecycle>
+    <reported>20200420</reported>
+    <published>20200414</published>
+    <fixed>20200414</fixed>
+  </lifecycle>
+
+  <reference>
+    <advisory type="CVE" id="2020-14301"/>
+  </reference>
+
+  <product name="libvirt">
+    <repository>libvirt.git</repository>
+    <branch>
+      <name>master</name>
+      <tag state="vulnerable">v6.2.0</tag>
+      <change state="vulnerable">3b076391befc3fe72deb0c244ac6c2b4c100b410</change>
+      <tag state="fixed">v6.3.0</tag>
+      <change state="fixed">a5b064bf4b17a9884d7d361733737fb614ad8979</change>
+    </branch>
+  </product>
+
+</security-notice>
