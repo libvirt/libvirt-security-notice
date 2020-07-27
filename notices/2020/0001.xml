@@ -1,0 +1,141 @@
+<security-notice xmlns="http://security.libvirt.org/xmlns/security-notice/1.0">
+  <id>2020-0001</id>
+
+  <summary>Denial of Service via storage pools without target paths</summary>
+
+  <description>
+<![CDATA[The implementation of the virStoragePoolLookupByTargetPath API
+         crashed on network-based storage pools with missing target paths.]]>
+  </description>
+
+  <impact>
+<![CDATA[A read-only client can cause a denial of service attack
+         against a privileged client by crashing libvirtd if such a pool
+         is known to libvirtd.]]>
+  </impact>
+
+  <workaround>
+<![CDATA[The crash only happens on hosts with network-based storaged pools
+without a target path. Denying access to the readonly libvirt socket will avoid the
+potential for a denial of service attack, but will not prevent the
+out-of-bounds access from causing a crash for a privileged client,
+although such a crash is no longer a security problem.]]>
+  </workaround>
+
+  <credits>
+    <reporter>
+      <name>Yi Li</name>
+      <email>yili@winhong.com</email>
+    </reporter>
+    <reporter>
+      <name>Han Han</name>
+      <email>hhan@redhat.com</email>
+    </reporter>
+    <patcher>
+      <name>Yi Li</name>
+      <email>yili@winhong.com</email>
+    </patcher>
+  </credits>
+
+  <lifecycle>
+    <reported>20200114</reported>
+    <published>20200114</published>
+    <fixed>20191222</fixed>
+  </lifecycle>
+
+  <reference>
+    <advisory type="CVE" id="2020-10703"/>
+  </reference>
+
+  <product name="libvirt">
+    <repository>libvirt.git</repository>
+    <branch>
+      <name>master</name>
+      <tag state="vulnerable">v4.1.0</tag>
+      <tag state="vulnerable">v4.2.0</tag>
+      <tag state="vulnerable">v4.3.0</tag>
+      <tag state="vulnerable">v4.4.0</tag>
+      <tag state="vulnerable">v4.5.0</tag>
+      <tag state="vulnerable">v4.6.0</tag>
+      <tag state="vulnerable">v4.7.0</tag>
+      <tag state="vulnerable">v4.8.0</tag>
+      <tag state="vulnerable">v4.9.0</tag>
+      <tag state="vulnerable">v4.10.0</tag>
+      <tag state="vulnerable">v5.0.0</tag>
+      <tag state="vulnerable">v5.1.0</tag>
+      <tag state="vulnerable">v5.2.0</tag>
+      <tag state="vulnerable">v5.3.0</tag>
+      <tag state="vulnerable">v5.4.0</tag>
+      <tag state="vulnerable">v5.5.0</tag>
+      <tag state="vulnerable">v5.6.0</tag>
+      <tag state="vulnerable">v5.7.0</tag>
+      <tag state="vulnerable">v5.8.0</tag>
+      <tag state="vulnerable">v5.9.0</tag>
+      <tag state="vulnerable">v5.10.0</tag>
+      <change state="vulnerable">7aa0e8c0cb8a6293d0c6f7e3d29c13b96dec2129</change>
+      <tag state="fixed">v6.0.0</tag>
+      <change state="fixed">dfff16a7c261f8d28e3abe60a47165f845fa952f</change>
+    </branch>
+    <branch>
+      <name>v4.1-maint</name>
+      <change state="vulnerable">7aa0e8c0cb8a6293d0c6f7e3d29c13b96dec2129</change>
+    </branch>
+    <branch>
+      <name>v4.2-maint</name>
+      <change state="vulnerable">7aa0e8c0cb8a6293d0c6f7e3d29c13b96dec2129</change>
+    </branch>
+    <branch>
+      <name>v4.3-maint</name>
+      <change state="vulnerable">7aa0e8c0cb8a6293d0c6f7e3d29c13b96dec2129</change>
+    </branch>
+    <branch>
+      <name>v4.4-maint</name>
+      <change state="vulnerable">7aa0e8c0cb8a6293d0c6f7e3d29c13b96dec2129</change>
+    </branch>
+    <branch>
+      <name>v4.5-maint</name>
+      <change state="vulnerable">7aa0e8c0cb8a6293d0c6f7e3d29c13b96dec2129</change>
+    </branch>
+    <branch>
+      <name>v4.6-maint</name>
+      <change state="vulnerable">7aa0e8c0cb8a6293d0c6f7e3d29c13b96dec2129</change>
+    </branch>
+    <branch>
+      <name>v4.7-maint</name>
+      <change state="vulnerable">7aa0e8c0cb8a6293d0c6f7e3d29c13b96dec2129</change>
+    </branch>
+    <branch>
+      <name>v4.8-maint</name>
+      <change state="vulnerable">7aa0e8c0cb8a6293d0c6f7e3d29c13b96dec2129</change>
+    </branch>
+    <branch>
+      <name>v4.9-maint</name>
+      <change state="vulnerable">7aa0e8c0cb8a6293d0c6f7e3d29c13b96dec2129</change>
+    </branch>
+    <branch>
+      <name>v4.10-maint</name>
+      <change state="vulnerable">7aa0e8c0cb8a6293d0c6f7e3d29c13b96dec2129</change>
+    </branch>
+    <branch>
+      <name>v5.0-maint</name>
+      <change state="vulnerable">7aa0e8c0cb8a6293d0c6f7e3d29c13b96dec2129</change>
+    </branch>
+    <branch>
+      <name>v5.1-maint</name>
+      <change state="vulnerable">7aa0e8c0cb8a6293d0c6f7e3d29c13b96dec2129</change>
+    </branch>
+    <branch>
+      <name>v5.1.0-maint</name>
+      <change state="vulnerable">7aa0e8c0cb8a6293d0c6f7e3d29c13b96dec2129</change>
+    </branch>
+    <branch>
+      <name>v5.2-maint</name>
+      <change state="vulnerable">7aa0e8c0cb8a6293d0c6f7e3d29c13b96dec2129</change>
+    </branch>
+    <branch>
+      <name>v5.3-maint</name>
+      <change state="vulnerable">7aa0e8c0cb8a6293d0c6f7e3d29c13b96dec2129</change>
+    </branch>
+  </product>
+
+</security-notice>
