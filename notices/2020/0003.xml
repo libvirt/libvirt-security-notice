@@ -1,0 +1,54 @@
+<security-notice xmlns="http://security.libvirt.org/xmlns/security-notice/1.0">
+  <id>2020-0003</id>
+
+  <summary>Leak of /dev/mapper/control into QEMU guest namespace</summary>
+
+  <description>
+<![CDATA[The libvirt code popuplating the /dev tree in the QEMU guest's
+         namespace was using libdevmapper to get the full dependency tree.]]>
+  </description>
+
+  <impact>
+<![CDATA[An open file descriptor to /dev/mapper/control was leaked to
+         QEMU's guest namespace.]]>
+  </impact>
+
+  <workaround>
+<![CDATA[There is no known workaround for this issue.]]>
+  </workaround>
+
+  <credits>
+    <reporter>
+      <name>Cédric Jeanneret</name>
+      <email>cjeanner@redhat.com</email>
+    </reporter>
+    <patcher>
+      <name>Michal Prívozník</name>
+      <email>mprivozn@redhat.com</email>
+    </patcher>
+  </credits>
+
+  <lifecycle>
+    <reported>20200717</reported>
+    <published>20200717</published>
+    <fixed>20200725</fixed>
+  </lifecycle>
+
+  <reference>
+    <advisory type="CVE" id="2020-10703"/>
+  </reference>
+
+  <product name="libvirt">
+    <repository>libvirt.git</repository>
+    <branch>
+      <name>master</name>
+      <tag state="vulnerable">v6.2.0</tag>
+      <tag state="vulnerable">v6.3.0</tag>
+      <tag state="vulnerable">v6.4.0</tag>
+      <tag state="vulnerable">v6.5.0</tag>
+      <change state="vulnerable">a30078cb832646177defd256e77c632905f1e6d0</change>
+      <change state="fixed">22494556542c676d1b9e7f1c1f2ea13ac17e1e3e</change>
+    </branch>
+  </product>
+
+</security-notice>
