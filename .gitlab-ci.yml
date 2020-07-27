@@ -1,6 +1,7 @@
 
 stages:
   - prebuild
+  - build
 
 # Check that all commits are signed-off for the DCO.
 # Skip on "libvirt" namespace, since we only need to run
@@ -14,3 +15,15 @@ check-dco:
   except:
     variables:
       - $CI_PROJECT_NAMESPACE == 'libvirt'
+
+pages:
+  stage: build
+  image: centos:8
+  before_script:
+    - dnf -y install libxslt make
+  script:
+    - make
+    - mv build public
+  artifacts:
+    paths:
+      - public
