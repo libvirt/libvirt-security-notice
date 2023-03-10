@@ -1,29 +1,38 @@
-
-stages:
-  - prebuild
-  - build
-
-# Check that all commits are signed-off for the DCO.
-# Skip on "libvirt" namespace, since we only need to run
-# this test on developer's personal forks from which
-# merge requests are submitted
-check-dco:
-  stage: prebuild
-  image: registry.gitlab.com/libvirt/libvirt-ci/check-dco:master
-  script:
-    - /check-dco
-  except:
-    variables:
-      - $CI_PROJECT_NAMESPACE == 'libvirt'
-
-pages:
-  stage: build
-  image: centos:8
-  before_script:
-    - dnf -y install libxslt make
+.publish:
+  image: registry.gitlab.com/libvirt/libvirt/ci-almalinux-8:latest
   script:
     - make
     - mv build public
   artifacts:
     paths:
       - public
+
+# This job creates artifacts which can be browsed without making live
+web:
+  extends: .publish
+  rules:
+    # Only run if it is a merge request, or a forced pipeline
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event" || $RUN_PIPELINE == "1"'
+      when: on_success
+    - when: never
+
+# This job creates artifacts and publishes them to the live site
+pages:
+  extends: .publish
+  rules:
+    # We can publish the website from pushes to the main branch only
+    - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
+      when: on_success
+    - when: never
+
+# Check that all commits are signed-off for the DCO.
+# Skip on "libvirt" namespace, since we only need to run
+# this test on developer's personal forks from which
+# merge requests are submitted
+check-dco:
+  image: registry.gitlab.com/libvirt/libvirt-ci/check-dco:master
+  script:
+    - /check-dco
+  except:
+    variables:
+      - $CI_PROJECT_NAMESPACE == 'libvirt'
