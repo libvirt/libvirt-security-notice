@@ -236,6 +236,18 @@
 
 
   <xsl:template match="lsn:product">
+    <!-- For linking to gitlab we need the repository name without '.git' -->
+    <xsl:variable name="repository">
+        <xsl:choose>
+            <xsl:when test="contains(lsn:repository, '.git')">
+                <xsl:value-of select="substring-before(lsn:repository, '.git')"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:value-of select="lsn:repository"/>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:variable>
+
     <xsl:text>Affected product</xsl:text>
     <xsl:value-of select="$nl"/>
     <xsl:text>----------------</xsl:text>
@@ -244,9 +256,7 @@
     <xsl:text>        Name: </xsl:text>
     <xsl:value-of select="@name"/>
     <xsl:value-of select="$nl"/>
-    <xsl:text>  Repository: git://libvirt.org/git/</xsl:text><xsl:value-of select="lsn:repository"/>
-    <xsl:value-of select="$nl"/>
-    <xsl:text>              http://libvirt.org/git/?p=</xsl:text><xsl:value-of select="lsn:repository"/>
+    <xsl:text>  Repository: https://gitlab.com/libvirt/</xsl:text><xsl:value-of select="$repository"/>
     <xsl:value-of select="$nl"/>
     <xsl:value-of select="$nl"/>
 

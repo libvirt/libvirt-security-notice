@@ -193,28 +193,37 @@
   <xsl:template name="gitbranch">
     <xsl:param name="repository"/>
     <xsl:param name="branch"/>
-
-    <a href="http://libvirt.org/git/?p={$repository};a=shortlog;h=refs/heads/{$branch}"><xsl:value-of select="$branch"/></a>
+    <a href="https://gitlab.com/libvirt/{$repository}/-/commits/{$branch}"><xsl:value-of select="$branch"/></a>
   </xsl:template>
 
   <xsl:template name="gittag">
     <xsl:param name="repository"/>
     <xsl:param name="tag"/>
 
-    <a href="http://libvirt.org/git/?p={$repository};a=tag;h={$tag}"><xsl:value-of select="$tag"/></a>
+    <a href="https://gitlab.com/libvirt/{$repository}/-/tags/{$tag}"><xsl:value-of select="$tag"/></a>
   </xsl:template>
 
   <xsl:template name="gitchange">
     <xsl:param name="repository"/>
     <xsl:param name="change"/>
 
-    <a href="http://libvirt.org/git/?p={$repository};a=commit;h={$change}"><xsl:value-of select="$change"/></a>
+    <a href="https://gitlab.com/libvirt/{$repository}/-/commit/{$change}"><xsl:value-of select="$change"/></a>
   </xsl:template>
 
   <xsl:template match="lsn:product">
     <h3>Affected product: <xsl:value-of select="@name"/></h3>
 
-    <xsl:variable name="repository" select="lsn:repository"/>
+    <!-- For linking to gitlab we need the repository name without '.git' -->
+    <xsl:variable name="repository">
+        <xsl:choose>
+            <xsl:when test="contains(lsn:repository, '.git')">
+                <xsl:value-of select="substring-before(lsn:repository, '.git')"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:value-of select="lsn:repository"/>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:variable>
 
     <xsl:for-each select="lsn:branch">
       <table>
